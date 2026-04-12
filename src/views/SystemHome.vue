@@ -131,6 +131,7 @@ const scrollToSection = (id) => {
                 <div class="flex justify-between items-center text-[9px] md:text-[10px] font-mono tracking-widest">
                   <div class="flex items-center gap-3">
                     <img v-if="s.icon === 'sonarqube'" src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/sonarqube.svg" class="w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity invert" alt="SonarQube" />
+                    <img v-else-if="s.icon === 'playwright'" src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/playwright.svg" class="w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity invert" alt="Playwright" />
                     <img v-else-if="s.icon" :src="`https://cdn.simpleicons.org/${s.icon}/white`" class="w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity" alt="" />
                     <span class="text-gray-400 uppercase">{{ s.name }}</span>
                   </div>
