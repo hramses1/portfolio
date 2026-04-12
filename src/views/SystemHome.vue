@@ -191,34 +191,62 @@ const scrollToSection = (id) => {
       </div>
     </section>
 
-    <!-- SECTION 05: ACADEMY -->
-    <section id="education" class="min-h-screen py-20 md:py-32 px-6 md:px-12 lg:px-24 bg-white/[0.01] mb-16 md:mb-0">
-      <div class="max-w-7xl mx-auto flex flex-col items-center">
-        <h3 class="text-xs font-mono text-system-infra tracking-[0.4em] uppercase mb-12 md:mb-16">05_ACADEMIC_FOUNDATION</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 w-full mb-16 md:mb-24">
-          <div v-for="edu in profile.education" :key="edu.institution" 
-               class="p-8 md:p-10 border border-white/5 bg-black/40 rounded-3xl flex flex-col justify-between hover:border-white/20 transition-all group relative overflow-hidden">
-            <div v-if="edu.achievement" class="absolute top-0 right-0 bg-system-success/20 text-system-success px-4 py-1 text-[8px] font-mono uppercase tracking-widest">
-              {{ edu.achievement }}
-            </div>
-            <div>
-              <div class="text-[10px] font-mono text-system-success mb-4">{{ edu.period }}</div>
-              <h4 class="text-2xl md:text-3xl font-bold text-white mb-4 group-hover:translate-x-2 transition-transform leading-tight">{{ edu.degree }}</h4>
-              <p class="text-gray-500 font-mono text-xs md:text-sm uppercase tracking-widest">{{ edu.institution }}</p>
+    <!-- SECTION 06: CONTACT -->
+    <section id="contact" class="min-h-screen py-32 px-6 md:px-12 lg:px-24 flex items-center">
+      <div class="max-w-7xl mx-auto w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+          <div>
+            <h3 class="text-xs font-mono text-system-infra tracking-[0.4em] uppercase mb-8">06_CONNECT_GATEWAY</h3>
+            <h2 class="text-5xl md:text-7xl font-black text-white tracking-tighter leading-none mb-12">¿Listo para el siguiente sprint?</h2>
+            <p class="text-xl font-mono text-gray-500 leading-relaxed mb-12">
+              Disponible para nuevos desafíos en <span class="text-white">Desarrollo Backend</span> y <span class="text-white">QA Automation</span>.
+            </p>
+            <div class="flex items-center gap-6">
+              <div class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center animate-pulse">
+                <span class="w-2 h-2 rounded-full bg-system-success"></span>
+              </div>
+              <span class="text-[10px] font-mono text-gray-600 tracking-[0.3em] uppercase">Status: Receiving_Signals</span>
             </div>
           </div>
-        </div>
 
-        <!-- Certifications Grid -->
-        <h4 class="text-xs font-mono text-gray-500 tracking-[0.3em] uppercase mb-10 md:mb-12">Certificaciones_Validadas</h4>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 w-full">
-          <div v-for="cert in profile.certifications" :key="cert.title" 
-               class="p-6 border border-white/5 bg-white/[0.02] rounded-2xl hover:bg-white/[0.05] transition-all group">
-            <div class="text-[8px] font-mono text-system-infra mb-3 uppercase tracking-tighter">{{ cert.category }}</div>
-            <h5 class="text-[13px] md:text-sm font-bold text-white mb-2 leading-tight group-hover:text-system-infra transition-colors">{{ cert.title }}</h5>
-            <div class="flex justify-between items-center mt-4">
-              <span class="text-[9px] font-mono text-gray-600 uppercase">{{ cert.issuer }}</span>
-              <span class="text-[9px] font-mono text-gray-500">{{ cert.date }}</span>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <!-- LinkedIn -->
+            <a :href="profile.identity.linkedin" target="_blank" class="p-8 border border-white/5 bg-white/[0.02] rounded-3xl hover:border-system-info/50 transition-all group flex flex-col justify-between aspect-square">
+              <img src="https://cdn.simpleicons.org/linkedin/white" class="w-8 h-8 opacity-50 group-hover:opacity-100 transition-all" alt="" />
+              <div>
+                <h4 class="text-xl font-bold text-white mb-2">LinkedIn</h4>
+                <p class="text-xs font-mono text-gray-500 uppercase tracking-widest group-hover:text-system-info transition-colors">Professional_Network</p>
+              </div>
+            </a>
+
+            <!-- WhatsApp -->
+            <a :href="`https://wa.me/${profile.identity.phone.replace(/[^0-9]/g, '')}`" target="_blank" class="p-8 border border-white/5 bg-white/[0.02] rounded-3xl hover:border-system-success/50 transition-all group flex flex-col justify-between aspect-square">
+              <img src="https://cdn.simpleicons.org/whatsapp/white" class="w-8 h-8 opacity-50 group-hover:opacity-100 transition-all" alt="" />
+              <div>
+                <h4 class="text-xl font-bold text-white mb-2">WhatsApp</h4>
+                <p class="text-xs font-mono text-gray-500 uppercase tracking-widest group-hover:text-system-success transition-colors">Direct_Secure_Line</p>
+              </div>
+            </a>
+
+            <!-- Email -->
+            <a :href="`mailto:${profile.identity.email}`" class="p-8 border border-white/5 bg-white/[0.02] rounded-3xl hover:border-system-infra/50 transition-all group flex flex-col justify-between aspect-square">
+              <img src="https://cdn.simpleicons.org/gmail/white" class="w-8 h-8 opacity-50 group-hover:opacity-100 transition-all" alt="" />
+              <div>
+                <h4 class="text-xl font-bold text-white mb-2">Email</h4>
+                <p class="text-xs font-mono text-gray-500 uppercase tracking-widest group-hover:text-system-infra transition-colors">Digital_Transmission</p>
+              </div>
+            </a>
+
+            <!-- Location -->
+            <div class="p-8 border border-white/5 bg-white/[0.02] rounded-3xl flex flex-col justify-between aspect-square relative overflow-hidden">
+              <div class="absolute inset-0 opacity-10 grayscale brightness-50 pointer-events-none">
+                <div class="w-full h-full bg-[radial-gradient(#ffffff10_1px,transparent_1px)] [background-size:16px_16px]"></div>
+              </div>
+              <img src="https://cdn.simpleicons.org/googlemaps/white" class="w-8 h-8 opacity-50" alt="" />
+              <div>
+                <h4 class="text-xl font-bold text-white mb-2">{{ profile.identity.location.split(',')[0] }}</h4>
+                <p class="text-xs font-mono text-gray-500 uppercase tracking-widest">Global_Positioning</p>
+              </div>
             </div>
           </div>
         </div>

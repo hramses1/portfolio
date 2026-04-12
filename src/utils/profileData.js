@@ -7,7 +7,8 @@ export const profile = {
     lastName: 'ARISMENDI',
     title: 'Software Developer | SDET | QA Automation Engineer',
     email: 'arismendiramses@gmail.com',
-    phone: '0961613564',
+    phone: '+593-961613564',
+    linkedin: 'https://www.linkedin.com/in/hector-arismendi-469551167/',
     location: 'Duran, Cdla Maldonado',
     description: 'Ingeniero de Software especializado en el desarrollo de soluciones backend escalables y el aseguramiento de la calidad (QA) mediante frameworks de automatización robustos.'
   },
