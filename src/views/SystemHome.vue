@@ -246,29 +246,29 @@ const scrollToSection = (id) => {
 
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
             <!-- LinkedIn -->
-            <a :href="profile.identity.linkedin" target="_blank" class="p-8 border border-white/5 bg-white/[0.02] rounded-3xl hover:border-system-info/50 transition-all group flex flex-col justify-between aspect-square">
+            <a :href="profile.identity.linkedin" target="_blank" class="p-6 md:p-8 border border-white/5 bg-white/[0.02] rounded-3xl hover:border-system-info/50 transition-all group flex flex-col gap-6 text-left min-h-[200px]">
               <img src="https://cdn.simpleicons.org/linkedin/white" class="w-8 h-8 opacity-50 group-hover:opacity-100 transition-all" alt="LinkedIn" />
-              <div>
-                <h4 class="text-xl font-bold text-white mb-2">LinkedIn</h4>
-                <p class="text-xs font-mono text-gray-500 uppercase tracking-widest group-hover:text-system-info transition-colors">Professional_Network</p>
+              <div class="mt-auto">
+                <h4 class="text-xl font-bold text-white mb-1">LinkedIn</h4>
+                <p class="text-[10px] font-mono text-gray-500 uppercase tracking-widest group-hover:text-system-info transition-colors">Professional_Network</p>
               </div>
             </a>
 
             <!-- WhatsApp -->
-            <a :href="`https://wa.me/${profile.identity.phone.replace(/[^0-9]/g, '')}`" target="_blank" class="p-8 border border-white/5 bg-white/[0.02] rounded-3xl hover:border-system-success/50 transition-all group flex flex-col justify-between aspect-square">
+            <a :href="`https://wa.me/${profile.identity.phone.replace(/[^0-9]/g, '')}`" target="_blank" class="p-6 md:p-8 border border-white/5 bg-white/[0.02] rounded-3xl hover:border-system-success/50 transition-all group flex flex-col gap-6 text-left min-h-[200px]">
               <img src="https://cdn.simpleicons.org/whatsapp/white" class="w-8 h-8 opacity-50 group-hover:opacity-100 transition-all" alt="WhatsApp" />
-              <div>
-                <h4 class="text-xl font-bold text-white mb-2">WhatsApp</h4>
-                <p class="text-xs font-mono text-gray-500 uppercase tracking-widest group-hover:text-system-success transition-colors">Direct_Secure_Line</p>
+              <div class="mt-auto">
+                <h4 class="text-xl font-bold text-white mb-1">WhatsApp</h4>
+                <p class="text-[10px] font-mono text-gray-500 uppercase tracking-widest group-hover:text-system-success transition-colors">Direct_Secure_Line</p>
               </div>
             </a>
 
             <!-- Email -->
-            <a :href="`mailto:${profile.identity.email}`" class="p-8 border border-white/5 bg-white/[0.02] rounded-3xl hover:border-system-infra/50 transition-all group flex flex-col justify-between aspect-square">
+            <a :href="`mailto:${profile.identity.email}`" class="p-6 md:p-8 border border-white/5 bg-white/[0.02] rounded-3xl hover:border-system-infra/50 transition-all group flex flex-col gap-6 text-left min-h-[200px]">
               <img src="https://cdn.simpleicons.org/gmail/white" class="w-8 h-8 opacity-50 group-hover:opacity-100 transition-all" alt="Email" />
-              <div>
-                <h4 class="text-xl font-bold text-white mb-2">Email</h4>
-                <p class="text-xs font-mono text-gray-500 uppercase tracking-widest group-hover:text-system-infra transition-colors">Digital_Transmission</p>
+              <div class="mt-auto">
+                <h4 class="text-xl font-bold text-white mb-1">Email</h4>
+                <p class="text-[10px] font-mono text-gray-500 uppercase tracking-widest group-hover:text-system-infra transition-colors">Digital_Transmission</p>
               </div>
             </a>
           </div>
