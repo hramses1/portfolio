@@ -248,7 +248,7 @@ const scrollToSection = (id) => {
             </div>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
             <!-- LinkedIn -->
             <a :href="profile.identity.linkedin" target="_blank" class="p-8 border border-white/5 bg-white/[0.02] rounded-3xl hover:border-system-info/50 transition-all group flex flex-col justify-between aspect-square">
               <img src="https://cdn.simpleicons.org/linkedin/white" class="w-8 h-8 opacity-50 group-hover:opacity-100 transition-all" alt="LinkedIn" />
@@ -269,24 +269,12 @@ const scrollToSection = (id) => {
 
             <!-- Email -->
             <a :href="`mailto:${profile.identity.email}`" class="p-8 border border-white/5 bg-white/[0.02] rounded-3xl hover:border-system-infra/50 transition-all group flex flex-col justify-between aspect-square">
-              <img src="https://cdn.simpleicons.org/icloud/white" class="w-8 h-8 opacity-50 group-hover:opacity-100 transition-all" alt="Email" />
+              <img src="https://cdn.simpleicons.org/gmail/white" class="w-8 h-8 opacity-50 group-hover:opacity-100 transition-all" alt="Email" />
               <div>
                 <h4 class="text-xl font-bold text-white mb-2">Email</h4>
                 <p class="text-xs font-mono text-gray-500 uppercase tracking-widest group-hover:text-system-infra transition-colors">Digital_Transmission</p>
               </div>
             </a>
-
-            <!-- Location -->
-            <div class="p-8 border border-white/5 bg-white/[0.02] rounded-3xl flex flex-col justify-between aspect-square relative overflow-hidden">
-              <div class="absolute inset-0 opacity-10 grayscale brightness-50 pointer-events-none">
-                <div class="w-full h-full bg-[radial-gradient(#ffffff10_1px,transparent_1px)] [background-size:16px_16px]"></div>
-              </div>
-              <img src="https://cdn.simpleicons.org/googlemaps/white" class="w-8 h-8 opacity-50" alt="" />
-              <div>
-                <h4 class="text-xl font-bold text-white mb-2">{{ profile.identity.location.split(',')[0] }}</h4>
-                <p class="text-xs font-mono text-gray-500 uppercase tracking-widest">Global_Positioning</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
