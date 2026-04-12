@@ -28,14 +28,14 @@ export const profile = {
   ],
 
   certifications: [
-    { title: 'CI/CD en Gitlab vía FTP', issuer: 'Udemy', date: 'mar. 2026', category: 'Cloud & DevOps' },
-    { title: 'Gestión Efectiva del Tiempo', issuer: 'Platzi', date: 'ago. 2024', category: 'Soft Skills' },
-    { title: 'Product Owner esencial', issuer: 'LinkedIn', date: 'jun. 2024', category: 'Management' },
-    { title: 'Fundamentos de análisis empresarial', issuer: 'Microsoft / LinkedIn', date: 'jul. 2024', category: 'Management' },
-    { title: 'Liderazgo para el desarrollo de proyectos de software', issuer: 'LinkedIn', date: 'sept. 2023', category: 'Leadership' },
-    { title: 'Python Programming Beyond The Basics', issuer: 'Udemy', date: 'oct. 2021', category: 'Development' },
-    { title: 'Cloud Computing', issuer: 'Google Actívate', date: 'nov. 2022', category: 'Cloud & DevOps' },
-    { title: 'SQL para Principiantes: Curso práctico', issuer: 'Udemy', date: 'oct. 2021', category: 'Development' }
+    { title: 'CI/CD en Gitlab vía FTP', issuer: 'Udemy', date: 'mar. 2026', category: 'Cloud & DevOps', icon: 'udemy' },
+    { title: 'Gestión Efectiva del Tiempo', issuer: 'Platzi', date: 'ago. 2024', category: 'Soft Skills', icon: 'platzi' },
+    { title: 'Product Owner esencial', issuer: 'LinkedIn', date: 'jun. 2024', category: 'Management', icon: 'linkedin' },
+    { title: 'Fundamentos de análisis empresarial', issuer: 'Microsoft / LinkedIn', date: 'jul. 2024', category: 'Management', icon: 'microsoft' },
+    { title: 'Liderazgo para el desarrollo de proyectos de software', issuer: 'LinkedIn', date: 'sept. 2023', category: 'Leadership', icon: 'linkedin' },
+    { title: 'Python Programming Beyond The Basics', issuer: 'Udemy', date: 'oct. 2021', category: 'Development', icon: 'udemy' },
+    { title: 'Cloud Computing', issuer: 'Google Actívate', date: 'nov. 2022', category: 'Cloud & DevOps', icon: 'google' },
+    { title: 'SQL para Principiantes: Curso práctico', issuer: 'Udemy', date: 'oct. 2021', category: 'Development', icon: 'udemy' }
   ],
 
   skills: {

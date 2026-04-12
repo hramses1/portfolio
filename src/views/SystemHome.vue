@@ -191,6 +191,45 @@ const scrollToSection = (id) => {
       </div>
     </section>
 
+    <!-- SECTION 05: ACADEMY -->
+    <section id="education" class="min-h-screen py-32 px-6 md:px-12 lg:px-24 bg-white/[0.01]">
+      <div class="max-w-7xl mx-auto flex flex-col items-center">
+        <h3 class="text-xs font-mono text-system-infra tracking-[0.4em] uppercase mb-16">05_ACADEMIC_FOUNDATION</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 w-full mb-24">
+          <div v-for="edu in profile.education" :key="edu.institution" 
+               class="p-10 border border-white/5 bg-black/40 rounded-3xl flex flex-col justify-between hover:border-white/20 transition-all group relative overflow-hidden text-left">
+            <div v-if="edu.achievement" class="absolute top-0 right-0 bg-system-success/20 text-system-success px-4 py-1 text-[8px] font-mono uppercase tracking-widest">
+              {{ edu.achievement }}
+            </div>
+            <div>
+              <div class="text-[10px] font-mono text-system-success mb-4">{{ edu.period }}</div>
+              <h4 class="text-3xl font-bold text-white mb-4 group-hover:translate-x-2 transition-transform">{{ edu.degree }}</h4>
+              <p class="text-gray-500 font-mono text-sm uppercase tracking-widest">{{ edu.institution }}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Certifications Grid -->
+        <h4 class="text-xs font-mono text-gray-500 tracking-[0.3em] uppercase mb-12">Certificaciones_Validadas</h4>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
+          <div v-for="cert in profile.certifications" :key="cert.title" 
+               class="p-6 border border-white/5 bg-white/[0.02] rounded-2xl hover:bg-white/[0.05] transition-all group flex flex-col justify-between h-full text-left">
+            <div>
+              <div class="flex justify-between items-start mb-4">
+                <div class="text-[8px] font-mono text-system-infra uppercase tracking-tighter">{{ cert.category }}</div>
+                <img v-if="cert.icon" :src="`https://cdn.simpleicons.org/${cert.icon}/white`" class="w-5 h-5 opacity-30 group-hover:opacity-100 transition-opacity" alt="" />
+              </div>
+              <h5 class="text-[13px] md:text-sm font-bold text-white mb-2 leading-tight group-hover:text-system-infra transition-colors">{{ cert.title }}</h5>
+            </div>
+            <div class="flex justify-between items-center mt-6">
+              <span class="text-[9px] font-mono text-gray-600 uppercase">{{ cert.issuer }}</span>
+              <span class="text-[9px] font-mono text-gray-500">{{ cert.date }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- SECTION 06: CONTACT -->
     <section id="contact" class="min-h-screen py-32 px-6 md:px-12 lg:px-24 flex items-center">
       <div class="max-w-7xl mx-auto w-full">
