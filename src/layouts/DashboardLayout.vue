@@ -84,7 +84,7 @@ onMounted(() => {
         </div>
       </div>
       <div class="flex items-center gap-4 md:gap-8">
-        <a href="mailto:arismendiramses@gmail.com" class="text-[9px] md:text-[10px] font-mono tracking-widest hover:text-system-infra transition-colors border-b border-white/10 pb-1">CONTACT_ME</a>
+        <button @click="scrollTo('contact')" class="text-[9px] md:text-[10px] font-mono tracking-widest hover:text-system-infra transition-colors border-b border-white/10 pb-1 uppercase">CONTACT_ME</button>
         <div class="hidden md:block px-4 py-2 bg-white/5 border border-white/10 rounded-full text-[9px] font-mono tracking-widest text-white">
           v2.0_DEPLOYED
         </div>
