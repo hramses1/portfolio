@@ -121,28 +121,44 @@ export const profile = {
       name: 'Automatización E2E (End-to-End)',
       description: 'Framework de automatización de flujo completo de compra con Selenium, Pytest y POM.',
       github: 'https://github.com/hramses1/automationE2E',
-      tags: ['QA', 'Python', 'Selenium', 'POM']
+      tags: [
+        { name: 'QA', icon: 'testcafe' },
+        { name: 'Python', icon: 'python' },
+        { name: 'Selenium', icon: 'selenium' }
+      ]
     },
     {
       id: 2,
       name: 'Alertas de Rabbit para WhatsApp',
       description: 'Notificaciones personalizadas de RabbitMQ enviadas directamente a WhatsApp.',
       github: 'https://github.com/hramses1/Rabbit-Alerts',
-      tags: ['Backend', 'RabbitMQ', 'WhatsApp_API']
+      tags: [
+        { name: 'RabbitMQ', icon: 'rabbitmq' },
+        { name: 'WhatsApp', icon: 'whatsapp' },
+        { name: 'Node.js', icon: 'nodedotjs' }
+      ]
     },
     {
       id: 3,
       name: 'Telegram Search Bot',
       description: 'Bot para búsqueda de personas y placas de vehículos en Ecuador via Telegram API.',
       github: 'https://github.com/hramses1/bot-telegram-search-person-ec',
-      tags: ['Python', 'Telegram_API', 'Automation']
+      tags: [
+        { name: 'Python', icon: 'python' },
+        { name: 'Telegram', icon: 'telegram' },
+        { name: 'Automation', icon: 'robotframework' }
+      ]
     },
     {
       id: 4,
       name: 'API Gestión Usuarios Moodle',
       description: 'API para administración de usuarios y matriculaciones en instancias de Moodle.',
       github: 'https://github.com/hramses1/create-user-moodle-api',
-      tags: ['Backend', 'Node.js', 'Moodle_API']
+      tags: [
+        { name: 'Backend', icon: 'nodedotjs' },
+        { name: 'Node.js', icon: 'nodedotjs' },
+        { name: 'Moodle', icon: 'moodle' }
+      ]
     }
   ]
 }

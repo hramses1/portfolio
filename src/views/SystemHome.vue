@@ -95,8 +95,9 @@ const scrollToSection = (id) => {
             </div>
             <div class="relative z-10">
               <div class="flex flex-wrap gap-2 mb-6">
-                <span v-for="tag in project.tags" :key="tag" class="px-2 py-1 bg-white/5 border border-white/10 rounded text-[8px] md:text-[9px] font-mono text-gray-500 uppercase tracking-widest group-hover:text-system-infra transition-colors">
-                  {{ tag }}
+                <span v-for="tag in project.tags" :key="tag.name" class="px-2 py-1 bg-white/5 border border-white/10 rounded text-[8px] md:text-[9px] font-mono text-gray-500 uppercase tracking-widest group-hover:text-system-infra transition-colors flex items-center gap-2">
+                  <img v-if="tag.icon" :src="`https://cdn.simpleicons.org/${tag.icon}/white`" class="w-3 h-3 opacity-70 group-hover:opacity-100 transition-opacity" alt="" />
+                  {{ tag.name }}
                 </span>
               </div>
               <h4 class="text-2xl md:text-3xl font-bold text-white mb-4 group-hover:translate-x-2 transition-transform duration-500 leading-tight">{{ project.name }}</h4>
