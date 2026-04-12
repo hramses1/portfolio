@@ -129,7 +129,8 @@ const scrollToSection = (id) => {
               <div v-for="s in profile.skills.testing" :key="s.name" class="space-y-2">
                 <div class="flex justify-between items-center text-[9px] md:text-[10px] font-mono tracking-widest">
                   <div class="flex items-center gap-3">
-                    <img v-if="s.icon" :src="`https://cdn.simpleicons.org/${s.icon}/white`" class="w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity" alt="" />
+                    <img v-if="s.icon === 'sonarqube'" src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/sonarqube.svg" class="w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity invert" alt="SonarQube" />
+                    <img v-else-if="s.icon" :src="`https://cdn.simpleicons.org/${s.icon}/white`" class="w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity" alt="" />
                     <span class="text-gray-400 uppercase">{{ s.name }}</span>
                   </div>
                   <span class="text-system-success">{{ s.level }}%</span>
@@ -167,7 +168,8 @@ const scrollToSection = (id) => {
                 <p class="text-[9px] font-mono text-gray-600 mb-4 tracking-widest uppercase">Databases</p>
                 <div class="flex flex-wrap gap-4">
                   <div v-for="s in profile.skills.databases" :key="s.name" class="flex items-center gap-2 group/db">
-                    <img v-if="s.icon" :src="`https://cdn.simpleicons.org/${s.icon}/666666`" class="w-4 h-4 group-hover/db:brightness-200 transition-all" alt="" />
+                    <img v-if="s.icon === 'microsoftsqlserver'" src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/microsoftsqlserver.svg" class="w-4 h-4 group-hover:brightness-200 transition-all invert" alt="SQL Server" />
+                    <img v-else-if="s.icon" :src="`https://cdn.simpleicons.org/${s.icon}/666666`" class="w-4 h-4 group-hover/db:brightness-200 transition-all" alt="" />
                     <span class="text-[10px] md:text-[11px] font-mono text-gray-400">/ {{ s.name }}</span>
                   </div>
                 </div>
@@ -213,7 +215,9 @@ const scrollToSection = (id) => {
             <div>
               <div class="flex justify-between items-start mb-4">
                 <div class="text-[8px] font-mono text-system-infra uppercase tracking-tighter">{{ cert.category }}</div>
-                <img v-if="cert.icon" :src="`https://cdn.simpleicons.org/${cert.icon}/white`" class="w-5 h-5 opacity-30 group-hover:opacity-100 transition-opacity" alt="" />
+                <img v-if="cert.icon === 'linkedin'" src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/linkedin.svg" class="w-5 h-5 opacity-30 group-hover:opacity-100 transition-opacity invert" alt="LinkedIn" />
+                <img v-else-if="cert.icon === 'microsoft'" src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/microsoft.svg" class="w-5 h-5 opacity-30 group-hover:opacity-100 transition-opacity invert" alt="Microsoft" />
+                <img v-else-if="cert.icon" :src="`https://cdn.simpleicons.org/${cert.icon}/white`" class="w-5 h-5 opacity-30 group-hover:opacity-100 transition-opacity" alt="" />
               </div>
               <h5 class="text-[13px] md:text-sm font-bold text-white mb-2 leading-tight group-hover:text-system-infra transition-colors">{{ cert.title }}</h5>
             </div>
@@ -247,7 +251,7 @@ const scrollToSection = (id) => {
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
             <!-- LinkedIn -->
             <a :href="profile.identity.linkedin" target="_blank" class="p-6 border border-white/5 bg-white/[0.02] rounded-3xl hover:border-system-info/50 transition-all group flex flex-col gap-4 text-left">
-              <img src="https://cdn.simpleicons.org/linkedin/white" class="w-6 h-6 opacity-50 group-hover:opacity-100 transition-all" alt="LinkedIn" />
+              <img src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/linkedin.svg" class="w-6 h-6 opacity-50 group-hover:opacity-100 transition-all invert" alt="LinkedIn" />
               <div class="mt-4">
                 <h4 class="text-lg font-bold text-white mb-1">LinkedIn</h4>
                 <p class="text-[9px] font-mono text-gray-500 uppercase tracking-tighter group-hover:text-system-info transition-colors">Professional_Network</p>
