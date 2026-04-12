@@ -67,7 +67,7 @@ export const profile = {
     devops: [
       { name: 'GitHub', level: 95, icon: 'github' },
       { name: 'Docker', level: 80, icon: 'docker' },
-      { name: 'GitLab CI/CD', level: 85, icon: 'gitlab' },
+      { name: 'GitLab', level: 85, icon: 'gitlab' },
       { name: 'RabbitMQ', level: 75, icon: 'rabbitmq' }
     ]
   },
