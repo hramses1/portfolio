@@ -131,8 +131,11 @@ const scrollToSection = (id) => {
             </h4>
             <div class="space-y-6">
               <div v-for="s in profile.skills.testing" :key="s.name" class="space-y-2">
-                <div class="flex justify-between text-[9px] md:text-[10px] font-mono tracking-widest">
-                  <span class="text-gray-400 uppercase">{{ s.name }}</span>
+                <div class="flex justify-between items-center text-[9px] md:text-[10px] font-mono tracking-widest">
+                  <div class="flex items-center gap-3">
+                    <img v-if="s.icon" :src="`https://cdn.simpleicons.org/${s.icon}/white`" class="w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity" alt="" />
+                    <span class="text-gray-400 uppercase">{{ s.name }}</span>
+                  </div>
                   <span class="text-system-success">{{ s.level }}%</span>
                 </div>
                 <div class="h-[2px] bg-white/5 rounded-full overflow-hidden">
@@ -148,11 +151,12 @@ const scrollToSection = (id) => {
               <span class="w-8 h-8 rounded-lg bg-system-info/20 flex items-center justify-center text-system-info text-sm">λ</span>
               Backend Core
             </h4>
-            <div class="flex flex-wrap gap-2">
-              <span v-for="s in profile.skills.backend" :key="s.name" 
-                    class="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-[9px] md:text-[10px] font-mono text-gray-400 hover:border-system-info hover:text-white transition-all cursor-default uppercase">
+            <div class="flex flex-wrap gap-3">
+              <div v-for="s in profile.skills.backend" :key="s.name" 
+                    class="px-4 py-2 bg-white/5 border border-white/10 rounded-full text-[10px] font-mono text-gray-400 hover:border-system-info hover:text-white transition-all cursor-default uppercase flex items-center gap-3 group/skill">
+                <img v-if="s.icon" :src="`https://cdn.simpleicons.org/${s.icon}/gray`" class="w-3.5 h-3.5 group-hover/skill:brightness-200 transition-all" style="filter: grayscale(100%)" alt="" />
                 {{ s.name }}
-              </span>
+              </div>
             </div>
           </div>
 
@@ -165,16 +169,20 @@ const scrollToSection = (id) => {
             <div class="space-y-8">
               <div>
                 <p class="text-[9px] font-mono text-gray-600 mb-4 tracking-widest uppercase">Databases</p>
-                <div class="flex flex-wrap gap-2">
-                  <span v-for="s in profile.skills.databases" :key="s.name" class="text-[10px] md:text-[11px] font-mono text-gray-400">/ {{ s.name }}</span>
+                <div class="flex flex-wrap gap-4">
+                  <div v-for="s in profile.skills.databases" :key="s.name" class="flex items-center gap-2 group/db">
+                    <img v-if="s.icon" :src="`https://cdn.simpleicons.org/${s.icon}/666666`" class="w-4 h-4 group-hover/db:brightness-200 transition-all" alt="" />
+                    <span class="text-[10px] md:text-[11px] font-mono text-gray-400">/ {{ s.name }}</span>
+                  </div>
                 </div>
               </div>
               <div>
                 <p class="text-[9px] font-mono text-gray-600 mb-4 tracking-widest uppercase">Infrastructure</p>
-                <div class="flex flex-wrap gap-2">
-                  <span v-for="s in profile.skills.devops" :key="s.name" class="px-3 py-1 bg-system-infra/10 border border-system-infra/30 rounded text-[9px] font-mono text-system-infra uppercase">
+                <div class="flex flex-wrap gap-3">
+                  <div v-for="s in profile.skills.devops" :key="s.name" class="px-3 py-1 bg-system-infra/10 border border-system-infra/30 rounded text-[9px] font-mono text-system-infra uppercase flex items-center gap-2 group/infra">
+                    <img v-if="s.icon" :src="`https://cdn.simpleicons.org/${s.icon}/c4b5fd`" class="w-3.5 h-3.5 group-hover/infra:brightness-125 transition-all" alt="" />
                     {{ s.name }}
-                  </span>
+                  </div>
                 </div>
               </div>
             </div>

@@ -27,88 +27,47 @@ export const profile = {
   ],
 
   certifications: [
-    {
-      title: 'CI/CD en Gitlab vía FTP',
-      issuer: 'Udemy',
-      date: 'mar. 2026',
-      id: 'UC-84c001e7-fe38-4740-a015-81eb5354d997',
-      category: 'Cloud & DevOps'
-    },
-    {
-      title: 'Gestión Efectiva del Tiempo',
-      issuer: 'Platzi',
-      date: 'ago. 2024',
-      category: 'Soft Skills'
-    },
-    {
-      title: 'Product Owner esencial',
-      issuer: 'LinkedIn',
-      date: 'jun. 2024',
-      category: 'Management'
-    },
-    {
-      title: 'Fundamentos de análisis empresarial',
-      issuer: 'Microsoft / LinkedIn',
-      date: 'jul. 2024',
-      category: 'Management'
-    },
-    {
-      title: 'Liderazgo para el desarrollo de proyectos de software',
-      issuer: 'LinkedIn',
-      date: 'sept. 2023',
-      category: 'Leadership'
-    },
-    {
-      title: 'Python Programming Beyond The Basics',
-      issuer: 'Udemy',
-      date: 'oct. 2021',
-      category: 'Development'
-    },
-    {
-      title: 'Cloud Computing',
-      issuer: 'Google Actívate',
-      date: 'nov. 2022',
-      category: 'Cloud & DevOps'
-    },
-    {
-      title: 'SQL para Principiantes: Curso práctico',
-      issuer: 'Udemy',
-      date: 'oct. 2021',
-      category: 'Development'
-    }
+    { title: 'CI/CD en Gitlab vía FTP', issuer: 'Udemy', date: 'mar. 2026', category: 'Cloud & DevOps' },
+    { title: 'Gestión Efectiva del Tiempo', issuer: 'Platzi', date: 'ago. 2024', category: 'Soft Skills' },
+    { title: 'Product Owner esencial', issuer: 'LinkedIn', date: 'jun. 2024', category: 'Management' },
+    { title: 'Fundamentos de análisis empresarial', issuer: 'Microsoft / LinkedIn', date: 'jul. 2024', category: 'Management' },
+    { title: 'Liderazgo para el desarrollo de proyectos de software', issuer: 'LinkedIn', date: 'sept. 2023', category: 'Leadership' },
+    { title: 'Python Programming Beyond The Basics', issuer: 'Udemy', date: 'oct. 2021', category: 'Development' },
+    { title: 'Cloud Computing', issuer: 'Google Actívate', date: 'nov. 2022', category: 'Cloud & DevOps' },
+    { title: 'SQL para Principiantes: Curso práctico', issuer: 'Udemy', date: 'oct. 2021', category: 'Development' }
   ],
 
   skills: {
     backend: [
-      { name: 'Node.js', level: 90 },
-      { name: 'NestJS', level: 85 },
-      { name: 'Express.js', level: 90 },
-      { name: 'Python', level: 95 },
-      { name: 'TypeScript', level: 85 },
-      { name: 'Flask / FastAPI', level: 80 }
+      { name: 'Node.js', level: 90, icon: 'nodedotjs' },
+      { name: 'NestJS', level: 85, icon: 'nestjs' },
+      { name: 'Express.js', level: 90, icon: 'express' },
+      { name: 'Python', level: 95, icon: 'python' },
+      { name: 'TypeScript', level: 85, icon: 'typescript' },
+      { name: 'Flask / FastAPI', level: 80, icon: 'fastapi' }
     ],
     frontend: [
-      { name: 'Vue', level: 80 }
+      { name: 'Vue', level: 80, icon: 'vuedotjs' }
     ],
     databases: [
-      { name: 'MySQL', level: 90 },
-      { name: 'SQL Server', level: 85 },
-      { name: 'MongoDB', level: 80 },
-      { name: 'Sequelize / SQLAlchemy', level: 90 }
+      { name: 'MySQL', level: 90, icon: 'mysql' },
+      { name: 'SQL Server', level: 85, icon: 'microsoftsqlserver' },
+      { name: 'MongoDB', level: 80, icon: 'mongodb' },
+      { name: 'Sequelize', level: 90, icon: 'sequelize' }
     ],
     testing: [
-      { name: 'Pytest', level: 95 },
-      { name: 'Selenium', level: 90 },
-      { name: 'Playwright', level: 85 },
-      { name: 'Cypress', level: 85 },
-      { name: 'Postman / JMeter', level: 90 },
-      { name: 'SonarQube', level: 80 }
+      { name: 'Pytest', level: 95, icon: 'pytest' },
+      { name: 'Selenium', level: 90, icon: 'selenium' },
+      { name: 'Playwright', level: 85, icon: 'playwright' },
+      { name: 'Cypress', level: 85, icon: 'cypress' },
+      { name: 'Postman', level: 90, icon: 'postman' },
+      { name: 'SonarQube', level: 80, icon: 'sonarqube' }
     ],
     devops: [
-      { name: 'Git / GitHub / GitLab', level: 95 },
-      { name: 'Docker', level: 80 },
-      { name: 'GitLab CI/CD', level: 85 },
-      { name: 'RabbitMQ', level: 75 }
+      { name: 'GitHub', level: 95, icon: 'github' },
+      { name: 'Docker', level: 80, icon: 'docker' },
+      { name: 'GitLab CI/CD', level: 85, icon: 'gitlab' },
+      { name: 'RabbitMQ', level: 75, icon: 'rabbitmq' }
     ]
   },
 
@@ -122,7 +81,7 @@ export const profile = {
         'Implementación de lógica de negocio, controladores y servicios en backend.',
         'Desarrollo y mantenimiento de APIs REST con Node.js, Nestjs y Express.',
         'Integración de servicios externos usando Axios.',
-        'Diseño y modificación de esquemas de base de datos MySQL con Sequelize (Migrations/Seeds).',
+        'Design y modificación de esquemas de base de datos MySQL con Sequelize.',
         'Refactorización para mejora de rendimiento y corrección de bugs.',
         'Escritura de pruebas unitarias, de integración y soporte a QA.',
         'Análisis de calidad con SonarQube y gestión bajo metodología Scrum.'
@@ -151,8 +110,7 @@ export const profile = {
         'Diseño y mantenimiento de sistemas con Flask y FastAPI.',
         'Automatización de pruebas con pytest y Selenium.',
         'Análisis de datos y generación de informes con Pandas y Matplotlib.',
-        'Gestión de bases de datos SQL Server, SQLite y MySQL.',
-        'Optimización de operaciones empresariales mediante soluciones innovadoras.'
+        'Gestión de bases de datos SQL Server, SQLite y MySQL.'
       ]
     }
   ],
