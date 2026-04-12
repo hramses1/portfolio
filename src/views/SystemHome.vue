@@ -227,48 +227,48 @@ const scrollToSection = (id) => {
     </section>
 
     <!-- SECTION 06: CONTACT -->
-    <section id="contact" class="min-h-screen py-32 px-6 md:px-12 lg:px-24 flex items-center">
+    <section id="contact" class="py-20 md:py-32 px-6 md:px-12 lg:px-24 flex items-center bg-white/[0.01]">
       <div class="max-w-7xl mx-auto w-full">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
           <div>
-            <h3 class="text-xs font-mono text-system-infra tracking-[0.4em] uppercase mb-8">06_CONNECT_GATEWAY</h3>
-            <h2 class="text-5xl md:text-7xl font-black text-white tracking-tighter leading-none mb-12">¿Listo para el siguiente sprint?</h2>
-            <p class="text-xl font-mono text-gray-500 leading-relaxed mb-12">
+            <h3 class="text-xs font-mono text-system-infra tracking-[0.4em] uppercase mb-6 md:mb-8">06_CONNECT_GATEWAY</h3>
+            <h2 class="text-4xl md:text-6xl font-black text-white tracking-tighter leading-none mb-8">¿Listo para el siguiente sprint?</h2>
+            <p class="text-lg font-mono text-gray-500 leading-relaxed mb-8">
               Disponible para nuevos desafíos en <span class="text-white">Desarrollo Backend</span> y <span class="text-white">QA Automation</span>.
             </p>
             <div class="flex items-center gap-6">
-              <div class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center animate-pulse">
+              <div class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center animate-pulse">
                 <span class="w-2 h-2 rounded-full bg-system-success"></span>
               </div>
-              <span class="text-[10px] font-mono text-gray-600 tracking-[0.3em] uppercase">Status: Receiving_Signals</span>
+              <span class="text-[10px] font-mono text-gray-600 tracking-[0.3em] uppercase whitespace-nowrap">Status: Receiving_Signals</span>
             </div>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
             <!-- LinkedIn -->
-            <a :href="profile.identity.linkedin" target="_blank" class="p-6 md:p-8 border border-white/5 bg-white/[0.02] rounded-3xl hover:border-system-info/50 transition-all group flex flex-col gap-6 text-left min-h-[200px]">
-              <img src="https://cdn.simpleicons.org/linkedin/white" class="w-8 h-8 opacity-50 group-hover:opacity-100 transition-all" alt="LinkedIn" />
-              <div class="mt-auto">
-                <h4 class="text-xl font-bold text-white mb-1">LinkedIn</h4>
-                <p class="text-[10px] font-mono text-gray-500 uppercase tracking-widest group-hover:text-system-info transition-colors">Professional_Network</p>
+            <a :href="profile.identity.linkedin" target="_blank" class="p-6 border border-white/5 bg-white/[0.02] rounded-3xl hover:border-system-info/50 transition-all group flex flex-col gap-4 text-left">
+              <img src="https://cdn.simpleicons.org/linkedin/white" class="w-6 h-6 opacity-50 group-hover:opacity-100 transition-all" alt="LinkedIn" />
+              <div class="mt-4">
+                <h4 class="text-lg font-bold text-white mb-1">LinkedIn</h4>
+                <p class="text-[9px] font-mono text-gray-500 uppercase tracking-tighter group-hover:text-system-info transition-colors">Professional_Network</p>
               </div>
             </a>
 
             <!-- WhatsApp -->
-            <a :href="`https://wa.me/${profile.identity.phone.replace(/[^0-9]/g, '')}`" target="_blank" class="p-6 md:p-8 border border-white/5 bg-white/[0.02] rounded-3xl hover:border-system-success/50 transition-all group flex flex-col gap-6 text-left min-h-[200px]">
-              <img src="https://cdn.simpleicons.org/whatsapp/white" class="w-8 h-8 opacity-50 group-hover:opacity-100 transition-all" alt="WhatsApp" />
-              <div class="mt-auto">
-                <h4 class="text-xl font-bold text-white mb-1">WhatsApp</h4>
-                <p class="text-[10px] font-mono text-gray-500 uppercase tracking-widest group-hover:text-system-success transition-colors">Direct_Secure_Line</p>
+            <a :href="`https://wa.me/${profile.identity.phone.replace(/[^0-9]/g, '')}`" target="_blank" class="p-6 border border-white/5 bg-white/[0.02] rounded-3xl hover:border-system-success/50 transition-all group flex flex-col gap-4 text-left">
+              <img src="https://cdn.simpleicons.org/whatsapp/white" class="w-6 h-6 opacity-50 group-hover:opacity-100 transition-all" alt="WhatsApp" />
+              <div class="mt-4">
+                <h4 class="text-lg font-bold text-white mb-1">WhatsApp</h4>
+                <p class="text-[9px] font-mono text-gray-500 uppercase tracking-tighter group-hover:text-system-success transition-colors">Direct_Line</p>
               </div>
             </a>
 
             <!-- Email -->
-            <a :href="`mailto:${profile.identity.email}`" class="p-6 md:p-8 border border-white/5 bg-white/[0.02] rounded-3xl hover:border-system-infra/50 transition-all group flex flex-col gap-6 text-left min-h-[200px]">
-              <img src="https://cdn.simpleicons.org/gmail/white" class="w-8 h-8 opacity-50 group-hover:opacity-100 transition-all" alt="Email" />
-              <div class="mt-auto">
-                <h4 class="text-xl font-bold text-white mb-1">Email</h4>
-                <p class="text-[10px] font-mono text-gray-500 uppercase tracking-widest group-hover:text-system-infra transition-colors">Digital_Transmission</p>
+            <a :href="`mailto:${profile.identity.email}`" class="p-6 border border-white/5 bg-white/[0.02] rounded-3xl hover:border-system-infra/50 transition-all group flex flex-col gap-4 text-left">
+              <img src="https://cdn.simpleicons.org/gmail/white" class="w-6 h-6 opacity-50 group-hover:opacity-100 transition-all" alt="Email" />
+              <div class="mt-4">
+                <h4 class="text-lg font-bold text-white mb-1">Email</h4>
+                <p class="text-[9px] font-mono text-gray-500 uppercase tracking-tighter group-hover:text-system-infra transition-colors">Transmission</p>
               </div>
             </a>
           </div>
