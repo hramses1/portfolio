@@ -6,6 +6,15 @@
 import { profile } from '../utils/profileData.js'
 
 const getLevelStyle = (level) => ({ width: `${level}%` })
+
+/**
+ * Handles smooth scrolling to sections.
+ * @param {string} id 
+ */
+const scrollToSection = (id) => {
+  const el = document.getElementById(id)
+  if (el) el.scrollIntoView({ behavior: 'smooth' })
+}
 </script>
 
 <template>
@@ -27,7 +36,7 @@ const getLevelStyle = (level) => ({ width: `${level}%` })
           {{ profile.identity.title }}. <span class="text-white">Garantizando calidad, escalabilidad y robustez</span> en cada despliegue.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 md:gap-6">
-          <button @click="document.getElementById('experience').scrollIntoView({behavior:'smooth'})" 
+          <button @click="scrollToSection('experience')" 
                   class="px-8 py-4 bg-white text-black font-mono text-xs tracking-widest hover:bg-system-infra hover:text-white transition-all duration-500 uppercase w-full sm:w-auto">
             Start_Inspection
           </button>
