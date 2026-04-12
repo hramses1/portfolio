@@ -46,10 +46,6 @@ const scrollToSection = (id) => {
           </div>
         </div>
       </div>
-      <!-- Background Decorative watermark -->
-      <div class="absolute right-0 bottom-20 md:bottom-10 text-[30vw] md:text-[20vw] font-black text-white/[0.02] select-none pointer-events-none tracking-tighter uppercase leading-none">
-        SDET
-      </div>
     </section>
 
     <!-- SECTION 02: EXPERIENCE (THE JOURNEY) -->

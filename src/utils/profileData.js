@@ -5,7 +5,7 @@ export const profile = {
   identity: {
     firstName: 'HECTOR',
     lastName: 'ARISMENDI',
-    title: 'Software Developer | SDET | QA Automation Engineer',
+    title: 'Software Developer | QA Automation Engineer',
     email: 'arismendiramses@gmail.com',
     phone: '+593-961613564',
     linkedin: 'https://www.linkedin.com/in/hector-arismendi-469551167/',
