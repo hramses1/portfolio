@@ -232,7 +232,7 @@ const scrollToSection = (id) => {
             <div>
               <div class="flex justify-between items-start mb-4">
                 <div class="text-[10px] font-mono text-tech-success font-bold uppercase">{{ edu.period }}</div>
-                <img v-if="edu.icon" :src="`./${edu.icon}`" class="w-10 h-10 object-contain opacity-80 group-hover:opacity-100 transition-opacity" alt="" />
+                <img v-if="edu.icon" :src="`./${edu.icon}`" class="w-16 h-16 object-contain opacity-90 group-hover:opacity-100 transition-opacity" alt="" />
               </div>
               <h4 class="text-2xl md:text-3xl font-bold text-tech-text mb-4 group-hover:translate-x-2 transition-transform leading-tight">{{ edu.degree }}</h4>
               <p class="text-slate-500 font-mono text-xs md:text-sm uppercase tracking-widest font-bold">{{ edu.institution }}</p>
