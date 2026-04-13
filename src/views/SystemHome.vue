@@ -22,12 +22,11 @@ const scrollToSection = (id) => {
     
     <!-- SECCIÓN 01: INICIO (CORE) -->
     <section id="home" class="min-h-screen flex items-center px-6 md:px-12 lg:px-24 relative overflow-hidden bg-tech-bg">
-      <!-- Decorative Background -->
       <div class="absolute top-0 right-0 w-1/2 h-full bg-slate-200/30 skew-x-[-12deg] translate-x-20 hidden lg:block"></div>
       
       <div class="max-w-5xl z-10 py-20">
         <h2 class="text-[8px] md:text-[10px] font-mono tracking-[0.4em] md:tracking-[0.6em] text-tech-primary mb-4 md:mb-6 animate-in fade-in slide-in-from-left-10 duration-1000 uppercase font-bold">
-          Excelencia_en_Ingeniería_v2.0
+          Ingeniería_de_Software_v2.0
         </h2>
         <h1 class="text-5xl sm:text-7xl lg:text-9xl font-black tracking-tighter text-tech-text leading-[0.9] mb-6 md:mb-8">
           {{ profile.identity.firstName }}<br/>
@@ -45,19 +44,19 @@ const scrollToSection = (id) => {
           </button>
           <div class="flex items-center gap-4 px-6 py-4 sm:py-0 border border-slate-200 bg-white rounded-full w-full sm:w-auto justify-center shadow-sm">
             <span class="w-2 h-2 rounded-full bg-tech-success animate-pulse"></span>
-            <span class="text-[9px] md:text-[10px] font-mono text-slate-500 tracking-widest uppercase text-center font-bold">Disponible_para_proyectos</span>
+            <span class="text-[9px] md:text-[10px] font-mono text-slate-500 tracking-widest uppercase text-center font-bold">Recibiendo_Nuevos_Sprints</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SECCIÓN 02: TRAYECTORIA (JOURNEY) -->
+    <!-- SECCIÓN 02: TRAYECTORIA -->
     <section id="experience" class="min-h-screen py-20 md:py-32 px-6 md:px-12 lg:px-24 bg-slate-200/20 border-y border-slate-200/50">
       <div class="max-w-7xl mx-auto">
         <div class="flex flex-col lg:flex-row gap-12 lg:gap-20">
           <div class="lg:w-1/3">
             <h3 class="text-xs font-mono text-tech-primary tracking-[0.4em] uppercase mb-6 md:mb-8 font-bold">02_LA_TRAYECTORIA</h3>
-            <h2 class="text-3xl md:text-5xl font-bold text-tech-text tracking-tighter leading-tight mb-6 md:mb-8">Experiencia en Automatización y Backend.</h2>
+            <h2 class="text-3xl md:text-5xl font-bold text-tech-text tracking-tighter leading-tight mb-6 md:mb-8">Experiencia en Desarrollo y Calidad.</h2>
             <p class="text-slate-500 leading-relaxed font-mono text-sm font-medium">
               Cada rol ha sido una oportunidad para perfeccionar estrategias de calidad y construir sistemas escalables que soporten el crecimiento del negocio.
             </p>
@@ -65,7 +64,7 @@ const scrollToSection = (id) => {
           <div class="lg:w-2/3 space-y-16 md:space-y-24">
             <div v-for="exp in profile.experience" :key="exp.company" class="relative group">
               <div class="absolute -left-4 md:-left-12 -top-4 md:top-0 text-6xl md:text-[80px] font-black text-slate-300/30 select-none pointer-events-none group-hover:text-tech-primary/5 transition-colors">
-                {{ exp.period.split('.')[0] }}
+                {{ exp.period.split(' ')[0] }}
               </div>
               <div class="relative pl-0 border-l-2 border-slate-200 group-hover:border-tech-primary transition-all duration-700">
                 <div class="mb-6 ml-6">
@@ -86,11 +85,11 @@ const scrollToSection = (id) => {
       </div>
     </section>
 
-    <!-- SECCIÓN 03: PROYECTOS (REPOS) -->
+    <!-- SECCIÓN 03: PROYECTOS -->
     <section id="projects" class="min-h-screen py-20 md:py-32 px-6 md:px-12 lg:px-24 bg-tech-bg">
       <div class="max-w-7xl mx-auto">
-        <h3 class="text-xs font-mono text-tech-primary tracking-[0.4em] uppercase mb-12 md:mb-16 text-center font-bold">03_PROYECTOS_DESTACADOS</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+        <h3 class="text-xs font-mono text-tech-primary tracking-[0.4em] uppercase mb-12 md:mb-16 text-center font-bold">03_PORTAFOLIO_DE_PROYECTOS</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           <div v-for="project in profile.projects" :key="project.id" 
                class="group p-6 md:p-8 border border-slate-200 bg-white rounded-3xl hover:border-tech-primary/30 transition-all duration-500 flex flex-col justify-between h-full relative overflow-hidden shadow-sm hover:shadow-xl">
             <div class="absolute -right-4 -top-4 text-6xl md:text-8xl font-black text-slate-100 group-hover:text-slate-200 transition-colors pointer-events-none select-none">
@@ -103,8 +102,8 @@ const scrollToSection = (id) => {
                   {{ tag.name }}
                 </span>
               </div>
-              <h4 class="text-2xl md:text-3xl font-bold text-tech-text mb-4 group-hover:text-tech-primary transition-colors duration-500 leading-tight">{{ project.name }}</h4>
-              <p class="text-slate-500 text-[13px] md:text-sm leading-relaxed mb-8 font-mono italic font-medium">
+              <h4 class="text-xl md:text-2xl font-bold text-tech-text mb-4 group-hover:text-tech-primary transition-colors duration-500 leading-tight">{{ project.name }}</h4>
+              <p class="text-slate-500 text-[12px] md:text-sm leading-relaxed mb-8 font-mono italic font-medium">
                 "{{ project.description }}"
               </p>
             </div>
@@ -117,75 +116,111 @@ const scrollToSection = (id) => {
       </div>
     </section>
 
-    <!-- SECCIÓN 04: CONOCIMIENTOS (STACK) -->
+    <!-- SECCIÓN 04: CONOCIMIENTOS -->
     <section id="skills" class="min-h-screen py-20 md:py-32 px-6 md:px-12 lg:px-24 bg-slate-200/20 border-y border-slate-200/50">
       <div class="max-w-7xl mx-auto">
-        <h3 class="text-xs font-mono text-tech-primary tracking-[0.4em] uppercase mb-12 md:mb-16 text-center font-bold">04_STACK_TÉCNICO</h3>
+        <h3 class="text-xs font-mono text-tech-primary tracking-[0.4em] uppercase mb-12 md:mb-16 text-center font-bold">04_STACK_TÉCNICO_SENIOR</h3>
         
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
-          <!-- Testing & QA -->
-          <div class="p-6 md:p-8 border border-slate-200 bg-white rounded-3xl relative overflow-hidden group shadow-sm">
-            <h4 class="text-xl md:text-2xl font-bold text-tech-text mb-8 flex items-center gap-4">
-              <span class="w-8 h-8 rounded-lg bg-tech-success/10 flex items-center justify-center text-tech-success text-sm">✓</span>
-              QA & Testing
-            </h4>
-            <div class="space-y-6">
-              <div v-for="s in profile.skills.testing" :key="s.name" class="space-y-2">
-                <div class="flex justify-between items-center text-[9px] md:text-[10px] font-mono tracking-widest">
-                  <div class="flex items-center gap-3">
-                    <img v-if="s.icon === 'sonarqube'" src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/sonarqube.svg" class="w-4 h-4 opacity-80 group-hover:opacity-100 transition-opacity" alt="SonarQube" />
-                    <img v-else-if="s.icon === 'playwright'" src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/playwright.svg" class="w-4 h-4 opacity-80 group-hover:opacity-100 transition-opacity" alt="Playwright" />
-                    <img v-else-if="s.icon" :src="`https://cdn.simpleicons.org/${s.icon}`" class="w-4 h-4" alt="" />
-                    <span class="text-slate-500 uppercase font-bold">{{ s.name }}</span>
-                  </div>
-                  <span class="text-tech-success font-bold">{{ s.level }}%</span>
-                </div>
-                <div class="h-[3px] bg-slate-100 rounded-full overflow-hidden">
-                  <div class="h-full bg-tech-success transition-all duration-1000" :style="getLevelStyle(s.level)"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Backend -->
+          <!-- Backend & Frontend -->
           <div class="p-6 md:p-8 border border-slate-200 bg-white rounded-3xl relative overflow-hidden group shadow-sm">
             <h4 class="text-xl md:text-2xl font-bold text-tech-text mb-8 flex items-center gap-4">
               <span class="w-8 h-8 rounded-lg bg-tech-info/10 flex items-center justify-center text-tech-info text-sm">λ</span>
-              Backend Core
-            </h4>
-            <div class="flex flex-wrap gap-3">
-              <div v-for="s in profile.skills.backend" :key="s.name" 
-                    class="px-4 py-2 bg-white border border-slate-100 rounded-full text-[10px] font-mono text-slate-600 hover:border-tech-info hover:text-tech-info transition-all cursor-default uppercase flex items-center gap-3 group/skill shadow-sm">
-                <img v-if="s.icon" :src="`https://cdn.simpleicons.org/${s.icon}`" class="w-3.5 h-3.5" alt="" />
-                {{ s.name }}
-              </div>
-            </div>
-          </div>
-
-          <!-- Databases & Infrastructure -->
-          <div class="p-6 md:p-8 border border-slate-200 bg-white rounded-3xl relative overflow-hidden group sm:col-span-2 lg:col-span-1 shadow-sm">
-            <h4 class="text-xl md:text-2xl font-bold text-tech-text mb-8 flex items-center gap-4">
-              <span class="w-8 h-8 rounded-lg bg-tech-infra/10 flex items-center justify-center text-tech-infra text-sm">⌬</span>
-              Infraestructura
+              Desarrollo Core
             </h4>
             <div class="space-y-8">
               <div>
-                <p class="text-[9px] font-mono text-slate-400 mb-4 tracking-widest uppercase font-bold">Bases de Datos</p>
-                <div class="flex flex-wrap gap-4">
-                  <div v-for="s in profile.skills.databases" :key="s.name" class="flex items-center gap-2 group/db">
-                    <img v-if="s.icon === 'microsoftsqlserver'" src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/microsoftsqlserver.svg" class="w-4 h-4 opacity-80 group-hover:opacity-100 transition-all" alt="SQL Server" />
-                    <img v-else-if="s.icon" :src="`https://cdn.simpleicons.org/${s.icon}`" class="w-4 h-4 opacity-80 group-hover:opacity-100 transition-all" alt="" />
-                    <span class="text-[10px] md:text-[11px] font-mono text-slate-500 font-bold">/ {{ s.name }}</span>
+                <p class="text-[9px] font-mono text-slate-400 mb-4 tracking-widest uppercase font-bold">Backend</p>
+                <div class="flex flex-wrap gap-3">
+                  <div v-for="s in profile.skills.backend" :key="s.name" class="px-3 py-1.5 bg-slate-50 border border-slate-100 rounded-full text-[10px] font-mono text-slate-600 flex items-center gap-2 group/skill hover:shadow-sm transition-all">
+                    <img v-if="s.icon" :src="`https://cdn.simpleicons.org/${s.icon}`" class="w-3.5 h-3.5" alt="" />
+                    {{ s.name }}
                   </div>
                 </div>
               </div>
               <div>
-                <p class="text-[9px] font-mono text-slate-400 mb-4 tracking-widest uppercase font-bold">DevOps & Cloud</p>
+                <p class="text-[9px] font-mono text-slate-400 mb-4 tracking-widest uppercase font-bold">Frontend</p>
                 <div class="flex flex-wrap gap-3">
-                  <div v-for="s in profile.skills.devops" :key="s.name" class="px-3 py-1 bg-white border border-slate-100 rounded text-[9px] font-mono text-tech-infra uppercase flex items-center gap-2 group/infra shadow-sm font-bold">
+                  <div v-for="s in profile.skills.frontend" :key="s.name" class="px-3 py-1.5 bg-slate-50 border border-slate-100 rounded-full text-[10px] font-mono text-slate-600 flex items-center gap-2">
                     <img v-if="s.icon" :src="`https://cdn.simpleicons.org/${s.icon}`" class="w-3.5 h-3.5" alt="" />
                     {{ s.name }}
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- QA & Databases -->
+          <div class="p-6 md:p-8 border border-slate-200 bg-white rounded-3xl relative overflow-hidden group shadow-sm">
+            <h4 class="text-xl md:text-2xl font-bold text-tech-text mb-8 flex items-center gap-4">
+              <span class="w-8 h-8 rounded-lg bg-tech-success/10 flex items-center justify-center text-tech-success text-sm">✓</span>
+              QA & Persistencia
+            </h4>
+            <div class="space-y-8">
+              <div>
+                <p class="text-[9px] font-mono text-slate-400 mb-4 tracking-widest uppercase font-bold">QA Automation</p>
+                <div class="space-y-3">
+                  <div v-for="s in profile.skills.testing" :key="s.name" class="space-y-1">
+                    <div class="flex justify-between items-center text-[9px] font-mono">
+                      <div class="flex items-center gap-2">
+                        <img v-if="s.icon === 'sonarqube'" src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/sonarqube.svg" class="w-3.5 h-3.5" alt="" />
+                        <img v-else-if="s.icon === 'playwright'" src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/playwright.svg" class="w-3.5 h-3.5" alt="" />
+                        <img v-else-if="s.icon" :src="`https://cdn.simpleicons.org/${s.icon}`" class="w-3.5 h-3.5" alt="" />
+                        <span class="text-slate-500 font-bold">{{ s.name }}</span>
+                      </div>
+                      <span class="text-tech-success font-bold">{{ s.level }}%</span>
+                    </div>
+                    <div class="h-1 bg-slate-100 rounded-full overflow-hidden">
+                      <div class="h-full bg-tech-success transition-all duration-1000" :style="getLevelStyle(s.level)"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <p class="text-[9px] font-mono text-slate-400 mb-4 tracking-widest uppercase font-bold">Bases de Datos</p>
+                <div class="flex flex-wrap gap-3">
+                  <div v-for="s in profile.skills.databases" :key="s.name" class="flex items-center gap-2 bg-slate-50 px-2 py-1 rounded border border-slate-100 shadow-sm">
+                    <img v-if="s.icon === 'microsoftsqlserver'" src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/microsoftsqlserver.svg" class="w-3.5 h-3.5" alt="" />
+                    <img v-else-if="s.icon" :src="`https://cdn.simpleicons.org/${s.icon}`" class="w-3.5 h-3.5" alt="" />
+                    <span class="text-[10px] font-mono text-slate-500">/ {{ s.name }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Data Science & DevOps -->
+          <div class="p-6 md:p-8 border border-slate-200 bg-white rounded-3xl relative overflow-hidden group sm:col-span-2 lg:col-span-1 shadow-sm">
+            <h4 class="text-xl md:text-2xl font-bold text-tech-text mb-8 flex items-center gap-4">
+              <span class="w-8 h-8 rounded-lg bg-tech-infra/10 flex items-center justify-center text-tech-infra text-sm">⌬</span>
+              Especialidades
+            </h4>
+            <div class="space-y-8">
+              <div>
+                <p class="text-[9px] font-mono text-slate-400 mb-4 tracking-widest uppercase font-bold">Data Science & IA</p>
+                <div class="flex flex-wrap gap-3">
+                  <div v-for="s in profile.skills.dataIA" :key="s.name" class="flex items-center gap-2 bg-tech-info/5 px-2 py-1 rounded border border-tech-info/10">
+                    <img v-if="s.icon" :src="`https://cdn.simpleicons.org/${s.icon}`" class="w-3.5 h-3.5" alt="" />
+                    <span class="text-[10px] font-mono text-tech-info font-bold">{{ s.name }}</span>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <p class="text-[9px] font-mono text-slate-400 mb-4 tracking-widest uppercase font-bold">DevOps & Infra</p>
+                <div class="flex flex-wrap gap-3">
+                  <div v-for="s in profile.skills.devops" :key="s.name" class="px-3 py-1 bg-tech-infra/5 border border-tech-infra/10 rounded text-[9px] font-mono text-tech-infra uppercase flex items-center gap-2 font-bold shadow-sm">
+                    <img v-if="s.icon" :src="`https://cdn.simpleicons.org/${s.icon}`" class="w-3.5 h-3.5" alt="" />
+                    {{ s.name }}
+                  </div>
+                </div>
+              </div>
+              <!-- Soft Skills -->
+              <div>
+                <p class="text-[9px] font-mono text-slate-400 mb-4 tracking-widest uppercase font-bold">Aptitudes Interpersonales</p>
+                <div class="flex flex-wrap gap-2">
+                  <span v-for="skill in profile.softSkills" :key="skill" class="text-[9px] font-mono text-slate-500 bg-white px-2 py-1 rounded border border-slate-100 uppercase tracking-tighter">
+                    {{ skill }}
+                  </span>
                 </div>
               </div>
             </div>
@@ -220,9 +255,9 @@ const scrollToSection = (id) => {
             <div>
               <div class="flex justify-between items-start mb-4">
                 <div class="text-[8px] font-mono text-tech-infra uppercase tracking-tighter font-bold bg-tech-infra/10 px-2 py-0.5 rounded">{{ cert.category }}</div>
-                <img v-if="cert.icon === 'linkedin'" src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/linkedin.svg" class="w-5 h-5" alt="LinkedIn" />
-                <img v-else-if="cert.icon === 'microsoft'" src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/microsoft.svg" class="w-5 h-5" alt="Microsoft" />
-                <img v-else-if="cert.icon" :src="`https://cdn.simpleicons.org/${cert.icon}`" class="w-5 h-5 opacity-80 group-hover:opacity-100 transition-opacity" alt="" />
+                <img v-if="cert.icon === 'linkedin'" src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/linkedin.svg" class="w-5 h-5 opacity-80" alt="LinkedIn" />
+                <img v-else-if="cert.icon === 'microsoft'" src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/microsoft.svg" class="w-5 h-5 opacity-80" alt="Microsoft" />
+                <img v-else-if="cert.icon" :src="`https://cdn.simpleicons.org/${cert.icon}`" class="w-5 h-5 opacity-80" alt="" />
               </div>
               <h5 class="text-[13px] md:text-sm font-bold text-tech-text mb-2 leading-tight group-hover:text-tech-primary transition-colors font-bold">{{ cert.title }}</h5>
             </div>
@@ -256,7 +291,7 @@ const scrollToSection = (id) => {
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
             <!-- LinkedIn -->
             <a :href="profile.identity.linkedin" target="_blank" class="p-6 border border-white/10 bg-white/5 rounded-3xl hover:bg-white/10 transition-all group flex flex-col gap-4 text-left shadow-2xl">
-              <img src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/linkedin.svg" class="w-6 h-6 invert opacity-70 group-hover:opacity-100 transition-all" alt="LinkedIn" />
+              <img src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/linkedin.svg" class="w-6 h-6 invert opacity-80" alt="LinkedIn" />
               <div class="mt-4">
                 <h4 class="text-lg font-bold text-white mb-1">LinkedIn</h4>
                 <p class="text-[9px] font-mono text-slate-400 uppercase tracking-tighter group-hover:text-tech-info transition-colors font-bold">Red_Profesional</p>
@@ -265,7 +300,7 @@ const scrollToSection = (id) => {
 
             <!-- WhatsApp -->
             <a :href="`https://wa.me/${profile.identity.phone.replace(/[^0-9]/g, '')}`" target="_blank" class="p-6 border border-white/10 bg-white/5 rounded-3xl hover:bg-white/10 transition-all group flex flex-col gap-4 text-left shadow-2xl">
-              <img src="https://cdn.simpleicons.org/whatsapp/white" class="w-6 h-6 opacity-70 group-hover:opacity-100 transition-all" alt="WhatsApp" />
+              <img src="https://cdn.simpleicons.org/whatsapp" class="w-6 h-6 opacity-80" alt="WhatsApp" />
               <div class="mt-4">
                 <h4 class="text-lg font-bold text-white mb-1">WhatsApp</h4>
                 <p class="text-[9px] font-mono text-slate-400 uppercase tracking-tighter group-hover:text-tech-success transition-colors font-bold">Línea_Directa</p>
@@ -274,7 +309,7 @@ const scrollToSection = (id) => {
 
             <!-- Email -->
             <a :href="`mailto:${profile.identity.email}`" class="p-6 border border-white/10 bg-white/5 rounded-3xl hover:bg-white/10 transition-all group flex flex-col gap-4 text-left shadow-2xl">
-              <img src="https://cdn.simpleicons.org/gmail/white" class="w-6 h-6 opacity-70 group-hover:opacity-100 transition-all" alt="Email" />
+              <img src="https://cdn.simpleicons.org/gmail" class="w-6 h-6 opacity-80" alt="Email" />
               <div class="mt-4">
                 <h4 class="text-lg font-bold text-white mb-1">Email</h4>
                 <p class="text-[9px] font-mono text-slate-400 uppercase tracking-tighter group-hover:text-tech-info transition-colors font-bold">Transmisión</p>
@@ -283,7 +318,6 @@ const scrollToSection = (id) => {
           </div>
         </div>
       </div>
-      <!-- Background watermark -->
       <div class="absolute right-0 bottom-0 text-[20vw] font-black text-white/[0.02] select-none pointer-events-none tracking-tighter uppercase leading-none">
         HELLO
       </div>
@@ -293,5 +327,12 @@ const scrollToSection = (id) => {
 </template>
 
 <style scoped>
-/* Las animaciones se manejan con clases de Tailwind */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+.node-float {
+  animation: float 4s ease-in-out infinite;
+}
 </style>

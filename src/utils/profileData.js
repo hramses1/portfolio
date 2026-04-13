@@ -1,5 +1,5 @@
 /**
- * Perfil Profesional de Hector Arismendi.
+ * Perfil Profesional Exhaustivo de Hector Arismendi.
  */
 export const profile = {
   identity: {
@@ -9,7 +9,7 @@ export const profile = {
     email: 'arismendiramses@gmail.com',
     phone: '+593-961613564',
     linkedin: 'https://www.linkedin.com/in/hector-arismendi-469551167/',
-    description: 'Ingeniero de Software especializado en el desarrollo de soluciones backend escalables y el aseguramiento de la calidad (QA) mediante frameworks de automatización robustos.'
+    description: 'Ingeniero de Software con amplia trayectoria en el ciclo de vida del desarrollo. Especialista en Backend, QA Automation y Ciencia de Datos, con un enfoque fuerte en la arquitectura, el liderazgo técnico y la mejora continua.'
   },
   
   education: [
@@ -27,91 +27,88 @@ export const profile = {
   ],
 
   certifications: [
-    { title: 'CI/CD en Gitlab vía FTP', issuer: 'Udemy', date: 'mar. 2026', category: 'Cloud & DevOps', icon: 'udemy' },
-    { title: 'Gestión Efectiva del Tiempo', issuer: 'Platzi', date: 'ago. 2024', category: 'Soft Skills', icon: 'platzi' },
-    { title: 'Product Owner esencial', issuer: 'LinkedIn', date: 'jun. 2024', category: 'Management', icon: 'linkedin' },
-    { title: 'Fundamentos de análisis empresarial', issuer: 'Microsoft / LinkedIn', date: 'jul. 2024', category: 'Management', icon: 'microsoft' },
-    { title: 'Liderazgo para el desarrollo de proyectos de software', issuer: 'LinkedIn', date: 'sept. 2023', category: 'Leadership', icon: 'linkedin' },
-    { title: 'Python Programming Beyond The Basics', issuer: 'Udemy', date: 'oct. 2021', category: 'Development', icon: 'udemy' },
-    { title: 'Cloud Computing', issuer: 'Google Actívate', date: 'nov. 2022', category: 'Cloud & DevOps', icon: 'google' },
-    { title: 'SQL para Principiantes: Curso práctico', issuer: 'Udemy', date: 'oct. 2021', category: 'Development', icon: 'udemy' }
+    { title: 'CI/CD en Gitlab vía FTP', issuer: 'Udemy', date: '2026', category: 'DevOps', icon: 'gitlab' },
+    { title: 'Liderazgo: Gerencia en Tecnología', issuer: 'Udemy', date: '2023', category: 'Liderazgo', icon: 'udemy' },
+    { title: 'Product Owner esencial', issuer: 'LinkedIn', date: '2024', category: 'Gestión', icon: 'linkedin' },
+    { title: 'Fundamentos de análisis empresarial', issuer: 'Microsoft', date: '2024', category: 'Negocio', icon: 'microsoft' },
+    { title: 'Aprende Data Science: Conceptos Básicos', issuer: 'LinkedIn', date: '2024', category: 'Datos', icon: 'linkedin' },
+    { title: 'Python Beyond The Basics', issuer: 'Udemy', date: '2021', category: 'Desarrollo', icon: 'python' },
+    { title: 'Cloud Computing', issuer: 'Google', date: '2022', category: 'Cloud', icon: 'google' },
+    { title: 'Analista Junior GeneXus 17', issuer: 'GeneXus', date: '2021', category: 'Desarrollo', icon: 'genexus' }
   ],
 
   skills: {
     backend: [
       { name: 'JavaScript', level: 90, icon: 'javascript' },
       { name: 'Node.js', level: 90, icon: 'nodedotjs' },
+      { name: 'TypeScript', level: 85, icon: 'typescript' },
+      { name: 'Python', level: 95, icon: 'python' },
       { name: 'NestJS', level: 85, icon: 'nestjs' },
       { name: 'Express.js', level: 90, icon: 'express' },
-      { name: 'Python', level: 95, icon: 'python' },
-      { name: 'TypeScript', level: 85, icon: 'typescript' },
+      { name: 'PHP', level: 75, icon: 'php' },
       { name: 'Flask / FastAPI', level: 80, icon: 'fastapi' }
     ],
     frontend: [
-      { name: 'Vue', level: 80, icon: 'vuedotjs' }
-    ],
-    databases: [
-      { name: 'MySQL', level: 90, icon: 'mysql' },
-      { name: 'SQL Server', level: 85, icon: 'microsoftsqlserver' },
-      { name: 'MongoDB', level: 80, icon: 'mongodb' },
-      { name: 'Sequelize', level: 90, icon: 'sequelize' }
+      { name: 'Vue', level: 85, icon: 'vuedotjs' },
+      { name: 'React.js', level: 70, icon: 'react' },
+      { name: 'Bootstrap', level: 80, icon: 'bootstrap' },
+      { name: 'HTML5', level: 95, icon: 'html5' }
     ],
     testing: [
       { name: 'Pytest', level: 95, icon: 'pytest' },
       { name: 'Selenium', level: 90, icon: 'selenium' },
       { name: 'Playwright', level: 85, icon: 'playwright' },
       { name: 'Cypress', level: 85, icon: 'cypress' },
+      { name: 'Jest', level: 80, icon: 'jest' },
       { name: 'Postman', level: 90, icon: 'postman' },
       { name: 'SonarQube', level: 80, icon: 'sonarqube' }
     ],
+    dataIA: [
+      { name: 'TensorFlow', level: 75, icon: 'tensorflow' },
+      { name: 'NumPy', level: 85, icon: 'numpy' },
+      { name: 'Pandas', level: 85, icon: 'pandas' },
+      { name: 'Matplotlib', level: 80, icon: 'matplotlib' }
+    ],
+    databases: [
+      { name: 'MySQL', level: 90, icon: 'mysql' },
+      { name: 'SQL Server', level: 85, icon: 'microsoftsqlserver' },
+      { name: 'MongoDB', level: 80, icon: 'mongodb' },
+      { name: 'Sequelize', level: 90, icon: 'sequelize' },
+      { name: 'SQLAlchemy', level: 85, icon: 'python' }
+    ],
     devops: [
-      { name: 'GitHub', level: 95, icon: 'github' },
       { name: 'Docker', level: 80, icon: 'docker' },
-      { name: 'GitLab', level: 85, icon: 'gitlab' },
+      { name: 'GitLab CI/CD', level: 85, icon: 'gitlab' },
+      { name: 'GitHub', level: 95, icon: 'github' },
       { name: 'RabbitMQ', level: 75, icon: 'rabbitmq' }
     ]
   },
 
+  softSkills: [
+    'Liderazgo de Equipos', 'Capacidad de Análisis', 'Resolución de Problemas', 
+    'Adaptación al Cambio', 'Trabajo en Equipo', 'Obtención de Requisitos', 
+    'Gestión de Proyectos', 'Comunicación Efectiva'
+  ],
+
   experience: [
     {
-      company: 'Fundación Universitaria Iberoamericana (FUNIBER)',
+      company: 'FUNIBER',
       role: 'Software Developer',
       period: 'abr. 2025 - actualidad',
-      location: 'Guayaquil, Ecuador (Presencial)',
       achievements: [
-        'Implementación de lógica de negocio, controladores y servicios en backend.',
-        'Desarrollo y mantenimiento de APIs REST con Node.js, Nestjs y Express.',
-        'Integración de servicios externos usando Axios.',
-        'Design y modificación de esquemas de base de datos MySQL con Sequelize.',
-        'Refactorización para mejora de rendimiento y corrección de bugs.',
-        'Escritura de pruebas unitarias, de integración y soporte a QA.',
-        'Análisis de calidad con SonarQube y gestión bajo metodología Scrum.'
+        'Desarrollo de APIs REST con Node.js, Nestjs y Express.',
+        'Diseño de esquemas de BD y ORM con Sequelize.',
+        'Integración de servicios externos y optimización de controladores.'
       ]
     },
     {
-      company: 'Fundación Universitaria Iberoamericana (FUNIBER)',
-      role: 'Software Quality Assurance Analyst - Automation Semi-Senior',
+      company: 'FUNIBER',
+      role: 'QA Automation Semi-Senior',
       period: 'nov. 2023 - abr. 2025',
-      location: 'Guayaquil, Ecuador (Presencial)',
       achievements: [
-        'Creación de planes de pruebas y estrategias de mejora continua.',
-        'Automatización de pruebas con Pytest, Selenium, Playwright, Jest y Unittest.',
-        'Automatización de APIs con Postman y Jmeter.',
-        'Gestión de bases de datos SQL Server, SQLite, MySQL y MongoDB.',
-        'Desarrollo de scripts para plataforma Moodle y manejo de microservicios.',
-        'Simulación de rendimiento y construcción de tests End-to-End.'
-      ]
-    },
-    {
-      company: 'Freelancer',
-      role: 'Freelance Developer',
-      period: 'ago. 2022 - abr. 2024',
-      location: 'Remoto',
-      achievements: [
-        'Diseño y mantenimiento de sistemas con Flask y FastAPI.',
-        'Automatización de pruebas con pytest y Selenium.',
-        'Análisis de datos y generación de informes con Pandas y Matplotlib.',
-        'Gestión de bases de datos SQL Server, SQLite y MySQL.'
+        'Automatización E2E con Selenium, Playwright y Pytest.',
+        'Estrategias de pruebas de rendimiento y microservicios.',
+        'Mejora de calidad de código con SonarQube.'
       ]
     }
   ],
@@ -119,50 +116,45 @@ export const profile = {
   projects: [
     {
       id: 1,
-      name: 'Automatización E2E (End-to-End)',
-      description: 'Framework de automatización de flujo completo de compra con Selenium, Pytest y POM.',
+      name: 'Automatización E2E',
+      description: 'Framework avanzado con Selenium y Pytest bajo patrón POM.',
       github: 'https://github.com/hramses1/automationE2E',
-      tags: [
-        { name: 'Python', icon: 'python' },
-        { name: 'Selenium', icon: 'selenium' },
-        { name: 'Pytest', icon: 'pytest' },
-        { name: 'POM', icon: 'testcafe' }
-      ]
+      tags: [{ name: 'QA', icon: 'testcafe' }, { name: 'Python', icon: 'python' }, { name: 'POM', icon: 'robotframework' }]
     },
     {
       id: 2,
-      name: 'Alertas de Rabbit para WhatsApp',
-      description: 'Notificaciones personalizadas de RabbitMQ enviadas directamente a WhatsApp.',
+      name: 'Rabbit Alerts WhatsApp',
+      description: 'Sistema de monitoreo y alertas de RabbitMQ hacia WhatsApp.',
       github: 'https://github.com/hramses1/Rabbit-Alerts',
-      tags: [
-        { name: 'RabbitMQ', icon: 'rabbitmq' },
-        { name: 'WhatsApp', icon: 'whatsapp' },
-        { name: 'Node.js', icon: 'nodedotjs' }
-      ]
+      tags: [{ name: 'RabbitMQ', icon: 'rabbitmq' }, { name: 'WhatsApp', icon: 'whatsapp' }, { name: 'Node.js', icon: 'nodedotjs' }]
     },
     {
       id: 3,
-      name: 'Telegram Search Bot',
-      description: 'Bot para búsqueda de personas y placas de vehículos en Ecuador via Telegram API.',
-      github: 'https://github.com/hramses1/bot-telegram-search-person-ec',
-      tags: [
-        { name: 'Python', icon: 'python' },
-        { name: 'Telegram', icon: 'telegram' },
-        { name: 'API', icon: 'postman' },
-        { name: 'Automation', icon: 'robotframework' }
-      ]
+      name: 'IA Regresión Lineal',
+      description: 'Modelo predictivo desarrollado con TensorFlow y NumPy.',
+      github: 'https://github.com/hramses1',
+      tags: [{ name: 'IA', icon: 'tensorflow' }, { name: 'Python', icon: 'python' }, { name: 'Math', icon: 'numpy' }]
     },
     {
       id: 4,
-      name: 'API Gestión Usuarios Moodle',
-      description: 'API completa para la administración de usuarios y matriculaciones en instancias de Moodle.',
-      github: 'https://github.com/hramses1/create-user-moodle-api',
-      tags: [
-        { name: 'Node.js', icon: 'nodedotjs' },
-        { name: 'Moodle', icon: 'moodle' },
-        { name: 'API', icon: 'postman' },
-        { name: 'CRUD', icon: 'express' }
-      ]
+      name: 'Telegram Search Bot',
+      description: 'Bot de búsqueda automatizada de personas y placas via API.',
+      github: 'https://github.com/hramses1/bot-telegram-search-person-ec',
+      tags: [{ name: 'Bots', icon: 'telegram' }, { name: 'API', icon: 'postman' }, { name: 'Python', icon: 'python' }]
+    },
+    {
+      id: 5,
+      name: 'Convertidor YT Tkinter',
+      description: 'Herramienta de escritorio para descarga y conversión de medios.',
+      github: 'https://github.com/hramses1',
+      tags: [{ name: 'GUI', icon: 'python' }, { name: 'Tools', icon: 'python' }]
+    },
+    {
+      id: 6,
+      name: 'Discord Interaction Bot',
+      description: 'Bot para gestión de comunidades y automatización de tareas en Discord.',
+      github: 'https://github.com/hramses1',
+      tags: [{ name: 'Discord', icon: 'discord' }, { name: 'Node.js', icon: 'nodedotjs' }]
     }
   ]
 }
