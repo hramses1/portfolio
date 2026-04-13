@@ -47,7 +47,7 @@ const scrollToSection = (id) => {
         </p>
         <div class="flex flex-col sm:flex-row gap-4 md:gap-6">
           <button @click="scrollToSection('experience')" 
-                  class="px-8 py-4 bg-tech-primary text-white font-mono text-xs tracking-widest hover:bg-tech-text transition-all duration-500 shadow-lg shadow-tech-primary/20 uppercase w-full sm:w-auto">
+                  class="px-8 py-4 bg-tech-primary text-white font-mono text-xs tracking-widest hover:bg-tech-text transition-all duration-500 shadow-lg shadow-tech-primary/20 uppercase w-full sm:w-auto font-bold">
             Iniciar_Inspección
           </button>
           <div class="flex items-center gap-4 px-6 py-4 sm:py-0 border border-slate-200 bg-white rounded-full w-full sm:w-auto justify-center shadow-sm">
@@ -83,7 +83,7 @@ const scrollToSection = (id) => {
                 
                 <!-- Achievements -->
                 <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 ml-6 mb-8">
-                  <li v-for="ach in exp.achievements" :key="ach" class="text-[13px] md:text-sm text-slate-600 flex gap-3 p-4 bg-white border border-slate-100 rounded-xl group-hover:shadow-md transition-all shadow-sm font-medium">
+                  <li v-for="ach in exp.achievements" :key="ach" class="text-[13px] md:text-sm text-slate-600 flex gap-3 p-4 bg-white border border-slate-100 rounded-xl group-hover:shadow-md transition-all shadow-sm font-medium text-left">
                     <span class="text-tech-primary font-mono shrink-0">>></span>
                     <span>{{ ach }}</span>
                   </li>
@@ -91,7 +91,7 @@ const scrollToSection = (id) => {
 
                 <!-- Aptitudes vinculadas -->
                 <div class="ml-6 flex flex-wrap gap-2">
-                  <span v-for="apt in exp.aptitudes" :key="apt" class="px-3 py-1 bg-slate-100/50 border border-slate-200 rounded text-[9px] font-mono text-slate-500 uppercase font-bold tracking-tighter">
+                  <span v-for="apt in exp.aptitudes" :key="apt" class="px-3 py-1 bg-slate-100/50 border border-slate-200 rounded text-[9px] font-mono text-slate-500 uppercase font-bold tracking-tighter shadow-sm">
                     {{ apt }}
                   </span>
                 </div>
@@ -119,8 +119,8 @@ const scrollToSection = (id) => {
                   {{ tag.name }}
                 </span>
               </div>
-              <h4 class="text-xl md:text-2xl font-bold text-tech-text mb-4 group-hover:text-tech-primary transition-colors duration-500 leading-tight">{{ project.name }}</h4>
-              <p class="text-slate-500 text-[12px] md:text-sm leading-relaxed mb-8 font-mono italic font-medium">
+              <h4 class="text-xl md:text-2xl font-bold text-tech-text mb-4 group-hover:text-tech-primary transition-colors duration-500 leading-tight text-left">{{ project.name }}</h4>
+              <p class="text-slate-500 text-[12px] md:text-sm leading-relaxed mb-8 font-mono italic font-medium text-left">
                 "{{ project.description }}"
               </p>
             </div>
@@ -136,7 +136,7 @@ const scrollToSection = (id) => {
     <!-- SECCIÓN 04: CONOCIMIENTOS -->
     <section id="skills" class="min-h-screen py-20 md:py-32 px-6 md:px-12 lg:px-24 bg-slate-200/20 border-y border-slate-200/50">
       <div class="max-w-7xl mx-auto">
-        <h3 class="text-xs font-mono text-tech-primary tracking-[0.4em] uppercase mb-12 md:mb-16 text-center font-bold">04_STACK_TÉCNICO_SENIOR</h3>
+        <h3 class="text-xs font-mono text-tech-primary tracking-[0.4em] uppercase mb-12 md:mb-16 text-center font-bold">04_STACK_TÉCNICO</h3>
         
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
           <!-- Desarrollo Core -->
@@ -147,7 +147,7 @@ const scrollToSection = (id) => {
             </h4>
             <div class="space-y-8">
               <div>
-                <p class="text-[9px] font-mono text-slate-400 mb-4 tracking-widest uppercase font-bold">Backend & Frontend</p>
+                <p class="text-[9px] font-mono text-slate-400 mb-4 tracking-widest uppercase font-bold text-left">Backend & Frontend</p>
                 <div class="flex flex-wrap gap-3">
                   <div v-for="s in [...profile.skills.backend, ...profile.skills.frontend]" :key="s.name" class="px-3 py-1.5 bg-slate-50 border border-slate-100 rounded-full text-[10px] font-mono text-slate-600 flex items-center gap-2 group/skill hover:shadow-sm transition-all">
                     <img v-if="s.icon" :src="`https://cdn.simpleicons.org/${s.icon}`" class="w-3.5 h-3.5" alt="" />
@@ -166,7 +166,7 @@ const scrollToSection = (id) => {
             </h4>
             <div class="space-y-8">
               <div>
-                <p class="text-[9px] font-mono text-slate-400 mb-4 tracking-widest uppercase font-bold">QA Automation</p>
+                <p class="text-[9px] font-mono text-slate-400 mb-4 tracking-widest uppercase font-bold text-left">QA Automation</p>
                 <div class="space-y-3">
                   <div v-for="s in profile.skills.testing" :key="s.name" class="space-y-1">
                     <div class="flex justify-between items-center text-[9px] font-mono">
@@ -185,7 +185,7 @@ const scrollToSection = (id) => {
                 </div>
               </div>
               <div>
-                <p class="text-[9px] font-mono text-slate-400 mb-4 tracking-widest uppercase font-bold">Bases de Datos</p>
+                <p class="text-[9px] font-mono text-slate-400 mb-4 tracking-widest uppercase font-bold text-left">Bases de Datos</p>
                 <div class="flex flex-wrap gap-3">
                   <div v-for="s in profile.skills.databases" :key="s.name" class="flex items-center gap-2 bg-slate-50 px-2 py-1 rounded border border-slate-100 shadow-sm">
                     <img v-if="s.icon === 'microsoftsqlserver'" src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/microsoftsqlserver.svg" class="w-3.5 h-3.5" alt="" />
@@ -205,7 +205,7 @@ const scrollToSection = (id) => {
             </h4>
             <div class="space-y-8">
               <div>
-                <p class="text-[9px] font-mono text-slate-400 mb-4 tracking-widest uppercase font-bold">DevOps & Infra</p>
+                <p class="text-[9px] font-mono text-slate-400 mb-4 tracking-widest uppercase font-bold text-left">DevOps & Infra</p>
                 <div class="flex flex-wrap gap-3">
                   <div v-for="s in profile.skills.devops" :key="s.name" class="px-3 py-1 bg-white border border-slate-100 rounded text-[9px] font-mono text-tech-infra uppercase flex items-center gap-2 font-bold shadow-sm">
                     <img v-if="s.icon" :src="`https://cdn.simpleicons.org/${s.icon}`" class="w-3.5 h-3.5" alt="" />
@@ -214,7 +214,7 @@ const scrollToSection = (id) => {
                 </div>
               </div>
               <div>
-                <p class="text-[9px] font-mono text-slate-400 mb-4 tracking-widest uppercase font-bold">Aptitudes Interpersonales</p>
+                <p class="text-[9px] font-mono text-slate-400 mb-4 tracking-widest uppercase font-bold text-left">Aptitudes Interpersonales</p>
                 <div class="flex flex-wrap gap-2">
                   <span v-for="skill in profile.softSkills" :key="skill" class="text-[9px] font-mono text-slate-500 bg-slate-50 px-2 py-1 rounded border border-slate-100 uppercase tracking-tighter font-bold shadow-sm">
                     {{ skill }}
@@ -251,8 +251,8 @@ const scrollToSection = (id) => {
         <!-- Certificaciones Grid -->
         <h4 class="text-xs font-mono text-slate-400 tracking-[0.3em] uppercase mb-10 md:mb-12 font-bold">Certificaciones_Validadas</h4>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 w-full">
-          <div v-for="cert in profile.certifications" :key="cert.title" 
-               class="p-6 border border-slate-200 bg-white rounded-2xl hover:shadow-lg transition-all group flex flex-col justify-between h-full text-left shadow-sm">
+          <div v-for="cert in visibleCertifications" :key="cert.title" 
+               class="p-6 border border-slate-100 bg-white rounded-2xl hover:shadow-lg transition-all group flex flex-col justify-between h-full text-left shadow-sm animate-in fade-in zoom-in duration-500">
             <div>
               <div class="flex justify-between items-start mb-4">
                 <div class="text-[8px] font-mono text-tech-infra uppercase tracking-tighter font-bold bg-tech-infra/10 px-2 py-0.5 rounded">{{ cert.category }}</div>
@@ -269,6 +269,14 @@ const scrollToSection = (id) => {
             </div>
           </div>
         </div>
+
+        <!-- View More Button -->
+        <div v-if="profile.certifications.length > certsLimit" class="mt-12">
+          <button @click="showAllCerts = !showAllCerts" 
+                  class="px-8 py-3 border border-slate-200 bg-white text-tech-primary font-mono text-[10px] tracking-widest hover:bg-tech-primary hover:text-white transition-all duration-500 rounded-full shadow-sm uppercase font-bold">
+            {{ showAllCerts ? 'Ver_Menos_Certificaciones' : 'Ver_Todas_las_Certificaciones' }}
+          </button>
+        </div>
       </div>
     </section>
 
@@ -284,7 +292,7 @@ const scrollToSection = (id) => {
             <div class="absolute -top-2 -left-2 text-8xl font-serif text-slate-100 group-hover:text-tech-primary/10 transition-colors select-none">"</div>
             
             <div class="relative z-10">
-              <p class="text-[13px] leading-relaxed text-slate-600 mb-8 italic font-medium">
+              <p class="text-[13px] leading-relaxed text-slate-600 mb-8 italic font-medium text-left">
                 {{ rec.text }}
               </p>
             </div>
@@ -292,7 +300,7 @@ const scrollToSection = (id) => {
             <div class="flex items-center justify-between border-t border-slate-50 pt-6">
               <div class="flex items-center gap-4">
                 <img v-if="rec.avatar" :src="rec.avatar" class="w-12 h-12 rounded-full object-cover border-2 border-slate-100 shadow-sm" alt="" />
-                <div class="flex flex-col">
+                <div class="flex flex-col text-left">
                   <h4 class="text-sm font-bold text-tech-text group-hover:text-tech-primary transition-colors leading-tight">{{ rec.name }}</h4>
                   <p class="text-[10px] text-slate-400 font-medium mt-1 leading-tight">{{ rec.role }}</p>
                   <p class="text-[9px] text-tech-info font-bold mt-1 uppercase tracking-tighter">{{ rec.relation }}</p>
