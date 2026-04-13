@@ -70,7 +70,7 @@ onMounted(() => {
     <!-- Top Header (Clean) -->
     <header class="fixed top-0 left-0 w-full h-16 md:h-20 border-b border-slate-200 bg-slate-100/80 backdrop-blur-xl z-40 px-6 md:px-12 flex items-center justify-between">
       <div class="flex items-center gap-4 md:gap-6">
-        <span class="font-black text-lg md:text-xl tracking-tighter text-tech-text">PORT<span class="text-tech-primary">FOLIO</span></span>
+        <button @click="scrollTo('home')" class="font-black text-lg md:text-xl tracking-tighter text-tech-text hover:opacity-70 transition-opacity">PORT<span class="text-tech-primary">FOLIO</span></button>
         <div class="h-4 w-[1px] bg-slate-300 hidden sm:block"></div>
         <div class="hidden sm:flex items-center gap-3 text-[10px] font-mono text-slate-500 tracking-widest uppercase">
           <span class="w-2 h-2 rounded-full bg-tech-success shadow-sm"></span>
