@@ -53,6 +53,28 @@ const heroContent = computed(() => {
   }
 })
 
+/**
+ * Dynamic Experience Section Content
+ */
+const experienceContent = computed(() => {
+  if (store.activeRole === 'qa') {
+    return {
+      title: 'Trayectoria en QA y Automatización.',
+      description: 'Especializado en el diseño de frameworks de prueba, automatización de procesos y aseguramiento de la calidad en entornos de microservicios.'
+    }
+  }
+  if (store.activeRole === 'dev') {
+    return {
+      title: 'Trayectoria en Ingeniería y Desarrollo.',
+      description: 'Enfocado en la creación de soluciones backend escalables, optimización de sistemas y desarrollo de arquitecturas robustas y mantenibles.'
+    }
+  }
+  return {
+    title: 'Experiencia en Desarrollo y Calidad.',
+    description: 'Cada rol ha sido una oportunidad para perfeccionar estrategias de calidad y construir sistemas escalables que soporten el crecimiento del negocio.'
+  }
+})
+
 const visibleCertifications = computed(() => {
   return showAllCerts.value ? profile.certifications : profile.certifications.slice(0, certsLimit)
 })
