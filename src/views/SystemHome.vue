@@ -47,8 +47,8 @@ const filteredExperience = computed(() => {
 const heroContent = computed(() => {
   if (store.activeRole === 'qa') {
     return {
-      title: 'QA Automation Engineer',
-      description: 'Garantizando la calidad, escalabilidad y robustez en cada despliegue.'
+      title: 'QA Analyst & Automation Engineer',
+      description: 'Garantizando la excelencia mediante pruebas integrales (Manual y Automatización), planes de prueba estratégicos y validación robusta en cada despliegue.'
     }
   }
   if (store.activeRole === 'dev') {
@@ -58,8 +58,8 @@ const heroContent = computed(() => {
     }
   }
   return {
-    title: 'Software Developer | QA Automation Engineer',
-    description: 'Ingeniero de Software especializado en soluciones backend escalables y aseguramiento de calidad mediante automatización robusta.'
+    title: 'Software Developer | QA Analyst & Automation',
+    description: 'Ingeniero de Software especializado en soluciones backend escalables y aseguramiento de calidad integral mediante procesos manuales y automatización robusta.'
   }
 })
 
@@ -69,8 +69,8 @@ const heroContent = computed(() => {
 const experienceContent = computed(() => {
   if (store.activeRole === 'qa') {
     return {
-      title: 'Trayectoria en QA y Automatización.',
-      description: 'Especializado en el diseño de frameworks de prueba, automatización de procesos y aseguramiento de la calidad en entornos de microservicios.'
+      title: 'Trayectoria en QA Integral.',
+      description: 'Especializado en el ciclo completo de calidad: desde el análisis de requisitos y pruebas manuales hasta el diseño de frameworks de automatización y CI/CD.'
     }
   }
   if (store.activeRole === 'dev') {
@@ -112,7 +112,7 @@ const scrollToSection = (id) => {
         <h2 class="text-[8px] md:text-[10px] font-mono tracking-[0.4em] md:tracking-[0.6em] text-tech-primary mb-4 md:mb-6 animate-in fade-in slide-in-from-left-10 duration-1000 uppercase font-bold">
           Ingeniería_de_Software_v2.0
         </h2>
-        <h1 class="text-5xl sm:text-7xl lg:text-9xl font-black tracking-tighter text-tech-text leading-[0.9] mb-6 md:mb-8">
+        <h1 class="text-5xl sm:text-7xl lg:text-9xl font-black tracking-tighter text-tech-text leading-[0.9] mb-6 md:mb-8 text-left">
           {{ profile.identity.firstName }}<br/>
           <span class="text-transparent bg-clip-text bg-gradient-to-r from-tech-primary to-tech-info">
             {{ profile.identity.lastName }}
@@ -120,7 +120,7 @@ const scrollToSection = (id) => {
         </h1>
         
         <Transition name="fade" mode="out-in">
-          <p :key="store.activeRole" class="text-base md:text-xl lg:text-2xl font-mono text-slate-500 max-w-2xl leading-relaxed mb-8 md:mb-12">
+          <p :key="store.activeRole" class="text-base md:text-xl lg:text-2xl font-mono text-slate-500 max-w-2xl leading-relaxed mb-8 md:mb-12 text-left">
             <span class="text-tech-text font-bold">{{ heroContent.title }}</span>. {{ heroContent.description }}
           </p>
         </Transition>
@@ -144,10 +144,14 @@ const scrollToSection = (id) => {
         <div class="flex flex-col lg:flex-row gap-12 lg:gap-20">
           <div class="lg:w-1/3">
             <h3 class="text-xs font-mono text-tech-primary tracking-[0.4em] uppercase mb-6 md:mb-8 font-bold">02_LA_TRAYECTORIA</h3>
-            <h2 class="text-3xl md:text-5xl font-bold text-tech-text tracking-tighter leading-tight mb-6 md:mb-8">Experiencia en Desarrollo y Calidad.</h2>
-            <p class="text-slate-500 leading-relaxed font-mono text-sm font-medium text-left">
-              Cada rol ha sido una oportunidad para perfeccionar estrategias de calidad y construir sistemas escalables que soporten el crecimiento del negocio.
-            </p>
+            <Transition name="fade" mode="out-in">
+              <div :key="store.activeRole">
+                <h2 class="text-3xl md:text-5xl font-bold text-tech-text tracking-tighter leading-tight mb-6 md:mb-8 text-left">{{ experienceContent.title }}</h2>
+                <p class="text-slate-500 leading-relaxed font-mono text-sm font-medium text-left">
+                  {{ experienceContent.description }}
+                </p>
+              </div>
+            </Transition>
           </div>
           <div class="lg:w-2/3">
             <TransitionGroup name="fade" tag="div" class="space-y-16 md:space-y-24">
@@ -159,7 +163,10 @@ const scrollToSection = (id) => {
                   <div class="mb-6 ml-6">
                     <div class="flex justify-between items-start gap-4">
                       <div class="flex flex-col text-left">
-                        <span class="text-[9px] md:text-[10px] font-mono text-tech-success tracking-widest font-bold uppercase bg-tech-success/10 px-2 py-1 rounded w-fit">{{ exp.period }}</span>
+                        <div class="flex flex-wrap items-center gap-2">
+                          <span class="text-[9px] md:text-[10px] font-mono text-tech-success tracking-widest font-bold uppercase bg-tech-success/10 px-2 py-1 rounded w-fit">{{ exp.period }}</span>
+                          <span class="text-[9px] md:text-[10px] font-mono text-slate-400 font-bold uppercase tracking-widest">{{ getDuration(exp.period) }}</span>
+                        </div>
                         <h4 class="text-2xl md:text-3xl font-bold text-tech-text mt-4 leading-tight">{{ exp.role }}</h4>
                         <p class="text-tech-info font-mono text-xs uppercase tracking-widest mt-1 font-bold">{{ exp.company }}</p>
                       </div>
@@ -231,7 +238,7 @@ const scrollToSection = (id) => {
           <!-- Desarrollo Core / Lenguajes -->
           <div class="p-6 md:p-8 border border-slate-200 bg-white rounded-3xl relative overflow-hidden group shadow-sm">
             <Transition name="fade" mode="out-in">
-              <h4 :key="store.activeRole" class="text-xl md:text-2xl font-bold text-tech-text mb-8 flex items-center gap-4">
+              <h4 :key="store.activeRole" class="text-xl md:text-2xl font-bold text-tech-text mb-8 flex items-center gap-4 text-left">
                 <span class="w-8 h-8 rounded-lg bg-tech-info/10 flex items-center justify-center text-tech-info text-sm">λ</span>
                 {{ store.activeRole === 'qa' ? 'Lenguajes de Programación' : 'Desarrollo Core' }}
               </h4>
@@ -251,7 +258,7 @@ const scrollToSection = (id) => {
 
           <!-- QA & Databases -->
           <div class="p-6 md:p-8 border border-slate-200 bg-white rounded-3xl relative overflow-hidden group shadow-sm">
-            <h4 class="text-xl md:text-2xl font-bold text-tech-text mb-8 flex items-center gap-4">
+            <h4 class="text-xl md:text-2xl font-bold text-tech-text mb-8 flex items-center gap-4 text-left">
               <span class="w-8 h-8 rounded-lg bg-tech-success/10 flex items-center justify-center text-tech-success text-sm">✓</span>
               QA & Persistencia
             </h4>
@@ -290,7 +297,7 @@ const scrollToSection = (id) => {
 
           <!-- DevOps & Soft Skills -->
           <div class="p-6 md:p-8 border border-slate-200 bg-white rounded-3xl relative overflow-hidden group sm:col-span-2 lg:col-span-1 shadow-sm">
-            <h4 class="text-xl md:text-2xl font-bold text-tech-text mb-8 flex items-center gap-4">
+            <h4 class="text-xl md:text-2xl font-bold text-tech-text mb-8 flex items-center gap-4 text-left">
               <span class="w-8 h-8 rounded-lg bg-tech-infra/10 flex items-center justify-center text-tech-infra text-sm">⌬</span>
               Especialidades
             </h4>
@@ -349,7 +356,7 @@ const scrollToSection = (id) => {
                 <div class="text-[8px] font-mono text-tech-infra uppercase tracking-tighter font-bold bg-tech-infra/10 px-2 py-0.5 rounded">{{ cert.category }}</div>
                 <img v-if="cert.icon === 'linkedin'" src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/linkedin.svg" class="w-5 h-5 opacity-80" alt="LinkedIn" />
                 <img v-else-if="cert.icon === 'microsoft'" src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/microsoft.svg" class="w-5 h-5 opacity-80" alt="Microsoft" />
-                <img v-else-if="cert.icon && cert.icon.endsWith('.ico')" :src="cert.icon" class="w-6 h-6 object-contain bg-white rounded-lg border border-slate-50 shadow-sm p-1 opacity-100" alt="" />
+                <img v-else-if="cert.icon && cert.icon.endsWith('.ico')" :src="`./${cert.icon}`" class="w-6 h-6 object-contain bg-white rounded-lg border border-slate-50 shadow-sm p-1 opacity-100" alt="" />
                 <img v-else-if="cert.icon" :src="`https://cdn.simpleicons.org/${cert.icon}`" class="w-5 h-5 opacity-80" alt="" />
               </div>
               <h5 class="text-[13px] md:text-sm font-bold text-tech-text mb-2 leading-tight group-hover:text-tech-primary transition-colors font-bold text-left">{{ cert.title }}</h5>
@@ -364,7 +371,7 @@ const scrollToSection = (id) => {
         <!-- View More Button -->
         <div v-if="profile.certifications.length > certsLimit" class="mt-12">
           <button @click="showAllCerts = !showAllCerts" 
-                  class="px-8 py-3 border border-slate-200 bg-white text-tech-primary font-mono text-[10px] tracking-widest hover:bg-tech-primary hover:text-white transition-all duration-500 rounded-full shadow-sm uppercase font-bold">
+                  class="px-8 py-3 border border-slate-200 bg-white text-tech-primary font-mono text-[10px] tracking-widest hover:bg-tech-primary hover:text-white transition-all duration-500 rounded-full shadow-sm uppercase font-bold font-bold">
             {{ showAllCerts ? 'Ver_Menos_Certificaciones' : 'Ver_Todas_las_Certificaciones' }}
           </button>
         </div>
@@ -391,7 +398,7 @@ const scrollToSection = (id) => {
               <div class="flex items-center gap-4">
                 <img v-if="rec.avatar" :src="rec.avatar" class="w-12 h-12 rounded-full object-cover border-2 border-slate-100 shadow-sm" alt="" />
                 <div class="flex flex-col text-left">
-                  <h4 class="text-sm font-bold text-tech-text group-hover:text-tech-primary transition-colors leading-tight">{{ rec.name }}</h4>
+                  <h4 class="text-sm font-bold text-tech-text group-hover:text-tech-primary transition-colors leading-tight text-left">{{ rec.name }}</h4>
                   <p class="text-[10px] text-slate-400 font-medium mt-1 leading-tight text-left">{{ rec.role }}</p>
                   <p class="text-[9px] text-tech-info font-bold mt-1 uppercase tracking-tighter text-left">{{ rec.relation }}</p>
                 </div>
@@ -407,11 +414,11 @@ const scrollToSection = (id) => {
 
     <!-- SECCIÓN 07: CONTACTO -->
     <section id="contact" class="py-20 md:py-32 px-6 md:px-12 lg:px-24 flex items-center bg-slate-900 text-white relative overflow-hidden">
-      <div class="max-w-7xl mx-auto w-full relative z-10">
+      <div class="max-w-7xl mx-auto w-full relative z-10 text-left">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div>
             <h3 class="text-xs font-mono text-tech-info tracking-[0.4em] uppercase mb-6 md:mb-8 font-bold">07_PUERTA_DE_ENLACE</h3>
-            <h2 class="text-4xl md:text-6xl font-black text-white tracking-tighter leading-none mb-8">¿Listo para el siguiente sprint?</h2>
+            <h2 class="text-4xl md:text-6xl font-black text-white tracking-tighter leading-none mb-8 text-left">¿Listo para el siguiente sprint?</h2>
             <p class="text-lg font-mono text-slate-400 leading-relaxed mb-8 text-left">
               Disponible para nuevos desafíos en <span class="text-tech-info font-bold underline decoration-tech-info/30 underline-offset-4 uppercase">Desarrollo Backend</span> y <span class="text-tech-success font-bold underline decoration-tech-success/30 underline-offset-4 uppercase">QA Automation</span>.
             </p>
