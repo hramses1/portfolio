@@ -5,9 +5,42 @@
  */
 import { ref, computed } from 'vue'
 import { profile } from '../utils/profileData.js'
+import { useSystemStore } from '../store/system.js'
 
+const store = useSystemStore()
 const showAllCerts = ref(false)
 const certsLimit = 8
+
+/**
+ * Filtered Experience based on active role.
+ */
+const filteredExperience = computed(() => {
+  if (store.activeRole === 'all') return profile.experience
+  if (store.activeRole === 'dev') {
+    return profile.experience.filter(exp => exp.role.toLowerCase().includes('developer'))
+  }
+  if (store.activeRole === 'qa') {
+    return profile.experience.filter(exp => exp.role.toLowerCase().includes('quality'))
+  }
+  return profile.experience
+})
+
+/**
+ * Filtered Skill Categories based on active role.
+ */
+const visibleSkillCategories = computed(() => {
+  const cats = [
+    { id: 'core', title: 'Desarrollo Core', icon: 'λ', color: 'info' },
+    { id: 'qa', title: 'QA & Persistencia', icon: '✓', color: 'success' },
+    { id: 'special', title: 'Especialidades', icon: '⌬', color: 'infra' }
+  ]
+  
+  if (store.activeRole === 'all') return cats
+  if (store.activeRole === 'dev') return cats.filter(c => c.id !== 'qa' || true) // Dev needs almost all but maybe focus
+  if (store.activeRole === 'qa') return cats.filter(c => c.id !== 'core')
+  
+  return cats
+})
 
 const visibleCertifications = computed(() => {
   return showAllCerts.value ? profile.certifications : profile.certifications.slice(0, certsLimit)

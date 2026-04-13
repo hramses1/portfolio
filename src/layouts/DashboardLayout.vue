@@ -79,7 +79,14 @@ onMounted(() => {
         </div>
       </div>
       <div class="flex items-center gap-4 md:gap-8">
-        <button @click="scrollTo('contact')" class="text-[9px] md:text-[10px] font-mono tracking-widest text-slate-600 hover:text-tech-primary transition-colors border-b border-slate-300 pb-1 uppercase">CONTACTAR</button>
+        <!-- Role Switcher -->
+        <div class="hidden lg:flex bg-slate-200/50 p-1 rounded-full border border-slate-200 shadow-inner">
+          <button @click="store.setRole('all')" :class="['px-4 py-1.5 rounded-full text-[9px] font-bold transition-all uppercase tracking-widest', store.activeRole === 'all' ? 'bg-white text-tech-primary shadow-sm' : 'text-slate-500 hover:text-tech-text']">Ver_Todo</button>
+          <button @click="store.setRole('dev')" :class="['px-4 py-1.5 rounded-full text-[9px] font-bold transition-all uppercase tracking-widest', store.activeRole === 'dev' ? 'bg-white text-tech-info shadow-sm' : 'text-slate-500 hover:text-tech-text']">Desarrollador</button>
+          <button @click="store.setRole('qa')" :class="['px-4 py-1.5 rounded-full text-[9px] font-bold transition-all uppercase tracking-widest', store.activeRole === 'qa' ? 'bg-white text-tech-success shadow-sm' : 'text-slate-500 hover:text-tech-text']">QA_Automation</button>
+        </div>
+
+        <button @click="scrollTo('contact')" class="text-[9px] md:text-[10px] font-mono tracking-widest text-slate-600 hover:text-tech-primary transition-colors border-b border-slate-300 pb-1 uppercase font-bold">CONTACTAR</button>
         <div class="hidden md:block px-4 py-2 bg-slate-200/50 border border-slate-200 rounded-full text-[9px] font-mono tracking-widest text-slate-700 uppercase">
           Versión_2.0
         </div>

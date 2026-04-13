@@ -10,6 +10,15 @@ export const useSystemStore = defineStore('system', () => {
   const activeAlerts = ref([])
   const currentEnvironment = ref('PRODUCTION')
   const uptime = ref(0)
+  const activeRole = ref('all') // 'all' | 'dev' | 'qa'
+
+  /**
+   * Sets the active role filter.
+   * @param {'all'|'dev'|'qa'} role 
+   */
+  function setRole(role) {
+    activeRole.value = role
+  }
 
   /**
    * Increments the system uptime.
@@ -46,8 +55,10 @@ export const useSystemStore = defineStore('system', () => {
     activeAlerts,
     currentEnvironment,
     uptime,
+    activeRole,
     tick,
     triggerAlert,
+    setRole,
     formattedUptime
   }
 })
