@@ -6,10 +6,20 @@
 import { ref, computed } from 'vue'
 import { profile } from '../utils/profileData.js'
 import { useSystemStore } from '../store/system.js'
+import { calculateDuration } from '../utils/formatters.js'
 
 const store = useSystemStore()
 const showAllCerts = ref(false)
 const certsLimit = 8
+
+/**
+ * Parses start and end from period string for duration calculation.
+ */
+const getDuration = (period) => {
+  const parts = period.split(' - ')
+  if (parts.length < 2) return ''
+  return calculateDuration(parts[0], parts[1])
+}
 
 /**
  * Filtered Experience based on active role.
