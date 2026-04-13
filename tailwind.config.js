@@ -7,8 +7,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        'tech-bg': '#f1f5f9', // Gris suave (Slate 100)
-        'tech-card': '#ffffff',
+        'tech-bg': '#e2e8f0', // Gris pizarra suave (Slate 200)
+        'tech-card': '#f8fafc', // Blanco hueso muy suave
         'tech-primary': '#4f46e5', // Indigo
         'tech-success': '#10b981', // Emerald
         'tech-info': '#3b82f6',    // Blue
