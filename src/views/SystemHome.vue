@@ -20,12 +20,34 @@ const filteredExperience = computed(() => {
     return profile.experience.filter(exp => exp.role.toLowerCase().includes('developer'))
   }
   if (store.activeRole === 'qa') {
-    return profile.experience.filter(exp => exp.role.toLowerCase().includes('quality'))
+    return profile.experience.filter(exp => exp.role.toLowerCase().includes('assurance') || exp.role.toLowerCase().includes('automation'))
   }
   return profile.experience
 })
 
 /**
+ * Dynamic Hero Content
+ */
+const heroContent = computed(() => {
+  if (store.activeRole === 'qa') {
+    return {
+      title: 'QA Automation Engineer',
+      description: 'Garantizando la calidad, escalabilidad y robustez en cada despliegue.'
+    }
+  }
+  if (store.activeRole === 'dev') {
+    return {
+      title: 'Software Developer',
+      description: 'Desarrollando soluciones robustas, escalables y eficientes para el mundo real.'
+    }
+  }
+  return {
+    title: profile.identity.title,
+    description: profile.identity.description
+  }
+})
+
+const showAllCerts = ref(false)
  * Filtered Skill Categories based on active role.
  */
 const visibleSkillCategories = computed(() => {
