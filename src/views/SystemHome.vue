@@ -282,12 +282,15 @@ const scrollToSection = (id) => {
             </div>
 
             <div class="flex items-center justify-between border-t border-slate-50 pt-6">
-              <div class="flex flex-col">
-                <h4 class="text-sm font-bold text-tech-text group-hover:text-tech-primary transition-colors leading-tight">{{ rec.name }}</h4>
-                <p class="text-[10px] text-slate-400 font-medium mt-1 leading-tight">{{ rec.role }}</p>
-                <p class="text-[9px] text-tech-info font-bold mt-1 uppercase tracking-tighter">{{ rec.relation }}</p>
+              <div class="flex items-center gap-4">
+                <img v-if="rec.avatar" :src="rec.avatar" class="w-12 h-12 rounded-full object-cover border-2 border-slate-100 shadow-sm" alt="" />
+                <div class="flex flex-col">
+                  <h4 class="text-sm font-bold text-tech-text group-hover:text-tech-primary transition-colors leading-tight">{{ rec.name }}</h4>
+                  <p class="text-[10px] text-slate-400 font-medium mt-1 leading-tight">{{ rec.role }}</p>
+                  <p class="text-[9px] text-tech-info font-bold mt-1 uppercase tracking-tighter">{{ rec.relation }}</p>
+                </div>
               </div>
-              <a :href="rec.linkedin" target="_blank" class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center hover:bg-tech-info/10 transition-colors group/ln">
+              <a :href="rec.linkedin" target="_blank" class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center hover:bg-tech-info/10 transition-colors group/ln shrink-0 ml-4">
                 <img src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/linkedin.svg" class="w-4 h-4 opacity-40 group-hover/ln:opacity-100 transition-opacity" style="filter: brightness(0) saturate(100%) invert(31%) sepia(94%) saturate(1114%) hue-rotate(211deg) brightness(95%) contrast(93%);" alt="LinkedIn" />
               </a>
             </div>

@@ -95,42 +95,48 @@ export const profile = {
       role: 'Web Developer Fullstack',
       relation: 'Trabajó con Hector en FUNIBER',
       text: 'Destaco su responsabilidad, su organización y su iniciativa por aprender cosas nuevas. Compartía sus conocimientos impulsando mejoras e integrando scripts para tareas de mantenimiento, optimizando procesos y facilitando el trabajo del equipo. Cuenta con conocimientos en backend, lo que le permite aportar un criterio técnico sólido.',
-      linkedin: 'https://www.linkedin.com/in/humberto-guiracocha-suarez-48a944284/'
+      linkedin: 'https://www.linkedin.com/in/humberto-guiracocha-suarez-48a944284/',
+      avatar: 'Humberto.png'
     },
     {
       name: 'Kelly Nieto Artieda',
       role: 'UX/UI Designer & Product Designer',
       relation: 'Capacitó y asesoró a Hector en FUNIBER',
       text: 'Me impresionó su gran desempeño en tan poco tiempo. Aprendió del negocio rápidamente y aportó gran valor en proyectos transversales, además de su entusiasmo por innovar y traer nuevas propuestas tecnológicas a la mesa. Es un excelente profesional con un potencial increíble.',
-      linkedin: 'https://www.linkedin.com/in/kellynietoa/'
+      linkedin: 'https://www.linkedin.com/in/kellynietoa/',
+      avatar: 'Kelly.png'
     },
     {
       name: 'Jordan Ubilla',
       role: 'Senior Software Developer | Team Leader',
       relation: 'Trabajó con Hector durante 3 años',
       text: 'Lo vi crecer de QA a programador en poco tiempo, algo que habla por sí solo de su capacidad autodidacta y determinación. Es responsable, técnicamente sólido, se adapta a cualquier tipo de proyecto y sabe trabajar en equipo de verdad. El tipo de ingeniero que hoy en día toda empresa necesita.',
-      linkedin: 'https://www.linkedin.com/in/jordan-ubilla-5a8244264/'
+      linkedin: 'https://www.linkedin.com/in/jordan-ubilla-5a8244264/',
+      avatar: 'Jordan.png'
     },
     {
       name: 'Marlon Armijo',
       role: 'QA Tester and Automation Engineer',
       relation: 'Colega de rol QA en FUNIBER',
       text: 'Héctor fue mucho más allá de sus responsabilidades. Siempre atento a los detalles, anticipándose a problemas y promoviendo la automatización de procesos clave para agilizar tiempos y elevar el estándar de calidad. Suma no solo por su conocimiento, sino también por su actitud y buena energía.',
-      linkedin: 'https://www.linkedin.com/in/marlonjal96/'
+      linkedin: 'https://www.linkedin.com/in/marlonjal96/',
+      avatar: 'Marlon.png'
     },
     {
       name: 'Loberlly Salazar Aspiazu',
       role: 'Full-Stack Developer & UX/UI Designer',
       relation: 'Trabajó con Hector en el mismo equipo',
       text: 'Apoyo clave para asegurar la calidad de nuestras entregas. Comprometido y con excelente criterio para identificar riesgos y proponer mejoras. Destaco su lado humano y cómo promueve un ambiente de trabajo alegre, acogedor y respetuoso.',
-      linkedin: 'https://www.linkedin.com/in/loberlly-salazar-aspiazu-b099ab216/'
+      linkedin: 'https://www.linkedin.com/in/loberlly-salazar-aspiazu-b099ab216/',
+      avatar: 'Loberlly.png'
     },
     {
       name: 'Karen Morales',
       role: 'Fullstack Developer | JS/TS | UI/UX',
       relation: 'Trabajó con Hector en el mismo equipo',
       text: 'Héctor facilitaba enormemente mi trabajo con sus bugs bien documentados y contexto claro. No se conforma con los límites de su rol; escribía scripts de mantenimiento proactivamente y tiene un excelente ojo para el código como desarrollador.',
-      linkedin: 'https://www.linkedin.com/in/klmoralesc/'
+      linkedin: 'https://www.linkedin.com/in/klmoralesc/',
+      avatar: 'Karen.png'
     }
   ],
 
