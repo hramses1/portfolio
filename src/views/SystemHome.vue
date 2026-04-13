@@ -99,7 +99,7 @@ const scrollToSection = (id) => {
             <div class="relative z-10">
               <div class="flex flex-wrap gap-2 mb-6">
                 <span v-for="tag in project.tags" :key="tag.name" class="px-2 py-1 bg-slate-50 border border-slate-100 rounded text-[8px] md:text-[9px] font-mono text-slate-500 uppercase tracking-widest flex items-center gap-2 group-hover:bg-tech-primary/5 transition-colors">
-                  <img v-if="tag.icon" :src="`https://cdn.simpleicons.org/${tag.icon}/475569`" class="w-3 h-3 opacity-70 group-hover:opacity-100 transition-opacity" alt="" />
+                  <img v-if="tag.icon" :src="`https://cdn.simpleicons.org/${tag.icon}`" class="w-3 h-3 opacity-80 group-hover:opacity-100 transition-opacity" alt="" />
                   {{ tag.name }}
                 </span>
               </div>
@@ -133,9 +133,9 @@ const scrollToSection = (id) => {
               <div v-for="s in profile.skills.testing" :key="s.name" class="space-y-2">
                 <div class="flex justify-between items-center text-[9px] md:text-[10px] font-mono tracking-widest">
                   <div class="flex items-center gap-3">
-                    <img v-if="s.icon === 'sonarqube'" src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/sonarqube.svg" class="w-4 h-4" style="filter: brightness(0) saturate(100%) invert(42%) sepia(93%) saturate(1352%) hue-rotate(120deg) brightness(95%) contrast(101%);" alt="" />
-                    <img v-else-if="s.icon === 'playwright'" src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/playwright.svg" class="w-4 h-4" style="filter: brightness(0) saturate(100%) invert(42%) sepia(93%) saturate(1352%) hue-rotate(120deg) brightness(95%) contrast(101%);" alt="" />
-                    <img v-else-if="s.icon" :src="`https://cdn.simpleicons.org/${s.icon}/10b981`" class="w-4 h-4 transition-opacity" alt="" />
+                    <img v-if="s.icon === 'sonarqube'" src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/sonarqube.svg" class="w-4 h-4 opacity-80 group-hover:opacity-100 transition-opacity" alt="SonarQube" />
+                    <img v-else-if="s.icon === 'playwright'" src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/playwright.svg" class="w-4 h-4 opacity-80 group-hover:opacity-100 transition-opacity" alt="Playwright" />
+                    <img v-else-if="s.icon" :src="`https://cdn.simpleicons.org/${s.icon}`" class="w-4 h-4" alt="" />
                     <span class="text-slate-500 uppercase font-bold">{{ s.name }}</span>
                   </div>
                   <span class="text-tech-success font-bold">{{ s.level }}%</span>
@@ -155,8 +155,8 @@ const scrollToSection = (id) => {
             </h4>
             <div class="flex flex-wrap gap-3">
               <div v-for="s in profile.skills.backend" :key="s.name" 
-                    class="px-4 py-2 bg-slate-50 border border-slate-100 rounded-full text-[10px] font-mono text-slate-600 hover:border-tech-info hover:text-tech-info transition-all cursor-default uppercase flex items-center gap-3 group/skill shadow-sm">
-                <img v-if="s.icon" :src="`https://cdn.simpleicons.org/${s.icon}/475569`" class="w-3.5 h-3.5 group-hover/skill:brightness-50 transition-all" alt="" />
+                    class="px-4 py-2 bg-white border border-slate-100 rounded-full text-[10px] font-mono text-slate-600 hover:border-tech-info hover:text-tech-info transition-all cursor-default uppercase flex items-center gap-3 group/skill shadow-sm">
+                <img v-if="s.icon" :src="`https://cdn.simpleicons.org/${s.icon}`" class="w-3.5 h-3.5" alt="" />
                 {{ s.name }}
               </div>
             </div>
@@ -173,8 +173,8 @@ const scrollToSection = (id) => {
                 <p class="text-[9px] font-mono text-slate-400 mb-4 tracking-widest uppercase font-bold">Bases de Datos</p>
                 <div class="flex flex-wrap gap-4">
                   <div v-for="s in profile.skills.databases" :key="s.name" class="flex items-center gap-2 group/db">
-                    <img v-if="s.icon === 'microsoftsqlserver'" src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/microsoftsqlserver.svg" class="w-4 h-4 opacity-60 group-hover:opacity-100 transition-all" alt="" />
-                    <img v-else-if="s.icon" :src="`https://cdn.simpleicons.org/${s.icon}/64748b`" class="w-4 h-4 opacity-60 group-hover:opacity-100 transition-all" alt="" />
+                    <img v-if="s.icon === 'microsoftsqlserver'" src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/microsoftsqlserver.svg" class="w-4 h-4 opacity-80 group-hover:opacity-100 transition-all" alt="SQL Server" />
+                    <img v-else-if="s.icon" :src="`https://cdn.simpleicons.org/${s.icon}`" class="w-4 h-4 opacity-80 group-hover:opacity-100 transition-all" alt="" />
                     <span class="text-[10px] md:text-[11px] font-mono text-slate-500 font-bold">/ {{ s.name }}</span>
                   </div>
                 </div>
@@ -182,8 +182,8 @@ const scrollToSection = (id) => {
               <div>
                 <p class="text-[9px] font-mono text-slate-400 mb-4 tracking-widest uppercase font-bold">DevOps & Cloud</p>
                 <div class="flex flex-wrap gap-3">
-                  <div v-for="s in profile.skills.devops" :key="s.name" class="px-3 py-1 bg-tech-infra/5 border border-tech-infra/10 rounded text-[9px] font-mono text-tech-infra uppercase flex items-center gap-2 group/infra shadow-sm font-bold">
-                    <img v-if="s.icon" :src="`https://cdn.simpleicons.org/${s.icon}/8b5cf6`" class="w-3.5 h-3.5" alt="" />
+                  <div v-for="s in profile.skills.devops" :key="s.name" class="px-3 py-1 bg-white border border-slate-100 rounded text-[9px] font-mono text-tech-infra uppercase flex items-center gap-2 group/infra shadow-sm font-bold">
+                    <img v-if="s.icon" :src="`https://cdn.simpleicons.org/${s.icon}`" class="w-3.5 h-3.5" alt="" />
                     {{ s.name }}
                   </div>
                 </div>
@@ -220,9 +220,9 @@ const scrollToSection = (id) => {
             <div>
               <div class="flex justify-between items-start mb-4">
                 <div class="text-[8px] font-mono text-tech-infra uppercase tracking-tighter font-bold bg-tech-infra/10 px-2 py-0.5 rounded">{{ cert.category }}</div>
-                <img v-if="cert.icon === 'linkedin'" src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/linkedin.svg" class="w-5 h-5 opacity-40 group-hover:opacity-100 transition-opacity" style="filter: brightness(0) saturate(100%) invert(31%) sepia(94%) saturate(1114%) hue-rotate(211deg) brightness(95%) contrast(93%);" alt="LinkedIn" />
-                <img v-else-if="cert.icon === 'microsoft'" src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/microsoft.svg" class="w-5 h-5 opacity-40 group-hover:opacity-100 transition-opacity" alt="Microsoft" />
-                <img v-else-if="cert.icon" :src="`https://cdn.simpleicons.org/${cert.icon}/64748b`" class="w-5 h-5 opacity-40 group-hover:opacity-100 transition-opacity" alt="" />
+                <img v-if="cert.icon === 'linkedin'" src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/linkedin.svg" class="w-5 h-5" alt="LinkedIn" />
+                <img v-else-if="cert.icon === 'microsoft'" src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/microsoft.svg" class="w-5 h-5" alt="Microsoft" />
+                <img v-else-if="cert.icon" :src="`https://cdn.simpleicons.org/${cert.icon}`" class="w-5 h-5 opacity-80 group-hover:opacity-100 transition-opacity" alt="" />
               </div>
               <h5 class="text-[13px] md:text-sm font-bold text-tech-text mb-2 leading-tight group-hover:text-tech-primary transition-colors font-bold">{{ cert.title }}</h5>
             </div>
