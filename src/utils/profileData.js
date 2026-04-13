@@ -243,11 +243,22 @@ export const profile = {
       description: 'API para administración de usuarios y matriculaciones en Moodle.',
       github: 'https://github.com/hramses1/create-user-moodle-api',
       tags: [
-        { name: 'Node.js', icon: 'nodedotjs' },
-        { name: 'Moodle', icon: 'moodle' },
-        { name: 'API', icon: 'postman' },
+        { name: 'Node.js', icon: 'nodedotjs' }, 
+        { name: 'Moodle', icon: 'moodle' }, 
+        { name: 'API', icon: 'postman' }, 
         { name: 'CRUD', icon: 'express' }
       ]
+    },
+    {
+      id: 5,
+      name: 'Automatización E2E Puppeteer',
+      description: 'Automatización del navegador con Puppeteer y Jest. Framework robusto para pruebas E2E.',
+      github: 'https://github.com/hramses1/Testing-Puppeteer',
+      tags: [
+        { name: 'Puppeteer', icon: 'puppeteer' },
+        { name: 'Jest', icon: 'jest' },
+        { name: 'JavaScript', icon: 'javascript' },
+        { name: 'TypeScript', icon: 'typescript' }
+      ]
     }
-  ]
-}
+    ]}
