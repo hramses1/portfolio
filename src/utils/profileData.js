@@ -43,7 +43,7 @@ export const profile = {
     { title: 'Microsoft Excel Ultimate 2021', issuer: 'Udemy', date: '2021', category: 'Herramientas', icon: 'udemy' },
     { title: 'Guide to Cyber Security', issuer: 'Udemy', date: '2021', category: 'Seguridad', icon: 'udemy' },
     { title: 'SQL para Principiantes', issuer: 'Udemy', date: '2021', category: 'Bases de Datos', icon: 'udemy' },
-    { title: 'Analista Junior GeneXus 17', issuer: 'GeneXus', date: '2021', category: 'Desarrollo', icon: 'genexus' }
+    { title: 'Analista Junior GeneXus 17', issuer: 'GeneXus', date: '2021', category: 'Desarrollo', icon: 'GeneXus.ico' }
   ],
 
   skills: {

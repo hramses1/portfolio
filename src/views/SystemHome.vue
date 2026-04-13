@@ -247,6 +247,7 @@ const scrollToSection = (id) => {
                 <div class="text-[8px] font-mono text-tech-infra uppercase tracking-tighter font-bold bg-tech-infra/10 px-2 py-0.5 rounded">{{ cert.category }}</div>
                 <img v-if="cert.icon === 'linkedin'" src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/linkedin.svg" class="w-5 h-5 opacity-80" alt="LinkedIn" />
                 <img v-else-if="cert.icon === 'microsoft'" src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/microsoft.svg" class="w-5 h-5 opacity-80" alt="Microsoft" />
+                <img v-else-if="cert.icon && cert.icon.endsWith('.ico')" :src="`./${cert.icon}`" class="w-5 h-5 opacity-80" alt="" />
                 <img v-else-if="cert.icon" :src="`https://cdn.simpleicons.org/${cert.icon}`" class="w-5 h-5 opacity-80" alt="" />
               </div>
               <h5 class="text-[13px] md:text-sm font-bold text-tech-text mb-2 leading-tight group-hover:text-tech-primary transition-colors font-bold">{{ cert.title }}</h5>
