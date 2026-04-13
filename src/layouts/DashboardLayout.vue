@@ -14,7 +14,8 @@ const navItems = [
   { id: 'projects', label: '03_PROYECTOS', icon: '📁' },
   { id: 'skills', label: '04_CONOCIMIENTOS', icon: '⚙' },
   { id: 'education', label: '05_ACADEMIA', icon: '⌬' },
-  { id: 'contact', label: '06_CONTACTO', icon: '✉' }
+  { id: 'recommendations', label: '06_TESTIMONIOS', icon: '★' },
+  { id: 'contact', label: '07_CONTACTO', icon: '✉' }
 ]
 
 const scrollTo = (id) => {

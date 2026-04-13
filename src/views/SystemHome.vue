@@ -260,7 +260,39 @@ const scrollToSection = (id) => {
       </div>
     </section>
 
-    <!-- SECCIÓN 06: CONTACTO -->
+    <!-- SECCIÓN 06: RECOMENDACIONES -->
+    <section id="recommendations" class="py-20 md:py-32 px-6 md:px-12 lg:px-24 bg-slate-50/50 border-y border-slate-200/50">
+      <div class="max-w-7xl mx-auto">
+        <h3 class="text-xs font-mono text-tech-primary tracking-[0.4em] uppercase mb-12 md:mb-16 text-center font-bold">06_VALIDACIONES_DEL_EQUIPO</h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+          <div v-for="rec in profile.recommendations" :key="rec.name" 
+               class="p-8 border border-slate-200 bg-white rounded-3xl hover:shadow-xl transition-all duration-500 flex flex-col justify-between group relative overflow-hidden shadow-sm">
+            <!-- Quote Decoration -->
+            <div class="absolute -top-2 -left-2 text-8xl font-serif text-slate-100 group-hover:text-tech-primary/10 transition-colors select-none">"</div>
+            
+            <div class="relative z-10">
+              <p class="text-[13px] leading-relaxed text-slate-600 mb-8 italic font-medium">
+                {{ rec.text }}
+              </p>
+            </div>
+
+            <div class="flex items-center justify-between border-t border-slate-50 pt-6">
+              <div class="flex flex-col">
+                <h4 class="text-sm font-bold text-tech-text group-hover:text-tech-primary transition-colors leading-tight">{{ rec.name }}</h4>
+                <p class="text-[10px] text-slate-400 font-medium mt-1 leading-tight">{{ rec.role }}</p>
+                <p class="text-[9px] text-tech-info font-bold mt-1 uppercase tracking-tighter">{{ rec.relation }}</p>
+              </div>
+              <a :href="rec.linkedin" target="_blank" class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center hover:bg-tech-info/10 transition-colors group/ln">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/linkedin.svg" class="w-4 h-4 opacity-40 group-hover/ln:opacity-100 transition-opacity" style="filter: brightness(0) saturate(100%) invert(31%) sepia(94%) saturate(1114%) hue-rotate(211deg) brightness(95%) contrast(93%);" alt="LinkedIn" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 07: CONTACTO -->
     <section id="contact" class="py-20 md:py-32 px-6 md:px-12 lg:px-24 flex items-center bg-slate-900 text-white relative overflow-hidden">
       <div class="max-w-7xl mx-auto w-full relative z-10">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
