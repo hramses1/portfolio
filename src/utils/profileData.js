@@ -11,7 +11,7 @@ export const profile = {
     linkedin: 'https://www.linkedin.com/in/hector-arismendi-469551167/',
     description: 'Ingeniero de Software especializado en el desarrollo de soluciones backend escalables y el aseguramiento de la calidad (QA) mediante frameworks de automatización robustos y arquitectura de microservicios.'
   },
-  
+
   education: [
     {
       institution: 'Universidad Estatal de Milagro',
@@ -85,7 +85,7 @@ export const profile = {
   },
 
   softSkills: [
-    'Liderazgo de Equipos', 'Capacidad de Análisis', 'Resolución de Problemas', 
+    'Liderazgo de Equipos', 'Capacidad de Análisis', 'Resolución de Problemas',
     'Adaptación al Cambio', 'Trabajo en Equipo', 'Gestión de Proyectos'
   ],
 
@@ -145,7 +145,7 @@ export const profile = {
       company: 'Fundación Universitaria Iberoamericana (FUNIBER)',
       icon: 'funiber.ico',
       role: 'Software Developer',
-      period: 'abr. 2025 - actualidad',
+      period: 'abr. 2025 - feb. 2026',
       achievements: [
         'Implementación de lógica de negocio, controladores y servicios en backend.',
         'Desarrollo y mantenimiento de APIs REST con Node.js, Nestjs y Express.',
@@ -209,9 +209,9 @@ export const profile = {
       description: 'Framework avanzado con Selenium y Pytest bajo patrón POM.',
       github: 'https://github.com/hramses1/automationE2E',
       tags: [
-        { name: 'Python', icon: 'python' }, 
-        { name: 'Selenium', icon: 'selenium' }, 
-        { name: 'Pytest', icon: 'pytest' }, 
+        { name: 'Python', icon: 'python' },
+        { name: 'Selenium', icon: 'selenium' },
+        { name: 'Pytest', icon: 'pytest' },
         { name: 'POM', icon: 'robotframework' }
       ]
     },
@@ -221,8 +221,8 @@ export const profile = {
       description: 'Sistema de monitoreo y alertas de RabbitMQ hacia WhatsApp.',
       github: 'https://github.com/hramses1/Rabbit-Alerts',
       tags: [
-        { name: 'RabbitMQ', icon: 'rabbitmq' }, 
-        { name: 'WhatsApp', icon: 'whatsapp' }, 
+        { name: 'RabbitMQ', icon: 'rabbitmq' },
+        { name: 'WhatsApp', icon: 'whatsapp' },
         { name: 'Node.js', icon: 'nodedotjs' }
       ]
     },
@@ -232,8 +232,8 @@ export const profile = {
       description: 'Bot de búsqueda automatizada de personas y placas via API.',
       github: 'https://github.com/hramses1/bot-telegram-search-person-ec',
       tags: [
-        { name: 'Python', icon: 'python' }, 
-        { name: 'Telegram', icon: 'telegram' }, 
+        { name: 'Python', icon: 'python' },
+        { name: 'Telegram', icon: 'telegram' },
         { name: 'API', icon: 'postman' }
       ]
     },
@@ -243,9 +243,9 @@ export const profile = {
       description: 'API para administración de usuarios y matriculaciones en Moodle.',
       github: 'https://github.com/hramses1/create-user-moodle-api',
       tags: [
-        { name: 'Node.js', icon: 'nodedotjs' }, 
-        { name: 'Moodle', icon: 'moodle' }, 
-        { name: 'API', icon: 'postman' }, 
+        { name: 'Node.js', icon: 'nodedotjs' },
+        { name: 'Moodle', icon: 'moodle' },
+        { name: 'API', icon: 'postman' },
         { name: 'CRUD', icon: 'express' }
       ]
     }
