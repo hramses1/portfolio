@@ -17,12 +17,14 @@ export const profile = {
       institution: 'Universidad Estatal de Milagro',
       period: '2019 - 2023',
       degree: 'INGENIERIA DE SOFTWARE',
-      achievement: '1ER. LUGAR EN FERIA DE CIENCIAS Y TECNOLOGÍAS (2022)'
+      achievement: '1ER. LUGAR EN FERIA DE CIENCIAS Y TECNOLOGÍAS (2022)',
+      icon: 'unemi.ico'
     },
     {
       institution: 'INSTITUTO LIBERTADOR',
       period: '2011 - 2016',
-      degree: 'BACHILLER EN CIENCIAS'
+      degree: 'BACHILLER EN CIENCIAS',
+      icon: 'libertador.ico'
     }
   ],
 
