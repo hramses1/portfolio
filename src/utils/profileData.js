@@ -122,9 +122,10 @@ export const profile = {
       description: 'Framework de automatización de flujo completo de compra con Selenium, Pytest y POM.',
       github: 'https://github.com/hramses1/automationE2E',
       tags: [
-        { name: 'QA', icon: 'testcafe' },
         { name: 'Python', icon: 'python' },
-        { name: 'Selenium', icon: 'selenium' }
+        { name: 'Selenium', icon: 'selenium' },
+        { name: 'Pytest', icon: 'pytest' },
+        { name: 'POM', icon: 'testcafe' }
       ]
     },
     {
@@ -146,18 +147,20 @@ export const profile = {
       tags: [
         { name: 'Python', icon: 'python' },
         { name: 'Telegram', icon: 'telegram' },
+        { name: 'API', icon: 'postman' },
         { name: 'Automation', icon: 'robotframework' }
       ]
     },
     {
       id: 4,
       name: 'API Gestión Usuarios Moodle',
-      description: 'API para administración de usuarios y matriculaciones en instancias de Moodle.',
+      description: 'API completa para la administración de usuarios y matriculaciones en instancias de Moodle.',
       github: 'https://github.com/hramses1/create-user-moodle-api',
       tags: [
-        { name: 'Backend', icon: 'nodedotjs' },
         { name: 'Node.js', icon: 'nodedotjs' },
-        { name: 'Moodle', icon: 'moodle' }
+        { name: 'Moodle', icon: 'moodle' },
+        { name: 'API', icon: 'postman' },
+        { name: 'CRUD', icon: 'express' }
       ]
     }
   ]
