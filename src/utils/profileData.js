@@ -103,6 +103,18 @@ export const profile = {
         'Manejo de Arquitectura de microservicios.'
       ],
       aptitudes: ['Microservicios', 'JavaScript', 'MySQL', 'Python', 'Análisis de datos', 'Selenium WebDriver', 'Bases de datos', 'Scrum', 'Selenium', 'PHP', 'Docker', 'Desarrollo de API', 'Arquitectura', 'Pruebas funcionales', 'Git', 'Calidad de software', 'Jest']
+    },
+    {
+      company: 'Freelancer',
+      role: 'Freelance Developer',
+      period: 'ago. 2022 - abr. 2024',
+      achievements: [
+        'Diseño y mantenimiento de sistemas con Flask y FastAPI.',
+        'Automatización de pruebas con pytest y Selenium.',
+        'Análisis de datos y generación de informes con Pandas y Matplotlib.',
+        'Gestión de bases de datos SQL Server, SQLite y MySQL.'
+      ],
+      aptitudes: ['Análisis de datos', 'Entorno laboral', 'Facilidad de adaptación', 'Trabajo en equipo', 'Relaciones interpersonales', 'Actitud positiva', 'Pruebas funcionales']
     }
   ],
 
