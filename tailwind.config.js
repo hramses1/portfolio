@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        'tech-bg': '#f8fafc',
+        'tech-bg': '#f1f5f9', // Gris suave (Slate 100)
         'tech-card': '#ffffff',
         'tech-primary': '#4f46e5', // Indigo
         'tech-success': '#10b981', // Emerald
