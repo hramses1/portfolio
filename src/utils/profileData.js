@@ -85,12 +85,34 @@ export const profile = {
   },
 
   softSkills: [
-    'Liderazgo de Equipos', 'Capacidad de Análisis', 'Resolución de Problemas',
+    'Liderazgo de Equipos', 'Capacidad de Análisis', 'Resolución de Problemas', 
     'Adaptación al Cambio', 'Trabajo en Equipo', 'Gestión de Proyectos'
   ],
 
-  recommendations: [
+  frontendBestPractices: [
     {
+      title: 'Código Limpio y Mantenible',
+      description: 'Aplicación de principios SOLID y patrones de diseño para asegurar que el frontend sea escalable y fácil de entender por otros desarrolladores.',
+      icon: 'code'
+    },
+    {
+      title: 'Desarrollo Orientado a Pruebas (TDD)',
+      description: 'Arquitectura de componentes diseñados para ser verificables mediante pruebas unitarias y de integración, garantizando la estabilidad del software.',
+      icon: 'check-circle'
+    },
+    {
+      title: 'Rendimiento y Optimización',
+      description: 'Optimización de tiempos de carga, lazy loading y manejo eficiente del estado global para ofrecer una experiencia de usuario ultra-rápida.',
+      icon: 'zap'
+    },
+    {
+      title: 'Accesibilidad y Responsive Design',
+      description: 'Interfaces inclusivas que cumplen con estándares WCAG y se adaptan perfectamente a cualquier dispositivo y resolución.',
+      icon: 'smartphone'
+    }
+  ],
+
+  recommendations: [    {
       name: 'Humberto Guiracocha Suarez',
       role: 'Web Developer Fullstack',
       relation: 'Trabajó con Hector en FUNIBER',
