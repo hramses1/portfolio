@@ -82,7 +82,9 @@ const scrollToSection = (id) => {
                       <h4 class="text-2xl md:text-3xl font-bold text-tech-text mt-4 leading-tight">{{ exp.role }}</h4>
                       <p class="text-tech-info font-mono text-xs uppercase tracking-widest mt-1 font-bold">{{ exp.company }}</p>
                     </div>
-                    <img v-if="exp.icon" :src="exp.icon" class="w-12 h-12 md:w-16 md:h-16 object-contain opacity-90 group-hover:opacity-100 transition-opacity" alt="" />
+                    <div class="shrink-0 ml-4">
+                      <img v-if="exp.icon" :src="exp.icon" class="w-12 h-12 md:w-16 md:h-16 object-contain bg-white rounded-2xl border border-slate-100 shadow-md p-2 opacity-100 transition-all duration-500 group-hover:shadow-lg group-hover:scale-105" alt="" />
+                    </div>
                   </div>
                 </div>
                 
