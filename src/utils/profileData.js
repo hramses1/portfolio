@@ -141,8 +141,20 @@ export const profile = {
         'Implementación de lógica de negocio, controladores y servicios en backend.',
         'Desarrollo y mantenimiento de APIs REST con Node.js, Nestjs y Express.',
         'Integración de servicios externos usando Axios.',
+        'Consultas y manipulación de datos con MySQL.',
+        'Diseño y modificación de esquemas de base de datos.',
         'Creación y ejecución de migrations y seeds con Sequelize.',
-        'Apoyo en despliegues usando Docker y GitLab CI CD.'
+        'Corrección de bugs y mejora continua del código existente.',
+        'Refactorización para mejorar rendimiento y mantenibilidad.',
+        'Implementación de validaciones y manejo de errores.',
+        'Escritura de pruebas unitarias y de integración.',
+        'Automatización de pruebas y soporte a QA.',
+        'Análisis de calidad de código con SonarQube.',
+        'Uso de Git y GitHub para control de versiones.',
+        'Trabajo bajo metodología Scrum, participación en dailies y sprint reviews.',
+        'Gestión de tareas en Asana.',
+        'Apoyo en despliegues usando Docker y GitLab CI CD.',
+        'Documentación técnica básica de endpoints y servicios.'
       ],
       aptitudes: ['Node.js', 'Administración de bases de datos', 'JavaScript', 'TypeScript', 'Microservicios']
     },
@@ -151,11 +163,18 @@ export const profile = {
       role: 'Software Quality Assurance Analyst - Automation Semi-Senior',
       period: 'nov. 2023 - abr. 2025',
       achievements: [
-        'Crear Plan de pruebas y testing y simular rendimiento.',
+        'Crear Plan de pruebas y testing.',
+        'Simular rendimiento del producto.',
+        'Mejora de estrategias de pruebas.',
+        'Asegurar que el software está listo para el público objetivo.',
         'Automatización de pruebas con Pytest, Selenium, Playwright, Jest y Unittest.',
-        'Desarrollo de scripts para plataforma Moodle.',
+        'Gestión de bases de datos SQL Server, SQLite, MySQL y MongoDB.',
+        'Mejora continua de prácticas de programación y calidad de código.',
+        'Revisar las especificaciones del producto para predecir futuros errores.',
+        'Desarrollo de script para la plataforma de Moodle.',
         'Automatización de APIs con Postman y Jmeter.',
-        'Manejo de Arquitectura de microservicios.'
+        'Manejo de Arquitectura de microservicios.',
+        'Construcción de tests unitarios y End-to-End.'
       ],
       aptitudes: ['Microservicios', 'JavaScript', 'MySQL', 'Python', 'Análisis de datos', 'Selenium WebDriver', 'Bases de datos', 'Scrum', 'Selenium', 'PHP', 'Docker', 'Desarrollo de API', 'Arquitectura', 'Pruebas funcionales', 'Git', 'Calidad de software', 'Jest']
     },
