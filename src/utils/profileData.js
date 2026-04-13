@@ -28,11 +28,21 @@ export const profile = {
 
   certifications: [
     { title: 'CI/CD en Gitlab vía FTP', issuer: 'Udemy', date: '2026', category: 'DevOps', icon: 'gitlab' },
-    { title: 'Liderazgo: Gerencia en Tecnología', issuer: 'Udemy', date: '2023', category: 'Liderazgo', icon: 'udemy' },
-    { title: 'Product Owner esencial', issuer: 'LinkedIn', date: '2024', category: 'Gestión', icon: 'linkedin' },
+    { title: 'Gestión Efectiva del Tiempo', issuer: 'Platzi', date: '2024', category: 'Soft Skills', icon: 'platzi' },
+    { title: 'Gestión de proyectos con M365', issuer: 'LinkedIn', date: '2024', category: 'Gestión', icon: 'linkedin' },
+    { title: 'Gestión de datos con M365', issuer: 'LinkedIn', date: '2024', category: 'Datos', icon: 'linkedin' },
+    { title: 'Aprende Data Science: Conceptos', issuer: 'LinkedIn', date: '2024', category: 'Datos', icon: 'linkedin' },
+    { title: 'Fundamentos análisis empresarial', issuer: 'LinkedIn', date: '2024', category: 'Negocio', icon: 'linkedin' },
     { title: 'Fundamentos de análisis empresarial', issuer: 'Microsoft', date: '2024', category: 'Negocio', icon: 'microsoft' },
-    { title: 'Python Beyond The Basics', issuer: 'Udemy', date: '2021', category: 'Desarrollo', icon: 'python' },
-    { title: 'Cloud Computing', issuer: 'Google', date: '2022', category: 'Cloud', icon: 'google' },
+    { title: 'Product Owner esencial', issuer: 'LinkedIn', date: '2024', category: 'Producto', icon: 'linkedin' },
+    { title: 'Liderazgo Proyectos Software', issuer: 'LinkedIn', date: '2023', category: 'Liderazgo', icon: 'linkedin' },
+    { title: 'Mastering Visual Studio Code', issuer: 'Udemy', date: '2023', category: 'Herramientas', icon: 'visualstudiocode' },
+    { title: 'Liderazgo: Gerencia en Tecnología', issuer: 'Udemy', date: '2023', category: 'Liderazgo', icon: 'udemy' },
+    { title: 'Cloud Computing', issuer: 'Google Actívate', date: '2022', category: 'Cloud', icon: 'google' },
+    { title: 'Python Programming Beyond Basics', issuer: 'Udemy', date: '2021', category: 'Desarrollo', icon: 'python' },
+    { title: 'Microsoft Excel Ultimate 2021', issuer: 'Udemy', date: '2021', category: 'Herramientas', icon: 'microsoftexcel' },
+    { title: 'Guide to Cyber Security', issuer: 'Udemy', date: '2021', category: 'Seguridad', icon: 'udemy' },
+    { title: 'SQL para Principiantes', issuer: 'Udemy', date: '2021', category: 'Bases de Datos', icon: 'mysql' },
     { title: 'Analista Junior GeneXus 17', issuer: 'GeneXus', date: '2021', category: 'Desarrollo', icon: 'genexus' }
   ],
 
@@ -133,7 +143,7 @@ export const profile = {
     },
     {
       id: 2,
-      name: 'Alertas de Rabbit para WhatsApp',
+      name: 'Rabbit Alerts WhatsApp',
       description: 'Sistema de monitoreo y alertas de RabbitMQ hacia WhatsApp.',
       github: 'https://github.com/hramses1/Rabbit-Alerts',
       tags: [
