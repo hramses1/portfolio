@@ -39,6 +39,7 @@ export const profile = {
 
   skills: {
     backend: [
+      { name: 'JavaScript', level: 90, icon: 'javascript' },
       { name: 'Node.js', level: 90, icon: 'nodedotjs' },
       { name: 'NestJS', level: 85, icon: 'nestjs' },
       { name: 'Express.js', level: 90, icon: 'express' },
