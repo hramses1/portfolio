@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 body {
-  @apply bg-system-bg font-sans selection:bg-system-infra/30;
+  @apply bg-tech-bg text-tech-text font-sans selection:bg-tech-primary/20;
   margin: 0;
   overflow-x: hidden;
 }
@@ -16,24 +16,24 @@ code, pre {
   @apply font-mono;
 }
 
-/* Custom Scrollbar */
+/* Custom Scrollbar Modern Light */
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-black;
+  @apply bg-transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-white/10 rounded-full hover:bg-system-infra/50 transition-colors;
+  @apply bg-slate-300 rounded-full hover:bg-tech-primary/40 transition-colors;
 }
 
-/* System Scan Animation */
+/* System Scan Animation - Soft version */
 @keyframes scan {
   0% { transform: translateY(-100%); opacity: 0; }
-  50% { opacity: 0.5; }
+  50% { opacity: 0.3; }
   100% { transform: translateY(1000%); opacity: 0; }
 }
 
@@ -42,17 +42,17 @@ code, pre {
   top: 0;
   left: 0;
   width: 100%;
-  height: 2px;
-  background: linear-gradient(to right, transparent, theme('colors.system-infra'), transparent);
+  height: 1px;
+  background: linear-gradient(to right, transparent, theme('colors.tech-primary'), transparent);
   z-index: 100;
   pointer-events: none;
-  animation: scan 8s linear infinite;
+  animation: scan 10s linear infinite;
 }
 
-/* Transitions */
+/* Page Transitions */
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.3s ease;
+  transition: opacity 0.4s ease;
 }
 
 .fade-enter-from,

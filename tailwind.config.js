@@ -7,13 +7,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        'system-bg': '#0a0a0a',
-        'system-success': '#a7f3d0',
-        'system-error': '#fecaca',
-        'system-info': '#bfdbfe',
-        'system-infra': '#ddd6fe',
-        'pastel-violet': '#c4b5fd',
-        'pastel-mint': '#6ee7b7',
+        'tech-bg': '#f8fafc',
+        'tech-card': '#ffffff',
+        'tech-primary': '#4f46e5', // Indigo
+        'tech-success': '#10b981', // Emerald
+        'tech-info': '#3b82f6',    // Blue
+        'tech-infra': '#8b5cf6',   // Violet
+        'tech-text': '#1e293b',
+        'tech-text-muted': '#64748b',
       },
       fontFamily: {
         'mono': ['"JetBrains Mono"', 'monospace'],
