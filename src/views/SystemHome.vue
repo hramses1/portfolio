@@ -44,7 +44,7 @@ const scrollToSection = (id) => {
           </button>
           <div class="flex items-center gap-4 px-6 py-4 sm:py-0 border border-slate-200 bg-white rounded-full w-full sm:w-auto justify-center shadow-sm">
             <span class="w-2 h-2 rounded-full bg-tech-success animate-pulse"></span>
-            <span class="text-[9px] md:text-[10px] font-mono text-slate-500 tracking-widest uppercase text-center font-bold">Recibiendo_Nuevos_Sprints</span>
+            <span class="text-[9px] md:text-[10px] font-mono text-slate-500 tracking-widest uppercase text-center font-bold">Disponible_para_proyectos</span>
           </div>
         </div>
       </div>
@@ -62,7 +62,7 @@ const scrollToSection = (id) => {
             </p>
           </div>
           <div class="lg:w-2/3 space-y-16 md:space-y-24">
-            <div v-for="exp in profile.experience" :key="exp.company" class="relative group">
+            <div v-for="exp in profile.experience" :key="exp.period" class="relative group">
               <div class="absolute -left-4 md:-left-12 -top-4 md:top-0 text-6xl md:text-[80px] font-black text-slate-300/30 select-none pointer-events-none group-hover:text-tech-primary/5 transition-colors">
                 {{ exp.period.split(' ')[0] }}
               </div>
@@ -72,12 +72,21 @@ const scrollToSection = (id) => {
                   <h4 class="text-2xl md:text-3xl font-bold text-tech-text mt-4 leading-tight">{{ exp.role }}</h4>
                   <p class="text-tech-info font-mono text-xs uppercase tracking-widest mt-1 font-bold">{{ exp.company }}</p>
                 </div>
-                <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 ml-6">
+                
+                <!-- Achievements -->
+                <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 ml-6 mb-8">
                   <li v-for="ach in exp.achievements" :key="ach" class="text-[13px] md:text-sm text-slate-600 flex gap-3 p-4 bg-white border border-slate-100 rounded-xl group-hover:shadow-md transition-all shadow-sm font-medium">
                     <span class="text-tech-primary font-mono shrink-0">>></span>
                     <span>{{ ach }}</span>
                   </li>
                 </ul>
+
+                <!-- Aptitudes vinculadas -->
+                <div class="ml-6 flex flex-wrap gap-2">
+                  <span v-for="apt in exp.aptitudes" :key="apt" class="px-3 py-1 bg-slate-100/50 border border-slate-200 rounded text-[9px] font-mono text-slate-500 uppercase font-bold tracking-tighter">
+                    {{ apt }}
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -89,7 +98,7 @@ const scrollToSection = (id) => {
     <section id="projects" class="min-h-screen py-20 md:py-32 px-6 md:px-12 lg:px-24 bg-tech-bg">
       <div class="max-w-7xl mx-auto">
         <h3 class="text-xs font-mono text-tech-primary tracking-[0.4em] uppercase mb-12 md:mb-16 text-center font-bold">03_PORTAFOLIO_DE_PROYECTOS</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
           <div v-for="project in profile.projects" :key="project.id" 
                class="group p-6 md:p-8 border border-slate-200 bg-white rounded-3xl hover:border-tech-primary/30 transition-all duration-500 flex flex-col justify-between h-full relative overflow-hidden shadow-sm hover:shadow-xl">
             <div class="absolute -right-4 -top-4 text-6xl md:text-8xl font-black text-slate-100 group-hover:text-slate-200 transition-colors pointer-events-none select-none">
@@ -122,7 +131,7 @@ const scrollToSection = (id) => {
         <h3 class="text-xs font-mono text-tech-primary tracking-[0.4em] uppercase mb-12 md:mb-16 text-center font-bold">04_STACK_TÉCNICO_SENIOR</h3>
         
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
-          <!-- Backend & Frontend -->
+          <!-- Desarrollo Core -->
           <div class="p-6 md:p-8 border border-slate-200 bg-white rounded-3xl relative overflow-hidden group shadow-sm">
             <h4 class="text-xl md:text-2xl font-bold text-tech-text mb-8 flex items-center gap-4">
               <span class="w-8 h-8 rounded-lg bg-tech-info/10 flex items-center justify-center text-tech-info text-sm">λ</span>
@@ -130,18 +139,9 @@ const scrollToSection = (id) => {
             </h4>
             <div class="space-y-8">
               <div>
-                <p class="text-[9px] font-mono text-slate-400 mb-4 tracking-widest uppercase font-bold">Backend</p>
+                <p class="text-[9px] font-mono text-slate-400 mb-4 tracking-widest uppercase font-bold">Backend & Frontend</p>
                 <div class="flex flex-wrap gap-3">
-                  <div v-for="s in profile.skills.backend" :key="s.name" class="px-3 py-1.5 bg-slate-50 border border-slate-100 rounded-full text-[10px] font-mono text-slate-600 flex items-center gap-2 group/skill hover:shadow-sm transition-all">
-                    <img v-if="s.icon" :src="`https://cdn.simpleicons.org/${s.icon}`" class="w-3.5 h-3.5" alt="" />
-                    {{ s.name }}
-                  </div>
-                </div>
-              </div>
-              <div>
-                <p class="text-[9px] font-mono text-slate-400 mb-4 tracking-widest uppercase font-bold">Frontend</p>
-                <div class="flex flex-wrap gap-3">
-                  <div v-for="s in profile.skills.frontend" :key="s.name" class="px-3 py-1.5 bg-slate-50 border border-slate-100 rounded-full text-[10px] font-mono text-slate-600 flex items-center gap-2">
+                  <div v-for="s in [...profile.skills.backend, ...profile.skills.frontend]" :key="s.name" class="px-3 py-1.5 bg-slate-50 border border-slate-100 rounded-full text-[10px] font-mono text-slate-600 flex items-center gap-2 group/skill hover:shadow-sm transition-all">
                     <img v-if="s.icon" :src="`https://cdn.simpleicons.org/${s.icon}`" class="w-3.5 h-3.5" alt="" />
                     {{ s.name }}
                   </div>
@@ -182,14 +182,14 @@ const scrollToSection = (id) => {
                   <div v-for="s in profile.skills.databases" :key="s.name" class="flex items-center gap-2 bg-slate-50 px-2 py-1 rounded border border-slate-100 shadow-sm">
                     <img v-if="s.icon === 'microsoftsqlserver'" src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/microsoftsqlserver.svg" class="w-3.5 h-3.5" alt="" />
                     <img v-else-if="s.icon" :src="`https://cdn.simpleicons.org/${s.icon}`" class="w-3.5 h-3.5" alt="" />
-                    <span class="text-[10px] font-mono text-slate-500">/ {{ s.name }}</span>
+                    <span class="text-[10px] font-mono text-slate-500 font-bold">/ {{ s.name }}</span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Data Science & DevOps -->
+          <!-- DevOps & Soft Skills -->
           <div class="p-6 md:p-8 border border-slate-200 bg-white rounded-3xl relative overflow-hidden group sm:col-span-2 lg:col-span-1 shadow-sm">
             <h4 class="text-xl md:text-2xl font-bold text-tech-text mb-8 flex items-center gap-4">
               <span class="w-8 h-8 rounded-lg bg-tech-infra/10 flex items-center justify-center text-tech-infra text-sm">⌬</span>
@@ -197,28 +197,18 @@ const scrollToSection = (id) => {
             </h4>
             <div class="space-y-8">
               <div>
-                <p class="text-[9px] font-mono text-slate-400 mb-4 tracking-widest uppercase font-bold">Data Science & IA</p>
-                <div class="flex flex-wrap gap-3">
-                  <div v-for="s in profile.skills.dataIA" :key="s.name" class="flex items-center gap-2 bg-tech-info/5 px-2 py-1 rounded border border-tech-info/10">
-                    <img v-if="s.icon" :src="`https://cdn.simpleicons.org/${s.icon}`" class="w-3.5 h-3.5" alt="" />
-                    <span class="text-[10px] font-mono text-tech-info font-bold">{{ s.name }}</span>
-                  </div>
-                </div>
-              </div>
-              <div>
                 <p class="text-[9px] font-mono text-slate-400 mb-4 tracking-widest uppercase font-bold">DevOps & Infra</p>
                 <div class="flex flex-wrap gap-3">
-                  <div v-for="s in profile.skills.devops" :key="s.name" class="px-3 py-1 bg-tech-infra/5 border border-tech-infra/10 rounded text-[9px] font-mono text-tech-infra uppercase flex items-center gap-2 font-bold shadow-sm">
+                  <div v-for="s in profile.skills.devops" :key="s.name" class="px-3 py-1 bg-white border border-slate-100 rounded text-[9px] font-mono text-tech-infra uppercase flex items-center gap-2 font-bold shadow-sm">
                     <img v-if="s.icon" :src="`https://cdn.simpleicons.org/${s.icon}`" class="w-3.5 h-3.5" alt="" />
                     {{ s.name }}
                   </div>
                 </div>
               </div>
-              <!-- Soft Skills -->
               <div>
                 <p class="text-[9px] font-mono text-slate-400 mb-4 tracking-widest uppercase font-bold">Aptitudes Interpersonales</p>
                 <div class="flex flex-wrap gap-2">
-                  <span v-for="skill in profile.softSkills" :key="skill" class="text-[9px] font-mono text-slate-500 bg-white px-2 py-1 rounded border border-slate-100 uppercase tracking-tighter">
+                  <span v-for="skill in profile.softSkills" :key="skill" class="text-[9px] font-mono text-slate-500 bg-slate-50 px-2 py-1 rounded border border-slate-100 uppercase tracking-tighter font-bold shadow-sm">
                     {{ skill }}
                   </span>
                 </div>
