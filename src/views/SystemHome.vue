@@ -17,10 +17,16 @@ const certsLimit = 8
 const filteredExperience = computed(() => {
   if (store.activeRole === 'all') return profile.experience
   if (store.activeRole === 'dev') {
-    return profile.experience.filter(exp => exp.role.toLowerCase().includes('developer'))
+    return profile.experience.filter(exp => 
+      exp.role.toLowerCase().includes('developer') || 
+      exp.company.toLowerCase().includes('freelance')
+    )
   }
   if (store.activeRole === 'qa') {
-    return profile.experience.filter(exp => exp.role.toLowerCase().includes('assurance') || exp.role.toLowerCase().includes('automation'))
+    return profile.experience.filter(exp => 
+      exp.role.toLowerCase().includes('assurance') || 
+      exp.role.toLowerCase().includes('automation')
+    )
   }
   return profile.experience
 })
@@ -42,26 +48,9 @@ const heroContent = computed(() => {
     }
   }
   return {
-    title: profile.identity.title,
-    description: profile.identity.description
+    title: 'Software Developer | QA Automation Engineer',
+    description: 'Ingeniero de Software especializado en soluciones backend escalables y aseguramiento de calidad mediante automatización robusta.'
   }
-})
-
-const showAllCerts = ref(false)
- * Filtered Skill Categories based on active role.
- */
-const visibleSkillCategories = computed(() => {
-  const cats = [
-    { id: 'core', title: 'Desarrollo Core', icon: 'λ', color: 'info' },
-    { id: 'qa', title: 'QA & Persistencia', icon: '✓', color: 'success' },
-    { id: 'special', title: 'Especialidades', icon: '⌬', color: 'infra' }
-  ]
-  
-  if (store.activeRole === 'all') return cats
-  if (store.activeRole === 'dev') return cats.filter(c => c.id !== 'qa' || true) // Dev needs almost all but maybe focus
-  if (store.activeRole === 'qa') return cats.filter(c => c.id !== 'core')
-  
-  return cats
 })
 
 const visibleCertifications = computed(() => {
@@ -97,9 +86,13 @@ const scrollToSection = (id) => {
             {{ profile.identity.lastName }}
           </span>
         </h1>
-        <p class="text-base md:text-xl lg:text-2xl font-mono text-slate-500 max-w-2xl leading-relaxed mb-8 md:mb-12">
-          {{ profile.identity.title }}. <span class="text-tech-text font-bold">Garantizando calidad, escalabilidad y robustez</span> en cada despliegue.
-        </p>
+        
+        <Transition name="fade" mode="out-in">
+          <p :key="store.activeRole" class="text-base md:text-xl lg:text-2xl font-mono text-slate-500 max-w-2xl leading-relaxed mb-8 md:mb-12">
+            <span class="text-tech-text font-bold">{{ heroContent.title }}</span>. {{ heroContent.description }}
+          </p>
+        </Transition>
+
         <div class="flex flex-col sm:flex-row gap-4 md:gap-6">
           <button @click="scrollToSection('experience')" 
                   class="px-8 py-4 bg-tech-primary text-white font-mono text-xs tracking-widest hover:bg-tech-text transition-all duration-500 shadow-lg shadow-tech-primary/20 uppercase w-full sm:w-auto font-bold">
@@ -120,45 +113,47 @@ const scrollToSection = (id) => {
           <div class="lg:w-1/3">
             <h3 class="text-xs font-mono text-tech-primary tracking-[0.4em] uppercase mb-6 md:mb-8 font-bold">02_LA_TRAYECTORIA</h3>
             <h2 class="text-3xl md:text-5xl font-bold text-tech-text tracking-tighter leading-tight mb-6 md:mb-8">Experiencia en Desarrollo y Calidad.</h2>
-            <p class="text-slate-500 leading-relaxed font-mono text-sm font-medium">
+            <p class="text-slate-500 leading-relaxed font-mono text-sm font-medium text-left">
               Cada rol ha sido una oportunidad para perfeccionar estrategias de calidad y construir sistemas escalables que soporten el crecimiento del negocio.
             </p>
           </div>
-          <div class="lg:w-2/3 space-y-16 md:space-y-24">
-            <div v-for="exp in profile.experience" :key="exp.period" class="relative group">
-              <div class="absolute -left-4 md:-left-12 -top-4 md:top-0 text-6xl md:text-[80px] font-black text-slate-300/30 select-none pointer-events-none group-hover:text-tech-primary/5 transition-colors">
-                {{ exp.period.split(' ')[0] }}
-              </div>
-              <div class="relative pl-0 border-l-2 border-slate-200 group-hover:border-tech-primary transition-all duration-700">
-                <div class="mb-6 ml-6">
-                  <div class="flex justify-between items-start">
-                    <div class="flex flex-col">
-                      <span class="text-[9px] md:text-[10px] font-mono text-tech-success tracking-widest font-bold uppercase bg-tech-success/10 px-2 py-1 rounded w-fit">{{ exp.period }}</span>
-                      <h4 class="text-2xl md:text-3xl font-bold text-tech-text mt-4 leading-tight">{{ exp.role }}</h4>
-                      <p class="text-tech-info font-mono text-xs uppercase tracking-widest mt-1 font-bold">{{ exp.company }}</p>
-                    </div>
-                    <div class="shrink-0 ml-4">
-                      <img v-if="exp.icon" :src="exp.icon" class="w-12 h-12 md:w-16 md:h-16 object-contain bg-white rounded-2xl border border-slate-100 shadow-md p-2 opacity-100 transition-all duration-500 group-hover:shadow-lg group-hover:scale-105" alt="" />
+          <div class="lg:w-2/3">
+            <TransitionGroup name="fade" tag="div" class="space-y-16 md:space-y-24">
+              <div v-for="exp in filteredExperience" :key="exp.period" class="relative group">
+                <div class="absolute -left-4 md:-left-12 -top-4 md:top-0 text-6xl md:text-[80px] font-black text-slate-300/30 select-none pointer-events-none group-hover:text-tech-primary/5 transition-colors">
+                  {{ exp.period.split(' ')[0] }}
+                </div>
+                <div class="relative pl-0 border-l-2 border-slate-200 group-hover:border-tech-primary transition-all duration-700">
+                  <div class="mb-6 ml-6">
+                    <div class="flex justify-between items-start gap-4">
+                      <div class="flex flex-col text-left">
+                        <span class="text-[9px] md:text-[10px] font-mono text-tech-success tracking-widest font-bold uppercase bg-tech-success/10 px-2 py-1 rounded w-fit">{{ exp.period }}</span>
+                        <h4 class="text-2xl md:text-3xl font-bold text-tech-text mt-4 leading-tight">{{ exp.role }}</h4>
+                        <p class="text-tech-info font-mono text-xs uppercase tracking-widest mt-1 font-bold">{{ exp.company }}</p>
+                      </div>
+                      <div class="shrink-0">
+                        <img v-if="exp.icon" :src="exp.icon" class="w-12 h-12 md:w-16 md:h-16 object-contain bg-white rounded-2xl border border-slate-100 shadow-md p-2 opacity-100 transition-all duration-500 group-hover:shadow-lg group-hover:scale-105" alt="" />
+                      </div>
                     </div>
                   </div>
-                </div>
-                
-                <!-- Achievements -->
-                <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 ml-6 mb-8">
-                  <li v-for="ach in exp.achievements" :key="ach" class="text-[13px] md:text-sm text-slate-600 flex gap-3 p-4 bg-white border border-slate-100 rounded-xl group-hover:shadow-md transition-all shadow-sm font-medium text-left">
-                    <span class="text-tech-primary font-mono shrink-0">>></span>
-                    <span>{{ ach }}</span>
-                  </li>
-                </ul>
+                  
+                  <!-- Achievements -->
+                  <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 ml-6 mb-8">
+                    <li v-for="ach in exp.achievements" :key="ach" class="text-[13px] md:text-sm text-slate-600 flex gap-3 p-4 bg-white border border-slate-100 rounded-xl group-hover:shadow-md transition-all shadow-sm font-medium text-left">
+                      <span class="text-tech-primary font-mono shrink-0">>></span>
+                      <span>{{ ach }}</span>
+                    </li>
+                  </ul>
 
-                <!-- Aptitudes vinculadas -->
-                <div class="ml-6 flex flex-wrap gap-2">
-                  <span v-for="apt in exp.aptitudes" :key="apt" class="px-3 py-1 bg-slate-100/50 border border-slate-200 rounded text-[9px] font-mono text-slate-500 uppercase font-bold tracking-tighter shadow-sm">
-                    {{ apt }}
-                  </span>
+                  <!-- Aptitudes vinculadas -->
+                  <div class="ml-6 flex flex-wrap gap-2">
+                    <span v-for="apt in exp.aptitudes" :key="apt" class="px-3 py-1 bg-slate-100/50 border border-slate-200 rounded text-[9px] font-mono text-slate-500 uppercase font-bold tracking-tighter shadow-sm">
+                      {{ apt }}
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
+            </TransitionGroup>
           </div>
         </div>
       </div>
@@ -200,18 +195,20 @@ const scrollToSection = (id) => {
       <div class="max-w-7xl mx-auto">
         <h3 class="text-xs font-mono text-tech-primary tracking-[0.4em] uppercase mb-12 md:mb-16 text-center font-bold">04_STACK_TÉCNICO</h3>
         
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
-          <!-- Desarrollo Core -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 text-left">
+          <!-- Desarrollo Core / Lenguajes -->
           <div class="p-6 md:p-8 border border-slate-200 bg-white rounded-3xl relative overflow-hidden group shadow-sm">
-            <h4 class="text-xl md:text-2xl font-bold text-tech-text mb-8 flex items-center gap-4">
-              <span class="w-8 h-8 rounded-lg bg-tech-info/10 flex items-center justify-center text-tech-info text-sm">λ</span>
-              Desarrollo Core
-            </h4>
+            <Transition name="fade" mode="out-in">
+              <h4 :key="store.activeRole" class="text-xl md:text-2xl font-bold text-tech-text mb-8 flex items-center gap-4">
+                <span class="w-8 h-8 rounded-lg bg-tech-info/10 flex items-center justify-center text-tech-info text-sm">λ</span>
+                {{ store.activeRole === 'qa' ? 'Lenguajes de Programación' : 'Desarrollo Core' }}
+              </h4>
+            </Transition>
             <div class="space-y-8">
               <div>
-                <p class="text-[9px] font-mono text-slate-400 mb-4 tracking-widest uppercase font-bold text-left">Backend & Frontend</p>
+                <p class="text-[9px] font-mono text-slate-400 mb-4 tracking-widest uppercase font-bold text-left">Stack Principal</p>
                 <div class="flex flex-wrap gap-3">
-                  <div v-for="s in [...profile.skills.backend, ...profile.skills.frontend]" :key="s.name" class="px-3 py-1.5 bg-slate-50 border border-slate-100 rounded-full text-[10px] font-mono text-slate-600 flex items-center gap-2 group/skill hover:shadow-sm transition-all">
+                  <div v-for="s in (store.activeRole === 'qa' ? profile.skills.backend.filter(s => ['JavaScript', 'Node.js', 'TypeScript', 'Python'].includes(s.name)) : [...profile.skills.backend, ...profile.skills.frontend])" :key="s.name" class="px-3 py-1.5 bg-slate-50 border border-slate-100 rounded-full text-[10px] font-mono text-slate-600 flex items-center gap-2 group/skill hover:shadow-sm transition-all">
                     <img v-if="s.icon" :src="`https://cdn.simpleicons.org/${s.icon}`" class="w-3.5 h-3.5" alt="" />
                     {{ s.name }}
                   </div>
@@ -291,7 +288,7 @@ const scrollToSection = (id) => {
 
     <!-- SECCIÓN 05: ACADEMIA -->
     <section id="education" class="min-h-screen py-20 md:py-32 px-6 md:px-12 lg:px-24 bg-tech-bg">
-      <div class="max-w-7xl mx-auto flex flex-col items-center">
+      <div class="max-w-7xl mx-auto flex flex-col items-center text-left">
         <h3 class="text-xs font-mono text-tech-primary tracking-[0.4em] uppercase mb-12 md:mb-16 font-bold">05_FORMACIÓN_ACADÉMICA</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 w-full mb-16 md:mb-24">
           <div v-for="edu in profile.education" :key="edu.institution" 
@@ -304,8 +301,8 @@ const scrollToSection = (id) => {
                 <div class="text-[10px] font-mono text-tech-success font-bold uppercase">{{ edu.period }}</div>
                 <img v-if="edu.icon" :src="edu.icon" class="w-16 h-16 object-contain opacity-100 group-hover:scale-110 transition-all duration-500" alt="" />
               </div>
-              <h4 class="text-2xl md:text-3xl font-bold text-tech-text mb-4 group-hover:translate-x-2 transition-transform leading-tight">{{ edu.degree }}</h4>
-              <p class="text-slate-500 font-mono text-xs md:text-sm uppercase tracking-widest font-bold">{{ edu.institution }}</p>
+              <h4 class="text-2xl md:text-3xl font-bold text-tech-text mb-4 group-hover:translate-x-2 transition-transform leading-tight text-left">{{ edu.degree }}</h4>
+              <p class="text-slate-500 font-mono text-xs md:text-sm uppercase tracking-widest font-bold text-left">{{ edu.institution }}</p>
             </div>
           </div>
         </div>
@@ -316,14 +313,14 @@ const scrollToSection = (id) => {
           <div v-for="cert in visibleCertifications" :key="cert.title" 
                class="p-6 border border-slate-100 bg-white rounded-2xl hover:shadow-lg transition-all group flex flex-col justify-between h-full text-left shadow-sm animate-in fade-in zoom-in duration-500">
             <div>
-              <div class="flex justify-between items-start mb-4">
+              <div class="flex justify-between items-start mb-4 text-left">
                 <div class="text-[8px] font-mono text-tech-infra uppercase tracking-tighter font-bold bg-tech-infra/10 px-2 py-0.5 rounded">{{ cert.category }}</div>
                 <img v-if="cert.icon === 'linkedin'" src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/linkedin.svg" class="w-5 h-5 opacity-80" alt="LinkedIn" />
                 <img v-else-if="cert.icon === 'microsoft'" src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/microsoft.svg" class="w-5 h-5 opacity-80" alt="Microsoft" />
-                <img v-else-if="cert.icon && cert.icon.endsWith('.ico')" :src="`./${cert.icon}`" class="w-5 h-5 opacity-80" alt="" />
+                <img v-else-if="cert.icon && cert.icon.endsWith('.ico')" :src="cert.icon" class="w-6 h-6 object-contain bg-white rounded-lg border border-slate-50 shadow-sm p-1 opacity-100" alt="" />
                 <img v-else-if="cert.icon" :src="`https://cdn.simpleicons.org/${cert.icon}`" class="w-5 h-5 opacity-80" alt="" />
               </div>
-              <h5 class="text-[13px] md:text-sm font-bold text-tech-text mb-2 leading-tight group-hover:text-tech-primary transition-colors font-bold">{{ cert.title }}</h5>
+              <h5 class="text-[13px] md:text-sm font-bold text-tech-text mb-2 leading-tight group-hover:text-tech-primary transition-colors font-bold text-left">{{ cert.title }}</h5>
             </div>
             <div class="flex justify-between items-center mt-6 border-t border-slate-50 pt-4">
               <span class="text-[9px] font-mono text-slate-400 uppercase font-bold">{{ cert.issuer }}</span>
@@ -350,7 +347,6 @@ const scrollToSection = (id) => {
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
           <div v-for="rec in profile.recommendations" :key="rec.name" 
                class="p-8 border border-slate-200 bg-white rounded-3xl hover:shadow-xl transition-all duration-500 flex flex-col justify-between group relative overflow-hidden shadow-sm">
-            <!-- Quote Decoration -->
             <div class="absolute -top-2 -left-2 text-8xl font-serif text-slate-100 group-hover:text-tech-primary/10 transition-colors select-none">"</div>
             
             <div class="relative z-10">
@@ -364,8 +360,8 @@ const scrollToSection = (id) => {
                 <img v-if="rec.avatar" :src="rec.avatar" class="w-12 h-12 rounded-full object-cover border-2 border-slate-100 shadow-sm" alt="" />
                 <div class="flex flex-col text-left">
                   <h4 class="text-sm font-bold text-tech-text group-hover:text-tech-primary transition-colors leading-tight">{{ rec.name }}</h4>
-                  <p class="text-[10px] text-slate-400 font-medium mt-1 leading-tight">{{ rec.role }}</p>
-                  <p class="text-[9px] text-tech-info font-bold mt-1 uppercase tracking-tighter">{{ rec.relation }}</p>
+                  <p class="text-[10px] text-slate-400 font-medium mt-1 leading-tight text-left">{{ rec.role }}</p>
+                  <p class="text-[9px] text-tech-info font-bold mt-1 uppercase tracking-tighter text-left">{{ rec.relation }}</p>
                 </div>
               </div>
               <a :href="rec.linkedin" target="_blank" class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center hover:bg-tech-info/10 transition-colors group/ln shrink-0 ml-4">
@@ -382,9 +378,9 @@ const scrollToSection = (id) => {
       <div class="max-w-7xl mx-auto w-full relative z-10">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div>
-            <h3 class="text-xs font-mono text-tech-info tracking-[0.4em] uppercase mb-6 md:mb-8 font-bold">06_PUERTA_DE_ENLACE</h3>
+            <h3 class="text-xs font-mono text-tech-info tracking-[0.4em] uppercase mb-6 md:mb-8 font-bold">07_PUERTA_DE_ENLACE</h3>
             <h2 class="text-4xl md:text-6xl font-black text-white tracking-tighter leading-none mb-8">¿Listo para el siguiente sprint?</h2>
-            <p class="text-lg font-mono text-slate-400 leading-relaxed mb-8">
+            <p class="text-lg font-mono text-slate-400 leading-relaxed mb-8 text-left">
               Disponible para nuevos desafíos en <span class="text-tech-info font-bold underline decoration-tech-info/30 underline-offset-4 uppercase">Desarrollo Backend</span> y <span class="text-tech-success font-bold underline decoration-tech-success/30 underline-offset-4 uppercase">QA Automation</span>.
             </p>
             <div class="flex items-center gap-6">
@@ -396,30 +392,27 @@ const scrollToSection = (id) => {
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
-            <!-- LinkedIn -->
             <a :href="profile.identity.linkedin" target="_blank" class="p-6 border border-white/10 bg-white/5 rounded-3xl hover:bg-white/10 transition-all group flex flex-col gap-4 text-left shadow-2xl">
               <img src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/linkedin.svg" class="w-6 h-6 invert opacity-80" alt="LinkedIn" />
               <div class="mt-4">
                 <h4 class="text-lg font-bold text-white mb-1">LinkedIn</h4>
-                <p class="text-[9px] font-mono text-slate-400 uppercase tracking-tighter group-hover:text-tech-info transition-colors font-bold">Red_Profesional</p>
+                <p class="text-[9px] font-mono text-slate-400 uppercase tracking-tighter group-hover:text-tech-info transition-colors font-bold text-left">Red_Profesional</p>
               </div>
             </a>
 
-            <!-- WhatsApp -->
             <a :href="`https://wa.me/${profile.identity.phone.replace(/[^0-9]/g, '')}`" target="_blank" class="p-6 border border-white/10 bg-white/5 rounded-3xl hover:bg-white/10 transition-all group flex flex-col gap-4 text-left shadow-2xl">
               <img src="https://cdn.simpleicons.org/whatsapp" class="w-6 h-6 opacity-80" alt="WhatsApp" />
               <div class="mt-4">
-                <h4 class="text-lg font-bold text-white mb-1">WhatsApp</h4>
-                <p class="text-[9px] font-mono text-slate-400 uppercase tracking-tighter group-hover:text-tech-success transition-colors font-bold">Línea_Directa</p>
+                <h4 class="text-lg font-bold text-white mb-1 text-left">WhatsApp</h4>
+                <p class="text-[9px] font-mono text-slate-400 uppercase tracking-tighter group-hover:text-tech-success transition-colors font-bold text-left">Línea_Directa</p>
               </div>
             </a>
 
-            <!-- Email -->
             <a :href="`mailto:${profile.identity.email}`" class="p-6 border border-white/10 bg-white/5 rounded-3xl hover:bg-white/10 transition-all group flex flex-col gap-4 text-left shadow-2xl">
               <img src="https://cdn.simpleicons.org/gmail" class="w-6 h-6 opacity-80" alt="Email" />
               <div class="mt-4">
-                <h4 class="text-lg font-bold text-white mb-1">Email</h4>
-                <p class="text-[9px] font-mono text-slate-400 uppercase tracking-tighter group-hover:text-tech-info transition-colors font-bold">Transmisión</p>
+                <h4 class="text-lg font-bold text-white mb-1 text-left">Email</h4>
+                <p class="text-[9px] font-mono text-slate-400 uppercase tracking-tighter group-hover:text-tech-info transition-colors font-bold text-left">Transmisión</p>
               </div>
             </a>
           </div>
@@ -433,13 +426,7 @@ const scrollToSection = (id) => {
   </div>
 </template>
 
-<style scoped>
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
-}
-.node-float {
-  animation: float 4s ease-in-out infinite;
-}
+<style>
+.fade-enter-active, .fade-leave-active { transition: opacity 0.5s ease; }
+.fade-enter-from, .fade-leave-to { opacity: 0; }
 </style>
