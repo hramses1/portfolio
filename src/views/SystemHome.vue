@@ -3,7 +3,15 @@
  * SystemHome - Modern Clean Tech Landing Page.
  * Showcases Hector Arismendi's profile with a soft, professional aesthetic.
  */
+import { ref, computed } from 'vue'
 import { profile } from '../utils/profileData.js'
+
+const showAllCerts = ref(false)
+const certsLimit = 8
+
+const visibleCertifications = computed(() => {
+  return showAllCerts.value ? profile.certifications : profile.certifications.slice(0, certsLimit)
+})
 
 const getLevelStyle = (level) => ({ width: `${level}%` })
 
