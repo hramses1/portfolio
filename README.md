@@ -1,67 +1,42 @@
-# 🛰️ System Monitor | Professional Portfolio
+# 🛰️ Portafolio Profesional | Hector Arismendi
 
-Un porfolio interactivo e innovador diseñado para perfiles de **SDET, QA Automation Engineer y Backend Developer**. Simula un panel de monitoreo de sistemas (System Monitor) para exponer habilidades técnicas, experiencia y proyectos mediante una interfaz altamente técnica y funcional.
+Un porfolio interactivo, moderno e innovador diseñado para perfiles de **Software Developer** y **QA Analyst & Automation Engineer**. El sitio ofrece una experiencia personalizada mediante un selector de roles dinámico que adapta el contenido al perfil técnico que el visitante desee explorar.
 
-## 🚀 Concepto Visual
-- **Tema:** Modern Dark con acentos pastel.
-- **Interactividad:** Mapa de nodos dinámico que conecta las diferentes áreas de especialidad.
-- **Simulaciones en Tiempo Real:** 
-  - **QA Runner:** Simulación de ejecución de suites de pruebas automatizadas.
-  - **Backend Logs:** Terminal interactiva que muestra experiencia y formación como logs de servidor.
-  - **Repository Monitor:** Galería de proyectos vinculada directamente a GitHub.
+## 🚀 Características Clave
+- **Selector de Roles Dinámico:** Cambia entre los perfiles de Desarrollador, QA Automation o Vista Unificada. El contenido (Hero, Trayectoria, Skills) se adapta y filtra automáticamente con transiciones suaves.
+- **Cálculo Automático de Experiencia:** Visualización del tiempo exacto trabajado en cada posición (ej. "1 año y 6 meses").
+- **Sección de Proyectos:** Galería técnica con etiquetas enriquecidas e iconografía de marca para cada tecnología utilizada.
+- **Testimonios de LinkedIn:** Sección de recomendaciones validadas con fotos de perfil y enlaces directos a los recomendadores.
+- **Diseño "Clean Tech":** Estética profesional en modo claro suavizado, optimizada para legibilidad y alto impacto visual.
+- **Totalmente Responsive:** Navegación optimizada para móviles (barra inferior tipo App) y escritorio (menú lateral interactivo).
 
 ## 🛠️ Stack Tecnológico
-- **Framework:** Vue 3 (Composition API) con JavaScript.
-- **Arquitectura:** Modular y escalable (Layouts, Components, Stores, Utils, Composables).
-- **Tipado:** Documentación y tipado profesional mediante **JSDoc**.
-- **Estilos:** Tailwind CSS con una paleta personalizada "Modern Dark".
-- **Estado Global:** Pinia para la gestión de métricas del sistema.
-- **Testing:** Vitest para pruebas unitarias de componentes y utilidades.
-- **Herramientas de Build:** Vite para un desarrollo ultra-rápido.
+- **Frontend:** Vue 3 (Composition API) con JavaScript.
+- **Estado Global:** Pinia para la gestión dinámica del selector de roles.
+- **Estilos:** Tailwind CSS con una paleta personalizada "Clean Tech".
+- **Iconografía:** Integración masiva de Simple Icons y JSDelivr para un reconocimiento rápido de marcas tecnológicas.
+- **Testing:** Vitest para la validación de utilidades críticas.
+- **Build & CI/CD:** Vite y GitHub Actions para despliegue automatizado a GitHub Pages.
 
-## 📂 Estructura del Proyecto
+## 📂 Estructura Modular
 ```text
 src/
-├── classes/        # Lógica de negocio pura
-├── components/     # Componentes UI organizados por contexto (monitor, terminal, ui)
-├── composables/    # Funciones reactivas reutilizables
-├── layouts/        # Estructuras de página (DashboardLayout)
-├── router/         # Configuración de navegación
-├── store/          # Gestión del estado global con Pinia
-├── tests/          # Suite de pruebas con Vitest
-├── utils/          # Utilidades y datos del perfil (profileData.js)
-└── views/          # Páginas principales del porfolio
+├── components/     # Componentes UI reutilizables
+├── layouts/        # DashboardLayout con navegación inteligente
+├── store/          # Pinia Store (Lógica de roles y uptime)
+├── utils/          # Perfil de datos (profileData.js) y formateadores
+├── views/          # SystemHome (Landing Page inmersiva)
+└── tests/          # Suite de pruebas unitarias
 ```
 
-## ⚙️ Configuración y Despliegue
-
-### Requisitos Previos
-- Node.js (v18 o superior)
-- npm
-
-### Instalación
-```bash
-npm install
-```
-
-### Desarrollo
-```bash
-npm run dev
-```
-
-### Ejecutar Pruebas
-```bash
-npm run test:unit
-```
-
-### Construcción para Producción
-```bash
-npm run build
-```
+## ⚙️ Instalación y Desarrollo
+1. Instalar dependencias: `npm install`
+2. Iniciar entorno de desarrollo: `npm run dev`
+3. Generar build de producción: `npm run build`
 
 ## 👤 Personalización
-Para actualizar tu información profesional y proyectos de GitHub, edita el archivo:
+Para actualizar la información profesional, proyectos o certificaciones, simplemente edita:
 `src/utils/profileData.js`
 
 ---
-Diseñado y desarrollado para demostrar excelencia en **Ingeniería de Software y QA Automation**.
+Diseñado y desarrollado por **Hector Arismendi** para demostrar excelencia técnica en Desarrollo y QA.

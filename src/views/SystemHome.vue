@@ -325,26 +325,7 @@ const scrollToSection = (id) => {
       </div>
     </section>
 
-    <!-- SECCIÓN 05: FILOSOFÍA DE DESARROLLO -->
-    <section id="philosophy" class="py-20 md:py-32 px-6 md:px-12 lg:px-24 bg-tech-bg">
-      <div class="max-w-7xl mx-auto text-center">
-        <h3 class="text-xs font-mono text-tech-primary tracking-[0.4em] uppercase mb-12 md:mb-16 font-bold">05_FILOSOFÍA_DE_DESARROLLO</h3>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div v-for="practice in profile.frontendBestPractices" :key="practice.title" 
-               class="p-8 border border-slate-200 bg-white rounded-3xl hover:shadow-xl transition-all duration-500 group shadow-sm flex flex-col items-center text-center">
-            <div class="w-16 h-16 rounded-2xl bg-tech-primary/5 flex items-center justify-center mb-6 group-hover:bg-tech-primary group-hover:scale-110 transition-all duration-500">
-              <img :src="`https://cdn.simpleicons.org/${practice.icon}/4f46e5`" class="w-8 h-8 group-hover:filter group-hover:brightness-0 group-hover:invert transition-all" alt="" />
-            </div>
-            <h4 class="text-lg font-bold text-tech-text mb-4 leading-tight">{{ practice.title }}</h4>
-            <p class="text-[13px] text-slate-500 font-medium leading-relaxed italic">
-              "{{ practice.description }}"
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECCIÓN 06: ACADEMIA -->
+    <!-- SECCIÓN 05: ACADEMIA -->
     <section id="education" class="min-h-screen py-20 md:py-32 px-6 md:px-12 lg:px-24 bg-tech-bg">
       <div class="max-w-7xl mx-auto flex flex-col items-center text-left">
         <h3 class="text-xs font-mono text-tech-primary tracking-[0.4em] uppercase mb-12 md:mb-16 font-bold">05_FORMACIÓN_ACADÉMICA</h3>
