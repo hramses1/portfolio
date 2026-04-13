@@ -142,7 +142,8 @@ export const profile = {
 
   experience: [
     {
-      company: 'FUNIBER',
+      company: 'Fundación Universitaria Iberoamericana (FUNIBER)',
+      icon: 'funiber.ico',
       role: 'Software Developer',
       period: 'abr. 2025 - actualidad',
       achievements: [
@@ -167,7 +168,8 @@ export const profile = {
       aptitudes: ['Node.js', 'Administración de bases de datos', 'JavaScript', 'TypeScript', 'Microservicios']
     },
     {
-      company: 'FUNIBER',
+      company: 'Fundación Universitaria Iberoamericana (FUNIBER)',
+      icon: 'funiber.ico',
       role: 'Software Quality Assurance Analyst - Automation Semi-Senior',
       period: 'nov. 2023 - abr. 2025',
       achievements: [

@@ -76,9 +76,14 @@ const scrollToSection = (id) => {
               </div>
               <div class="relative pl-0 border-l-2 border-slate-200 group-hover:border-tech-primary transition-all duration-700">
                 <div class="mb-6 ml-6">
-                  <span class="text-[9px] md:text-[10px] font-mono text-tech-success tracking-widest font-bold uppercase bg-tech-success/10 px-2 py-1 rounded">{{ exp.period }}</span>
-                  <h4 class="text-2xl md:text-3xl font-bold text-tech-text mt-4 leading-tight">{{ exp.role }}</h4>
-                  <p class="text-tech-info font-mono text-xs uppercase tracking-widest mt-1 font-bold">{{ exp.company }}</p>
+                  <div class="flex justify-between items-start">
+                    <div class="flex flex-col">
+                      <span class="text-[9px] md:text-[10px] font-mono text-tech-success tracking-widest font-bold uppercase bg-tech-success/10 px-2 py-1 rounded w-fit">{{ exp.period }}</span>
+                      <h4 class="text-2xl md:text-3xl font-bold text-tech-text mt-4 leading-tight">{{ exp.role }}</h4>
+                      <p class="text-tech-info font-mono text-xs uppercase tracking-widest mt-1 font-bold">{{ exp.company }}</p>
+                    </div>
+                    <img v-if="exp.icon" :src="exp.icon" class="w-12 h-12 md:w-16 md:h-16 object-contain opacity-90 group-hover:opacity-100 transition-opacity" alt="" />
+                  </div>
                 </div>
                 
                 <!-- Achievements -->
