@@ -9,9 +9,9 @@ export const profile = {
     email: 'arismendiramses@gmail.com',
     phone: '+593-961613564',
     linkedin: 'https://www.linkedin.com/in/hector-arismendi-469551167/',
-    description: 'Ingeniero de Software especializado en el desarrollo de soluciones backend escalables y el aseguramiento de la calidad (QA) mediante frameworks de automatización robustos y arquitectura de microservicios.'
+    description: 'Ingeniero de Software especializado en el desarrollo de soluciones backend escalables y el aseguramiento de la calidad integral. Pionero en la integración de Inteligencia Artificial Generativa y Prompt Engineering para optimizar procesos de desarrollo, debugging y automatización de pruebas robustas.'
   },
-
+  
   education: [
     {
       institution: 'Universidad Estatal de Milagro',
@@ -29,6 +29,7 @@ export const profile = {
   ],
 
   certifications: [
+    { title: 'IA Generativa: Fundamentos', issuer: 'PMI', date: 'abr. 2026', category: 'IA', icon: 'pmi' },
     { title: 'CI/CD en Gitlab vía FTP', issuer: 'Udemy', date: '2026', category: 'DevOps', icon: 'udemy' },
     { title: 'Gestión Efectiva del Tiempo', issuer: 'Platzi', date: '2024', category: 'Soft Skills', icon: 'platzi' },
     { title: 'Gestión de proyectos con M365', issuer: 'LinkedIn', date: '2024', category: 'Gestión', icon: 'linkedin' },
@@ -70,6 +71,12 @@ export const profile = {
       { name: 'Jest', level: 80, icon: 'jest' },
       { name: 'Postman', level: 90, icon: 'postman' }
     ],
+    aiTools: [
+      { name: 'Prompt Engineering', level: 95, icon: 'openai' },
+      { name: 'Gemini CLI', level: 90, icon: 'googlegemini' },
+      { name: 'Claude Code', level: 90, icon: 'anthropic' },
+      { name: 'AI QA Automation', level: 95, icon: 'robotframework' }
+    ],
     databases: [
       { name: 'MySQL', level: 90, icon: 'mysql' },
       { name: 'SQL Server', level: 85, icon: 'microsoftsqlserver' },
@@ -89,7 +96,8 @@ export const profile = {
     'Adaptación al Cambio', 'Trabajo en Equipo', 'Gestión de Proyectos'
   ],
 
-  recommendations: [    {
+  recommendations: [
+    {
       name: 'Humberto Guiracocha Suarez',
       role: 'Web Developer Fullstack',
       relation: 'Trabajó con Hector en FUNIBER',

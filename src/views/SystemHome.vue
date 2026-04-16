@@ -295,13 +295,22 @@ const scrollToSection = (id) => {
             </div>
           </div>
 
-          <!-- DevOps & Soft Skills -->
+          <!-- IA & DevOps -->
           <div class="p-6 md:p-8 border border-slate-200 bg-white rounded-3xl relative overflow-hidden group sm:col-span-2 lg:col-span-1 shadow-sm">
             <h4 class="text-xl md:text-2xl font-bold text-tech-text mb-8 flex items-center gap-4 text-left">
               <span class="w-8 h-8 rounded-lg bg-tech-infra/10 flex items-center justify-center text-tech-infra text-sm">⌬</span>
-              Especialidades
+              Vanguardia & DevOps
             </h4>
             <div class="space-y-8">
+              <div>
+                <p class="text-[9px] font-mono text-slate-400 mb-4 tracking-widest uppercase font-bold text-left">IA & Herramientas</p>
+                <div class="flex flex-wrap gap-3">
+                  <div v-for="s in profile.skills.aiTools" :key="s.name" class="px-3 py-1.5 bg-tech-primary/5 border border-tech-primary/10 rounded-full text-[10px] font-mono text-tech-primary flex items-center gap-2 font-bold shadow-sm">
+                    <img v-if="s.icon" :src="`https://cdn.simpleicons.org/${s.icon}`" class="w-3.5 h-3.5" alt="" />
+                    {{ s.name }}
+                  </div>
+                </div>
+              </div>
               <div>
                 <p class="text-[9px] font-mono text-slate-400 mb-4 tracking-widest uppercase font-bold text-left">DevOps & Infra</p>
                 <div class="flex flex-wrap gap-3">
