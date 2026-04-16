@@ -29,7 +29,7 @@ export const profile = {
   ],
 
   certifications: [
-    { title: 'IA Generativa: Fundamentos', issuer: 'PMI', date: 'abr. 2026', category: 'IA', icon: 'pmp.ico' },
+    { title: 'IA Generativa: Fundamentos', issuer: 'PMI', date: 'abr. 2026', category: 'IA', icon: 'PMI.png' },
     { title: 'CI/CD en Gitlab vía FTP', issuer: 'Udemy', date: '2026', category: 'DevOps', icon: 'udemy' },
     { title: 'Gestión Efectiva del Tiempo', issuer: 'Platzi', date: '2024', category: 'Soft Skills', icon: 'platzi' },
     { title: 'Gestión de proyectos con M365', issuer: 'LinkedIn', date: '2024', category: 'Gestión', icon: 'linkedin' },
