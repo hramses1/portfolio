@@ -11,7 +11,7 @@ export const profile = {
     linkedin: 'https://www.linkedin.com/in/hector-arismendi-469551167/',
     description: 'Ingeniero de Software especializado en el desarrollo de soluciones backend escalables y el aseguramiento de la calidad integral. Pionero en la integración de Inteligencia Artificial Generativa y Prompt Engineering para optimizar procesos de desarrollo, debugging y automatización de pruebas robustas.'
   },
-  
+
   education: [
     {
       institution: 'Universidad Estatal de Milagro',
@@ -35,7 +35,6 @@ export const profile = {
     { title: 'Gestión de proyectos con M365', issuer: 'LinkedIn', date: '2024', category: 'Gestión', icon: 'linkedin' },
     { title: 'Gestión de datos con M365', issuer: 'LinkedIn', date: '2024', category: 'Datos', icon: 'linkedin' },
     { title: 'Aprende Data Science: Conceptos', issuer: 'LinkedIn', date: '2024', category: 'Datos', icon: 'linkedin' },
-    { title: 'Fundamentos análisis empresarial', issuer: 'LinkedIn', date: '2024', category: 'Negocio', icon: 'linkedin' },
     { title: 'Fundamentos de análisis empresarial', issuer: 'Microsoft', date: '2024', category: 'Negocio', icon: 'microsoft' },
     { title: 'Product Owner esencial', issuer: 'LinkedIn', date: '2024', category: 'Producto', icon: 'linkedin' },
     { title: 'Liderazgo Proyectos Software', issuer: 'LinkedIn', date: '2023', category: 'Liderazgo', icon: 'linkedin' },
@@ -92,7 +91,7 @@ export const profile = {
   },
 
   softSkills: [
-    'Liderazgo de Equipos', 'Capacidad de Análisis', 'Resolución de Problemas', 
+    'Liderazgo de Equipos', 'Capacidad de Análisis', 'Resolución de Problemas',
     'Adaptación al Cambio', 'Trabajo en Equipo', 'Gestión de Proyectos'
   ],
 
@@ -250,9 +249,9 @@ export const profile = {
       description: 'API para administración de usuarios y matriculaciones en Moodle.',
       github: 'https://github.com/hramses1/create-user-moodle-api',
       tags: [
-        { name: 'Node.js', icon: 'nodedotjs' }, 
-        { name: 'Moodle', icon: 'moodle' }, 
-        { name: 'API', icon: 'postman' }, 
+        { name: 'Node.js', icon: 'nodedotjs' },
+        { name: 'Moodle', icon: 'moodle' },
+        { name: 'API', icon: 'postman' },
         { name: 'CRUD', icon: 'express' }
       ]
     },
@@ -268,4 +267,5 @@ export const profile = {
         { name: 'TypeScript', icon: 'typescript' }
       ]
     }
-    ]}
+  ]
+}
