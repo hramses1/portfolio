@@ -148,6 +148,32 @@ export const profile = {
 
   experience: [
     {
+      company: 'Integrity Solutions',
+      role: 'Analista QA',
+      period: 'may. 2026 - actualidad',
+      achievements: [
+        'Crear Plan de pruebas y testing.',
+        'Automatización de APIs con Postman y Jmeter.',
+        'Automatización de pruebas con Pytest, Selenium, Jest y Unittest.',
+        'Gestión de bases de datos SQL Server, SQLite, MySQL y MongoDB.',
+        'Construcción de tests unitarios y End-to-End.'
+      ],
+      aptitudes: ['Python', 'Selenium', 'Pytest', 'Jest', 'Postman', 'JMeter', 'SQL Server', 'MongoDB', 'MySQL', 'Calidad de software', 'Pruebas funcionales']
+    },
+    {
+      company: 'Banco Bolivariano',
+      role: 'Analista QA',
+      period: 'may. 2026 - actualidad',
+      achievements: [
+        'Crear Plan de pruebas y testing.',
+        'Automatización de APIs con Postman y Jmeter.',
+        'Automatización de pruebas con Pytest, Selenium, Jest y Unittest.',
+        'Gestión de bases de datos SQL Server, SQLite, MySQL y MongoDB.',
+        'Construcción de tests unitarios y End-to-End.'
+      ],
+      aptitudes: ['Python', 'Selenium', 'Pytest', 'Jest', 'Postman', 'JMeter', 'SQL Server', 'MongoDB', 'MySQL', 'Calidad de software', 'Pruebas funcionales']
+    },
+    {
       company: 'Fundación Universitaria Iberoamericana (FUNIBER)',
       icon: 'funiber.ico',
       role: 'Software Developer',

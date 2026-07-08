@@ -31,3 +31,4 @@ dist-ssr
 # Gemini CLI
 .agents/
 skills-lock.json
+.claude/
