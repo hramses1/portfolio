@@ -34,8 +34,9 @@ const filteredExperience = computed(() => {
   }
   if (store.activeRole === 'qa') {
     return profile.experience.filter(exp => 
-      exp.role.toLowerCase().includes('assurance') || 
-      exp.role.toLowerCase().includes('automation')
+      exp.role.toLowerCase().includes('assurance') ||
+      exp.role.toLowerCase().includes('automation') ||
+      exp.role.toLowerCase().includes('qa')
     )
   }
   return profile.experience
