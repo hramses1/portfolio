@@ -292,6 +292,82 @@ export const profile = {
         { name: 'JavaScript', icon: 'javascript' },
         { name: 'TypeScript', icon: 'typescript' }
       ]
+    },
+    {
+      id: 6,
+      name: 'QADash',
+      description: 'Centro de mando web que convierte un proyecto pytest en una plataforma operable desde el navegador.',
+      private: true,
+      tags: [
+        { name: 'Vue 3', icon: 'vuedotjs' },
+        { name: 'Node.js', icon: 'nodedotjs' },
+        { name: 'Socket.io', icon: 'socketdotio' },
+        { name: 'Pytest', icon: 'pytest' }
+      ],
+      // Detalle ampliado: se muestra en el modal al hacer clic en la tarjeta.
+      detail: {
+        tagline: 'Centro de mando web para automatización QA',
+        summary: 'Convierte un proyecto de pruebas con pytest en una plataforma operable desde el navegador: ejecutar, ver el progreso en vivo, entender el fallo, corregir el código y programar la siguiente corrida sin tocar la terminal. Hoy opera una suite real de 74 tests end-to-end de banca digital.',
+        metrics: [
+          { value: '74', label: 'Tests E2E' },
+          { value: '231', label: 'Archivos consolidados' },
+          { value: '103', label: 'Capturas indexadas' },
+          { value: '15', label: 'Módulos' }
+        ],
+        highlights: [
+          {
+            title: 'Ejecución selectiva con progreso en vivo',
+            text: 'Árbol de tests por módulo de negocio: se lanza la regresión completa, una carpeta o un solo caso. El progreso llega por WebSocket con reconexión automática, así que recargar la página no pierde la corrida.'
+          },
+          {
+            title: 'Editor de código Python integrado',
+            text: 'Resaltado de sintaxis, numeración de líneas y guardado directo sobre el archivo del proyecto. Ajustar un selector o un assert deja de exigir salir al IDE y volver.'
+          },
+          {
+            title: 'Historial y analítica accionable',
+            text: 'Cada corrida queda registrada con fecha, duración y resultado. KPIs de pass rate, cobertura real (tests nunca ejecutados) y detalle archivo por archivo, exportable a PDF. Gráficos SVG escritos a mano, sin librerías de charts.'
+          },
+          {
+            title: 'Entornos y datos de prueba sin editar archivos',
+            text: 'El .env se maneja como formulario y los entornos (preproducción, producción, UAT) se aplican con un clic. Los JSON de datos se editan en un formulario visual con versionado, y los 231 .txt de resultados se consolidan en una tabla filtrable con exportación a Excel.'
+          },
+          {
+            title: 'Docker, Selenium Grid y calendarización',
+            text: 'Ciclo de vida del contenedor de Selenium desde botones (con el comando docker compose a la vista) y vista del navegador en vivo por noVNC. Las regresiones se programan por hora, días y repeticiones, con parámetros que sobrescriben el .env solo para esa ejecución.'
+          },
+          {
+            title: 'Multi-workspace y módulos configurables',
+            text: 'Se conecta a cualquier proyecto pytest indicando sus rutas. Cada workspace tiene su configuración, reportes y programaciones, y los módulos se activan o desactivan por proyecto para que cada equipo vea solo lo que usa.'
+          }
+        ],
+        stack: [
+          { name: 'Vue 3', icon: 'vuedotjs' },
+          { name: 'Node.js', icon: 'nodedotjs' },
+          { name: 'Socket.io', icon: 'socketdotio' },
+          { name: 'Pytest', icon: 'pytest' },
+          { name: 'Selenium', icon: 'selenium' },
+          { name: 'Docker', icon: 'docker' },
+          { name: 'Electron', icon: 'electron' },
+          { name: 'Tailwind', icon: 'tailwindcss' }
+        ],
+        gallery: [
+          { src: './qadash/01-dashboard-tests.jpg', caption: 'Árbol de tests con selección por carpeta, archivo o caso individual.' },
+          { src: './qadash/02-editor-codigo.jpg', caption: 'Editor Python integrado con resaltado de sintaxis.' },
+          { src: './qadash/03-reportes-historial.jpg', caption: 'Historial de ejecuciones con filtros por fecha, estado y umbrales.' },
+          { src: './qadash/04-analitica-kpis.jpg', caption: 'KPIs acumulados y tendencia de pass rate por ejecución.' },
+          { src: './qadash/05-analitica-detalle.jpg', caption: 'Pass rate archivo por archivo, con casos sin ejecutar.' },
+          { src: './qadash/06-variables-entorno.jpg', caption: 'Editor visual del .env y entornos guardados listos para aplicar.' },
+          { src: './qadash/07-datos-txt.jpg', caption: '231 archivos .txt unificados en una tabla con exportación a Excel.' },
+          { src: './qadash/08-datos-json.jpg', caption: 'Editor visual de datos de prueba con versiones guardadas.' },
+          { src: './qadash/09-imagenes-error.jpg', caption: 'Galería de capturas de los tests fallidos, con buscador.' },
+          { src: './qadash/10-docker-selenium.jpg', caption: 'Panel de Docker: acciones de compose y salida en vivo.' },
+          { src: './qadash/11-calendarizacion.jpg', caption: 'Programaciones activas con hora, día y tests asociados.' },
+          { src: './qadash/12-calendarizacion-nueva.jpg', caption: 'Nueva programación: hora, repeticiones, días y parámetros.' },
+          { src: './qadash/13-configuracion-rutas.jpg', caption: 'Configuración de rutas del proyecto, pytest y grid remoto.' },
+          { src: './qadash/14-modulos.jpg', caption: 'Activación y desactivación de módulos por proyecto.' },
+          { src: './qadash/15-workspaces.jpg', caption: 'Selector de workspaces: un dashboard, todos los proyectos.' }
+        ]
+      }
     }
   ]
 }

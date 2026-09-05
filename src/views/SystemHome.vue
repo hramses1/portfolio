@@ -3,7 +3,7 @@
  * SystemHome - Modern Clean Tech Landing Page.
  * Showcases Hector Arismendi's profile with a soft, professional aesthetic.
  */
-import { ref, computed } from 'vue'
+import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
 import { profile } from '../utils/profileData.js'
 import { useSystemStore } from '../store/system.js'
 import { calculateDuration } from '../utils/formatters.js'
@@ -11,6 +11,66 @@ import { calculateDuration } from '../utils/formatters.js'
 const store = useSystemStore()
 const showAllCerts = ref(false)
 const certsLimit = 8
+
+const activeProject = ref(null)
+const lightboxIndex = ref(null)
+
+/**
+ * Opens the detail modal of a project that has extended information.
+ * @param {object} project - Project entry from the profile data.
+ */
+const openProject = (project) => {
+  if (!project.detail) return
+  activeProject.value = project
+  lightboxIndex.value = null
+}
+
+/**
+ * Closes the project detail modal and any screenshot opened from it.
+ */
+const closeProject = () => {
+  activeProject.value = null
+  lightboxIndex.value = null
+}
+
+/**
+ * Opens the gallery of the active project on a given screenshot.
+ * @param {number} index - Position of the screenshot inside the gallery.
+ */
+const openLightbox = (index) => {
+  lightboxIndex.value = index
+}
+
+/**
+ * Moves through the gallery of the active project, wrapping around both ends.
+ * @param {number} step - Offset to apply to the current index (-1 or 1).
+ */
+const moveLightbox = (step) => {
+  if (lightboxIndex.value === null || !activeProject.value) return
+  const total = activeProject.value.detail.gallery.length
+  lightboxIndex.value = (lightboxIndex.value + step + total) % total
+}
+
+/**
+ * Closes the topmost overlay (screenshot first, then the modal) when Escape is pressed.
+ * @param {KeyboardEvent} event - Keyboard event fired on the document.
+ */
+const handleEscape = (event) => {
+  if (event.key !== 'Escape') return
+  if (lightboxIndex.value !== null) lightboxIndex.value = null
+  else if (activeProject.value) closeProject()
+}
+
+// Evita que la página siga scrolleando detrás del modal abierto.
+watch(activeProject, (project) => {
+  document.body.style.overflow = project ? 'hidden' : ''
+})
+
+onMounted(() => document.addEventListener('keydown', handleEscape))
+onUnmounted(() => {
+  document.removeEventListener('keydown', handleEscape)
+  document.body.style.overflow = ''
+})
 
 /**
  * Parses start and end from period string for duration calculation.
@@ -205,6 +265,8 @@ const scrollToSection = (id) => {
         <h3 class="text-xs font-mono text-tech-primary tracking-[0.4em] uppercase mb-12 md:mb-16 text-center font-bold">03_PORTAFOLIO_DE_PROYECTOS</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
           <div v-for="project in profile.projects" :key="project.id" 
+               @click="openProject(project)"
+               :class="project.detail ? 'cursor-pointer' : ''"
                class="group p-6 md:p-8 border border-slate-200 bg-white rounded-3xl hover:border-tech-primary/30 transition-all duration-500 flex flex-col justify-between h-full relative overflow-hidden shadow-sm hover:shadow-xl">
             <div class="absolute -right-4 -top-4 text-6xl md:text-8xl font-black text-slate-100 group-hover:text-slate-200 transition-colors pointer-events-none select-none">
               0{{ project.id }}
@@ -215,13 +277,20 @@ const scrollToSection = (id) => {
                   <img v-if="tag.icon" :src="`https://cdn.simpleicons.org/${tag.icon}`" class="w-3 h-3 opacity-80 group-hover:opacity-100 transition-opacity" alt="" />
                   {{ tag.name }}
                 </span>
+                <span v-if="project.private" class="px-2 py-1 bg-tech-primary/5 border border-tech-primary/20 rounded text-[8px] md:text-[9px] font-mono text-tech-primary uppercase tracking-widest">
+                  Privado
+                </span>
               </div>
               <h4 class="text-xl md:text-2xl font-bold text-tech-text mb-4 group-hover:text-tech-primary transition-colors duration-500 leading-tight text-left">{{ project.name }}</h4>
               <p class="text-slate-500 text-[12px] md:text-sm leading-relaxed mb-8 font-mono italic font-medium text-left">
                 "{{ project.description }}"
               </p>
             </div>
-            <a :href="project.github" target="_blank" 
+            <button v-if="project.detail" type="button"
+                    class="inline-flex items-center gap-4 text-[9px] md:text-[10px] font-mono tracking-[0.2em] md:tracking-[0.3em] text-tech-primary transition-all group-hover:gap-6 uppercase font-bold">
+              VER_DETALLE <span class="text-base md:text-lg">→</span>
+            </button>
+            <a v-else :href="project.github" target="_blank" @click.stop
                class="inline-flex items-center gap-4 text-[9px] md:text-[10px] font-mono tracking-[0.2em] md:tracking-[0.3em] text-tech-text hover:text-tech-primary transition-all group-hover:gap-6 uppercase font-bold">
               VER_EN_GITHUB <span class="text-base md:text-lg">→</span>
             </a>
@@ -471,6 +540,97 @@ const scrollToSection = (id) => {
         HELLO
       </div>
     </section>
+
+    <!-- Modal de detalle del proyecto -->
+    <Transition name="fade">
+      <div v-if="activeProject"
+           class="fixed inset-0 z-[60] bg-slate-900/70 backdrop-blur-sm flex items-center justify-center p-0 md:p-8"
+           @click.self="closeProject">
+        <article class="relative w-full max-w-4xl max-h-screen md:max-h-[90vh] overflow-y-auto bg-white md:rounded-3xl shadow-2xl text-left">
+          <!-- Cabecera fija del modal -->
+          <header class="sticky top-0 z-10 flex items-start justify-between gap-4 px-6 md:px-10 pt-7 pb-5 border-b border-slate-200 bg-white backdrop-blur-xl md:rounded-t-3xl">
+            <div>
+              <h4 class="text-2xl md:text-4xl font-black text-tech-text leading-tight mb-2">{{ activeProject.name }}</h4>
+              <p class="text-[10px] md:text-[11px] font-mono text-tech-primary uppercase tracking-[0.25em]">{{ activeProject.detail.tagline }}</p>
+            </div>
+            <button type="button" @click="closeProject"
+                    class="shrink-0 w-9 h-9 rounded-full border border-slate-200 text-slate-400 hover:text-tech-text hover:border-tech-primary/40 transition-colors font-mono">✕</button>
+          </header>
+
+          <div class="px-6 md:px-10 py-8">
+            <div class="flex flex-wrap items-center gap-3 mb-6">
+              <span v-if="activeProject.private" class="px-2 py-1 rounded bg-slate-50 border border-slate-100 text-slate-500 text-[9px] font-mono uppercase tracking-[0.25em]">Proyecto privado</span>
+            </div>
+
+            <p class="text-slate-500 text-[13px] md:text-sm leading-relaxed mb-8">{{ activeProject.detail.summary }}</p>
+
+            <!-- Métricas -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-10">
+              <div v-for="metric in activeProject.detail.metrics" :key="metric.label"
+                   class="p-4 rounded-2xl bg-slate-50 border border-slate-100">
+                <div class="text-2xl md:text-3xl font-black text-tech-primary leading-none mb-2">{{ metric.value }}</div>
+                <div class="text-[8px] md:text-[9px] font-mono text-slate-500 uppercase tracking-[0.2em]">{{ metric.label }}</div>
+              </div>
+            </div>
+
+            <!-- Funcionalidades -->
+            <h5 class="text-[9px] font-mono text-slate-400 uppercase tracking-[0.3em] mb-5">Qué resuelve</h5>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-10">
+              <div v-for="item in activeProject.detail.highlights" :key="item.title" class="flex gap-3">
+                <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-tech-primary shrink-0"></span>
+                <div>
+                  <h6 class="text-sm md:text-base font-bold text-tech-text mb-1.5 leading-snug">{{ item.title }}</h6>
+                  <p class="text-slate-500 text-[12px] md:text-[13px] leading-relaxed">{{ item.text }}</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Stack -->
+            <h5 class="text-[9px] font-mono text-slate-400 uppercase tracking-[0.3em] mb-4">Stack</h5>
+            <div class="flex flex-wrap gap-2 mb-10">
+              <span v-for="tag in activeProject.detail.stack" :key="tag.name"
+                    class="px-2 py-1 bg-slate-50 border border-slate-100 rounded text-[8px] md:text-[9px] font-mono text-slate-500 uppercase tracking-widest flex items-center gap-2">
+                <img v-if="tag.icon" :src="`https://cdn.simpleicons.org/${tag.icon}`" class="w-3 h-3 opacity-80" alt="" />
+                {{ tag.name }}
+              </span>
+            </div>
+
+            <!-- Galería -->
+            <h5 class="text-[9px] font-mono text-slate-400 uppercase tracking-[0.3em] mb-4">Capturas ({{ activeProject.detail.gallery.length }})</h5>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+              <button v-for="(shot, index) in activeProject.detail.gallery" :key="shot.src" type="button"
+                      @click="openLightbox(index)"
+                      class="group relative rounded-xl overflow-hidden border border-slate-200 bg-slate-50 hover:border-tech-primary/40 transition-all duration-300">
+                <img :src="shot.src" :alt="shot.caption" loading="lazy"
+                     class="w-full h-24 md:h-28 object-cover object-top opacity-90 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-500" />
+                <span class="absolute bottom-1 right-1 px-1.5 py-0.5 rounded bg-white/90 text-[8px] font-mono text-slate-500">{{ String(index + 1).padStart(2, '0') }}</span>
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </Transition>
+
+    <!-- Lightbox de la galería del proyecto abierto -->
+    <Transition name="fade">
+      <div v-if="activeProject && lightboxIndex !== null"
+           class="fixed inset-0 z-[70] bg-slate-900/95 backdrop-blur-sm flex items-center justify-center p-4 md:p-10"
+           @click.self="lightboxIndex = null">
+        <button type="button" @click="lightboxIndex = null"
+                class="absolute top-4 right-4 md:top-8 md:right-8 text-white/70 hover:text-white text-2xl font-mono">✕</button>
+        <button type="button" @click="moveLightbox(-1)"
+                class="absolute left-2 md:left-8 text-white/70 hover:text-white text-3xl font-mono px-3 py-2">‹</button>
+        <button type="button" @click="moveLightbox(1)"
+                class="absolute right-2 md:right-8 text-white/70 hover:text-white text-3xl font-mono px-3 py-2">›</button>
+        <figure class="max-w-6xl w-full">
+          <img :src="activeProject.detail.gallery[lightboxIndex].src" :alt="activeProject.detail.gallery[lightboxIndex].caption"
+               class="w-full max-h-[75vh] object-contain rounded-2xl shadow-2xl bg-white" />
+          <figcaption class="mt-4 text-center text-[11px] md:text-xs font-mono text-white/70">
+            {{ String(lightboxIndex + 1).padStart(2, '0') }} / {{ String(activeProject.detail.gallery.length).padStart(2, '0') }} · {{ activeProject.detail.gallery[lightboxIndex].caption }}
+          </figcaption>
+        </figure>
+      </div>
+    </Transition>
 
   </div>
 </template>
