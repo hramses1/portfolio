@@ -41,5 +41,16 @@ describe('System Formatters', () => {
       const result = calculateDuration(`${startMonth}. ${startYear}`, 'actualidad')
       expect(result).toBe('(1 año)')
     })
+
+    it('debe devolver la duración en inglés con fechas en inglés', () => {
+      const result = calculateDuration('Nov 2023', 'Apr 2025', 'en')
+      expect(result).toBe('(1 year and 5 months)')
+    })
+
+    it('debe aceptar "present" como fecha actual', () => {
+      const now = new Date()
+      const month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][now.getMonth()]
+      expect(calculateDuration(`${month} ${now.getFullYear() - 1}`, 'present', 'en')).toBe('(1 year)')
+    })
   })
 })

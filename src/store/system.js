@@ -1,5 +1,20 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
+import { ui } from '../i18n/ui.js'
+
+const LANG_KEY = 'portfolio-lang'
+
+/**
+ * Picks the initial language: saved choice, then browser language, then Spanish.
+ * @returns {'es'|'en'}
+ */
+function detectLang() {
+  try {
+    const saved = localStorage.getItem(LANG_KEY)
+    if (ui[saved]) return saved
+  } catch { /* storage bloqueado */ }
+  return typeof navigator !== 'undefined' && navigator.language?.startsWith('en') ? 'en' : 'es'
+}
 
 /**
  * Global System Store for the Portfolio.
@@ -11,6 +26,27 @@ export const useSystemStore = defineStore('system', () => {
   const currentEnvironment = ref('PRODUCTION')
   const uptime = ref(0)
   const activeRole = ref('all') // 'all' | 'dev' | 'qa'
+  const lang = ref(detectLang()) // 'es' | 'en'
+
+  /**
+   * Changes the interface language and remembers it for the next visit.
+   * @param {'es'|'en'} value
+   */
+  function setLang(value) {
+    if (!ui[value]) return
+    lang.value = value
+    try { localStorage.setItem(LANG_KEY, value) } catch { /* storage bloqueado */ }
+    if (typeof document !== 'undefined') document.documentElement.lang = value
+  }
+
+  /**
+   * Translates a UI key into the active language.
+   * @param {string} key
+   * @returns {string}
+   */
+  function t(key) {
+    return ui[lang.value][key] ?? key
+  }
 
   /**
    * Sets the active role filter.
@@ -56,9 +92,12 @@ export const useSystemStore = defineStore('system', () => {
     currentEnvironment,
     uptime,
     activeRole,
+    lang,
     tick,
     triggerAlert,
     setRole,
+    setLang,
+    t,
     formattedUptime
   }
 })

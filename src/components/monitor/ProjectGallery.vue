@@ -3,9 +3,9 @@
  * ProjectGallery Component.
  * Displays a list of GitHub projects in a technical "Repository" style.
  */
-import { profile } from '../../utils/profileData.js'
+import { getProfile } from '../../utils/profileData.js'
 
-const projects = profile.projects
+const projects = getProfile('es').projects
 </script>
 
 <template>

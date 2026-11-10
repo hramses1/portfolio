@@ -40,4 +40,20 @@ describe('System Store', () => {
     expect(store.health).toBeLessThan(initialHealth)
     expect(store.activeAlerts.length).toBe(1)
   })
+
+  it('debe cambiar el idioma y traducir las claves', () => {
+    const store = useSystemStore()
+    store.setLang('en')
+    expect(store.lang).toBe('en')
+    expect(store.t('contactBtn')).toBe('CONTACT')
+    store.setLang('es')
+    expect(store.t('contactBtn')).toBe('CONTACTAR')
+  })
+
+  it('debe ignorar idiomas no soportados', () => {
+    const store = useSystemStore()
+    store.setLang('es')
+    store.setLang('fr')
+    expect(store.lang).toBe('es')
+  })
 })

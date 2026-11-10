@@ -4,11 +4,13 @@
  * Showcases Hector Arismendi's profile with a soft, professional aesthetic.
  */
 import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
-import { profile } from '../utils/profileData.js'
+import { getProfile } from '../utils/profileData.js'
 import { useSystemStore } from '../store/system.js'
 import { calculateDuration } from '../utils/formatters.js'
 
 const store = useSystemStore()
+const profile = computed(() => getProfile(store.lang))
+const t = store.t
 const showAllCerts = ref(false)
 const certsLimit = 8
 
@@ -78,76 +80,48 @@ onUnmounted(() => {
 const getDuration = (period) => {
   const parts = period.split(' - ')
   if (parts.length < 2) return ''
-  return calculateDuration(parts[0], parts[1])
+  return calculateDuration(parts[0], parts[1], store.lang)
 }
 
 /**
  * Filtered Experience based on active role.
  */
 const filteredExperience = computed(() => {
-  if (store.activeRole === 'all') return profile.experience
+  if (store.activeRole === 'all') return profile.value.experience
   if (store.activeRole === 'dev') {
-    return profile.experience.filter(exp => 
+    return profile.value.experience.filter(exp => 
       exp.role.toLowerCase().includes('developer') || 
       exp.company.toLowerCase().includes('freelance')
     )
   }
   if (store.activeRole === 'qa') {
-    return profile.experience.filter(exp => 
+    return profile.value.experience.filter(exp => 
       exp.role.toLowerCase().includes('assurance') ||
       exp.role.toLowerCase().includes('automation') ||
       exp.role.toLowerCase().includes('qa')
     )
   }
-  return profile.experience
+  return profile.value.experience
 })
 
 /**
  * Dynamic Hero Content
  */
 const heroContent = computed(() => {
-  if (store.activeRole === 'qa') {
-    return {
-      title: 'QA Analyst & Automation Engineer',
-      description: 'Garantizando la excelencia mediante pruebas integrales (Manual y Automatización), planes de prueba estratégicos y validación robusta en cada despliegue.'
-    }
-  }
-  if (store.activeRole === 'dev') {
-    return {
-      title: 'Software Developer',
-      description: 'Desarrollando soluciones robustas, escalables y eficientes para el mundo real.'
-    }
-  }
-  return {
-    title: 'Software Developer | QA Analyst & Automation',
-    description: 'Ingeniero de Software especializado en soluciones backend escalables y aseguramiento de calidad integral mediante procesos manuales y automatización robusta.'
-  }
+  const k = { qa: 'Qa', dev: 'Dev' }[store.activeRole] ?? 'All'
+  return { title: t(`hero${k}Title`), description: t(`hero${k}Text`) }
 })
 
 /**
  * Dynamic Experience Section Content
  */
 const experienceContent = computed(() => {
-  if (store.activeRole === 'qa') {
-    return {
-      title: 'Trayectoria en QA Integral.',
-      description: 'Especializado en el ciclo completo de calidad: desde el análisis de requisitos y pruebas manuales hasta el diseño de frameworks de automatización y CI/CD.'
-    }
-  }
-  if (store.activeRole === 'dev') {
-    return {
-      title: 'Trayectoria en Ingeniería y Desarrollo.',
-      description: 'Enfocado en la creación de soluciones backend escalables, optimización de sistemas y desarrollo de arquitecturas robustas y mantenibles.'
-    }
-  }
-  return {
-    title: 'Experiencia en Desarrollo y Calidad.',
-    description: 'Cada rol ha sido una oportunidad para perfeccionar estrategias de calidad y construir sistemas escalables que soporten el crecimiento del negocio.'
-  }
+  const k = { qa: 'Qa', dev: 'Dev' }[store.activeRole] ?? 'All'
+  return { title: t(`exp${k}Title`), description: t(`exp${k}Text`) }
 })
 
 const visibleCertifications = computed(() => {
-  return showAllCerts.value ? profile.certifications : profile.certifications.slice(0, certsLimit)
+  return showAllCerts.value ? profile.value.certifications : profile.value.certifications.slice(0, certsLimit)
 })
 
 const getLevelStyle = (level) => ({ width: `${level}%` })
@@ -171,7 +145,7 @@ const scrollToSection = (id) => {
       
       <div class="max-w-5xl z-10 py-20">
         <h2 class="text-[8px] md:text-[10px] font-mono tracking-[0.4em] md:tracking-[0.6em] text-tech-primary mb-4 md:mb-6 animate-in fade-in slide-in-from-left-10 duration-1000 uppercase font-bold">
-          Ingeniería_de_Software_v2.0
+          {{ t('heroKicker') }}
         </h2>
         <h1 class="text-5xl sm:text-7xl lg:text-9xl font-black tracking-tighter text-tech-text leading-[0.9] mb-6 md:mb-8 text-left">
           {{ profile.identity.firstName }}<br/>
@@ -189,11 +163,11 @@ const scrollToSection = (id) => {
         <div class="flex flex-col sm:flex-row gap-4 md:gap-6">
           <button @click="scrollToSection('experience')" 
                   class="px-8 py-4 bg-tech-primary text-white font-mono text-xs tracking-widest hover:bg-tech-text transition-all duration-500 shadow-lg shadow-tech-primary/20 uppercase w-full sm:w-auto font-bold">
-            Iniciar_Inspección
+            {{ t('heroCta') }}
           </button>
           <div class="flex items-center gap-4 px-6 py-4 sm:py-0 border border-slate-200 bg-white rounded-full w-full sm:w-auto justify-center shadow-sm">
             <span class="w-2 h-2 rounded-full bg-tech-success animate-pulse"></span>
-            <span class="text-[9px] md:text-[10px] font-mono text-slate-500 tracking-widest uppercase text-center font-bold">Disponible_para_proyectos</span>
+            <span class="text-[9px] md:text-[10px] font-mono text-slate-500 tracking-widest uppercase text-center font-bold">{{ t('heroAvailable') }}</span>
           </div>
         </div>
       </div>
@@ -204,7 +178,7 @@ const scrollToSection = (id) => {
       <div class="max-w-7xl mx-auto">
         <div class="flex flex-col lg:flex-row gap-12 lg:gap-20">
           <div class="lg:w-1/3">
-            <h3 class="text-xs font-mono text-tech-primary tracking-[0.4em] uppercase mb-6 md:mb-8 font-bold">02_LA_TRAYECTORIA</h3>
+            <h3 class="text-xs font-mono text-tech-primary tracking-[0.4em] uppercase mb-6 md:mb-8 font-bold">{{ t('expSection') }}</h3>
             <Transition name="fade" mode="out-in">
               <div :key="store.activeRole">
                 <h2 class="text-3xl md:text-5xl font-bold text-tech-text tracking-tighter leading-tight mb-6 md:mb-8 text-left">{{ experienceContent.title }}</h2>
@@ -262,7 +236,7 @@ const scrollToSection = (id) => {
     <!-- SECCIÓN 03: PROYECTOS -->
     <section id="projects" class="min-h-screen py-20 md:py-32 px-6 md:px-12 lg:px-24 bg-tech-bg">
       <div class="max-w-7xl mx-auto">
-        <h3 class="text-xs font-mono text-tech-primary tracking-[0.4em] uppercase mb-12 md:mb-16 text-center font-bold">03_PORTAFOLIO_DE_PROYECTOS</h3>
+        <h3 class="text-xs font-mono text-tech-primary tracking-[0.4em] uppercase mb-12 md:mb-16 text-center font-bold">{{ t('projSection') }}</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
           <div v-for="project in profile.projects" :key="project.id" 
                @click="openProject(project)"
@@ -278,7 +252,7 @@ const scrollToSection = (id) => {
                   {{ tag.name }}
                 </span>
                 <span v-if="project.private" class="px-2 py-1 bg-tech-primary/5 border border-tech-primary/20 rounded text-[8px] md:text-[9px] font-mono text-tech-primary uppercase tracking-widest">
-                  Privado
+                  {{ t('projPrivate') }}
                 </span>
               </div>
               <h4 class="text-xl md:text-2xl font-bold text-tech-text mb-4 group-hover:text-tech-primary transition-colors duration-500 leading-tight text-left">{{ project.name }}</h4>
@@ -288,11 +262,11 @@ const scrollToSection = (id) => {
             </div>
             <button v-if="project.detail" type="button"
                     class="inline-flex items-center gap-4 text-[9px] md:text-[10px] font-mono tracking-[0.2em] md:tracking-[0.3em] text-tech-primary transition-all group-hover:gap-6 uppercase font-bold">
-              VER_DETALLE <span class="text-base md:text-lg">→</span>
+              {{ t('projViewDetail') }} <span class="text-base md:text-lg">→</span>
             </button>
             <a v-else :href="project.github" target="_blank" @click.stop
                class="inline-flex items-center gap-4 text-[9px] md:text-[10px] font-mono tracking-[0.2em] md:tracking-[0.3em] text-tech-text hover:text-tech-primary transition-all group-hover:gap-6 uppercase font-bold">
-              VER_EN_GITHUB <span class="text-base md:text-lg">→</span>
+              {{ t('projViewGithub') }} <span class="text-base md:text-lg">→</span>
             </a>
           </div>
         </div>
@@ -302,7 +276,7 @@ const scrollToSection = (id) => {
     <!-- SECCIÓN 04: CONOCIMIENTOS -->
     <section id="skills" class="min-h-screen py-20 md:py-32 px-6 md:px-12 lg:px-24 bg-slate-200/20 border-y border-slate-200/50">
       <div class="max-w-7xl mx-auto">
-        <h3 class="text-xs font-mono text-tech-primary tracking-[0.4em] uppercase mb-12 md:mb-16 text-center font-bold">04_STACK_TÉCNICO</h3>
+        <h3 class="text-xs font-mono text-tech-primary tracking-[0.4em] uppercase mb-12 md:mb-16 text-center font-bold">{{ t('skillsSection') }}</h3>
         
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 text-left">
           <!-- Desarrollo Core / Lenguajes -->
@@ -310,12 +284,12 @@ const scrollToSection = (id) => {
             <Transition name="fade" mode="out-in">
               <h4 :key="store.activeRole" class="text-xl md:text-2xl font-bold text-tech-text mb-8 flex items-center gap-4 text-left">
                 <span class="w-8 h-8 rounded-lg bg-tech-info/10 flex items-center justify-center text-tech-info text-sm">λ</span>
-                {{ store.activeRole === 'qa' ? 'Lenguajes de Programación' : 'Desarrollo Core' }}
+                {{ store.activeRole === 'qa' ? t('skillsLangs') : t('skillsCore') }}
               </h4>
             </Transition>
             <div class="space-y-8">
               <div>
-                <p class="text-[9px] font-mono text-slate-400 mb-4 tracking-widest uppercase font-bold text-left">Stack Principal</p>
+                <p class="text-[9px] font-mono text-slate-400 mb-4 tracking-widest uppercase font-bold text-left">{{ t('skillsMainStack') }}</p>
                 <div class="flex flex-wrap gap-3">
                   <div v-for="s in (store.activeRole === 'qa' ? profile.skills.backend.filter(s => ['JavaScript', 'Node.js', 'TypeScript', 'Python'].includes(s.name)) : [...profile.skills.backend, ...profile.skills.frontend])" :key="s.name" class="px-3 py-1.5 bg-slate-50 border border-slate-100 rounded-full text-[10px] font-mono text-slate-600 flex items-center gap-2 group/skill hover:shadow-sm transition-all">
                     <img v-if="s.icon" :src="`https://cdn.simpleicons.org/${s.icon}`" class="w-3.5 h-3.5" alt="" />
@@ -330,11 +304,11 @@ const scrollToSection = (id) => {
           <div class="p-6 md:p-8 border border-slate-200 bg-white rounded-3xl relative overflow-hidden group shadow-sm">
             <h4 class="text-xl md:text-2xl font-bold text-tech-text mb-8 flex items-center gap-4 text-left">
               <span class="w-8 h-8 rounded-lg bg-tech-success/10 flex items-center justify-center text-tech-success text-sm">✓</span>
-              QA & Persistencia
+              {{ t('skillsQaPersist') }}
             </h4>
             <div class="space-y-8">
               <div>
-                <p class="text-[9px] font-mono text-slate-400 mb-4 tracking-widest uppercase font-bold text-left">QA Automation</p>
+                <p class="text-[9px] font-mono text-slate-400 mb-4 tracking-widest uppercase font-bold text-left">{{ t('skillsQaAuto') }}</p>
                 <div class="space-y-3">
                   <div v-for="s in profile.skills.testing" :key="s.name" class="space-y-1">
                     <div class="flex justify-between items-center text-[9px] font-mono">
@@ -353,7 +327,7 @@ const scrollToSection = (id) => {
                 </div>
               </div>
               <div>
-                <p class="text-[9px] font-mono text-slate-400 mb-4 tracking-widest uppercase font-bold text-left">Bases de Datos</p>
+                <p class="text-[9px] font-mono text-slate-400 mb-4 tracking-widest uppercase font-bold text-left">{{ t('skillsDb') }}</p>
                 <div class="flex flex-wrap gap-3">
                   <div v-for="s in profile.skills.databases" :key="s.name" class="flex items-center gap-2 bg-slate-50 px-2 py-1 rounded border border-slate-100 shadow-sm">
                     <img v-if="s.icon === 'microsoftsqlserver'" src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/microsoftsqlserver.svg" class="w-3.5 h-3.5" alt="" />
@@ -369,11 +343,11 @@ const scrollToSection = (id) => {
           <div class="p-6 md:p-8 border border-slate-200 bg-white rounded-3xl relative overflow-hidden group sm:col-span-2 lg:col-span-1 shadow-sm">
             <h4 class="text-xl md:text-2xl font-bold text-tech-text mb-8 flex items-center gap-4 text-left">
               <span class="w-8 h-8 rounded-lg bg-tech-infra/10 flex items-center justify-center text-tech-infra text-sm">⌬</span>
-              Vanguardia & DevOps
+              {{ t('skillsVanguard') }}
             </h4>
             <div class="space-y-8">
               <div>
-                <p class="text-[9px] font-mono text-slate-400 mb-4 tracking-widest uppercase font-bold text-left">IA & Herramientas</p>
+                <p class="text-[9px] font-mono text-slate-400 mb-4 tracking-widest uppercase font-bold text-left">{{ t('skillsAi') }}</p>
                 <div class="flex flex-wrap gap-3">
                   <div v-for="s in profile.skills.aiTools" :key="s.name" class="px-3 py-1.5 bg-tech-primary/5 border border-tech-primary/10 rounded-full text-[10px] font-mono text-tech-primary flex items-center gap-2 font-bold shadow-sm">
                     <img v-if="s.icon" :src="`https://cdn.simpleicons.org/${s.icon}`" class="w-3.5 h-3.5" alt="" />
@@ -382,7 +356,7 @@ const scrollToSection = (id) => {
                 </div>
               </div>
               <div>
-                <p class="text-[9px] font-mono text-slate-400 mb-4 tracking-widest uppercase font-bold text-left">DevOps & Infra</p>
+                <p class="text-[9px] font-mono text-slate-400 mb-4 tracking-widest uppercase font-bold text-left">{{ t('skillsDevops') }}</p>
                 <div class="flex flex-wrap gap-3">
                   <div v-for="s in profile.skills.devops" :key="s.name" class="px-3 py-1 bg-white border border-slate-100 rounded text-[9px] font-mono text-tech-infra uppercase flex items-center gap-2 font-bold shadow-sm">
                     <img v-if="s.icon" :src="`https://cdn.simpleicons.org/${s.icon}`" class="w-3.5 h-3.5" alt="" />
@@ -391,7 +365,7 @@ const scrollToSection = (id) => {
                 </div>
               </div>
               <div>
-                <p class="text-[9px] font-mono text-slate-400 mb-4 tracking-widest uppercase font-bold text-left">Aptitudes Interpersonales</p>
+                <p class="text-[9px] font-mono text-slate-400 mb-4 tracking-widest uppercase font-bold text-left">{{ t('skillsSoft') }}</p>
                 <div class="flex flex-wrap gap-2">
                   <span v-for="skill in profile.softSkills" :key="skill" class="text-[9px] font-mono text-slate-500 bg-slate-50 px-2 py-1 rounded border border-slate-100 uppercase tracking-tighter font-bold shadow-sm">
                     {{ skill }}
@@ -407,7 +381,7 @@ const scrollToSection = (id) => {
     <!-- SECCIÓN 05: ACADEMIA -->
     <section id="education" class="min-h-screen py-20 md:py-32 px-6 md:px-12 lg:px-24 bg-tech-bg">
       <div class="max-w-7xl mx-auto flex flex-col items-center text-left">
-        <h3 class="text-xs font-mono text-tech-primary tracking-[0.4em] uppercase mb-12 md:mb-16 font-bold">05_FORMACIÓN_ACADÉMICA</h3>
+        <h3 class="text-xs font-mono text-tech-primary tracking-[0.4em] uppercase mb-12 md:mb-16 font-bold">{{ t('eduSection') }}</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 w-full mb-16 md:mb-24">
           <div v-for="edu in profile.education" :key="edu.institution" 
                class="p-8 md:p-10 border border-slate-200 bg-white rounded-3xl flex flex-col justify-between hover:border-tech-primary/20 transition-all group relative overflow-hidden text-left shadow-sm">
@@ -426,7 +400,7 @@ const scrollToSection = (id) => {
         </div>
 
         <!-- Certificaciones Grid -->
-        <h4 class="text-xs font-mono text-slate-400 tracking-[0.3em] uppercase mb-10 md:mb-12 font-bold">Certificaciones_Validadas</h4>
+        <h4 class="text-xs font-mono text-slate-400 tracking-[0.3em] uppercase mb-10 md:mb-12 font-bold">{{ t('certsTitle') }}</h4>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 w-full">
           <div v-for="cert in visibleCertifications" :key="cert.title" 
                class="p-6 border border-slate-100 bg-white rounded-2xl hover:shadow-lg transition-all group flex flex-col justify-between h-full text-left shadow-sm animate-in fade-in zoom-in duration-500">
@@ -451,7 +425,7 @@ const scrollToSection = (id) => {
         <div v-if="profile.certifications.length > certsLimit" class="mt-12">
           <button @click="showAllCerts = !showAllCerts" 
                   class="px-8 py-3 border border-slate-200 bg-white text-tech-primary font-mono text-[10px] tracking-widest hover:bg-tech-primary hover:text-white transition-all duration-500 rounded-full shadow-sm uppercase font-bold font-bold">
-            {{ showAllCerts ? 'Ver_Menos_Certificaciones' : 'Ver_Todas_las_Certificaciones' }}
+            {{ showAllCerts ? t('certsLess') : t('certsMore') }}
           </button>
         </div>
       </div>
@@ -460,7 +434,7 @@ const scrollToSection = (id) => {
     <!-- SECCIÓN 06: RECOMENDACIONES -->
     <section id="recommendations" class="py-20 md:py-32 px-6 md:px-12 lg:px-24 bg-slate-50/50 border-y border-slate-200/50">
       <div class="max-w-7xl mx-auto">
-        <h3 class="text-xs font-mono text-tech-primary tracking-[0.4em] uppercase mb-12 md:mb-16 text-center font-bold">06_VALIDACIONES_DEL_EQUIPO</h3>
+        <h3 class="text-xs font-mono text-tech-primary tracking-[0.4em] uppercase mb-12 md:mb-16 text-center font-bold">{{ t('recSection') }}</h3>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
           <div v-for="rec in profile.recommendations" :key="rec.name" 
@@ -496,16 +470,16 @@ const scrollToSection = (id) => {
       <div class="max-w-7xl mx-auto w-full relative z-10 text-left">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div>
-            <h3 class="text-xs font-mono text-tech-info tracking-[0.4em] uppercase mb-6 md:mb-8 font-bold">07_PUERTA_DE_ENLACE</h3>
-            <h2 class="text-4xl md:text-6xl font-black text-white tracking-tighter leading-none mb-8 text-left">¿Listo para el siguiente sprint?</h2>
+            <h3 class="text-xs font-mono text-tech-info tracking-[0.4em] uppercase mb-6 md:mb-8 font-bold">{{ t('contactSection') }}</h3>
+            <h2 class="text-4xl md:text-6xl font-black text-white tracking-tighter leading-none mb-8 text-left">{{ t('contactTitle') }}</h2>
             <p class="text-lg font-mono text-slate-400 leading-relaxed mb-8 text-left">
-              Disponible para nuevos desafíos en <span class="text-tech-info font-bold underline decoration-tech-info/30 underline-offset-4 uppercase">Desarrollo Backend</span> y <span class="text-tech-success font-bold underline decoration-tech-success/30 underline-offset-4 uppercase">QA Automation</span>.
+              {{ t('contactPre') }} <span class="text-tech-info font-bold underline decoration-tech-info/30 underline-offset-4 uppercase">{{ t('contactBackend') }}</span> {{ t('contactAnd') }} <span class="text-tech-success font-bold underline decoration-tech-success/30 underline-offset-4 uppercase">{{ t('contactQa') }}</span>.
             </p>
             <div class="flex items-center gap-6">
               <div class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center animate-pulse">
                 <span class="w-2 h-2 rounded-full bg-tech-success shadow-lg shadow-tech-success/50"></span>
               </div>
-              <span class="text-[10px] font-mono text-slate-500 tracking-[0.3em] uppercase whitespace-nowrap font-bold">Estado: Recibiendo_Señales</span>
+              <span class="text-[10px] font-mono text-slate-500 tracking-[0.3em] uppercase whitespace-nowrap font-bold">{{ t('contactStatus') }}</span>
             </div>
           </div>
 
@@ -514,7 +488,7 @@ const scrollToSection = (id) => {
               <img src="https://cdn.jsdelivr.net/npm/simple-icons@11.6.0/icons/linkedin.svg" class="w-6 h-6 invert opacity-80" alt="LinkedIn" />
               <div class="mt-4">
                 <h4 class="text-lg font-bold text-white mb-1">LinkedIn</h4>
-                <p class="text-[9px] font-mono text-slate-400 uppercase tracking-tighter group-hover:text-tech-info transition-colors font-bold text-left">Red_Profesional</p>
+                <p class="text-[9px] font-mono text-slate-400 uppercase tracking-tighter group-hover:text-tech-info transition-colors font-bold text-left">{{ t('contactLinkedin') }}</p>
               </div>
             </a>
 
@@ -522,7 +496,7 @@ const scrollToSection = (id) => {
               <img src="https://cdn.simpleicons.org/whatsapp" class="w-6 h-6 opacity-80" alt="WhatsApp" />
               <div class="mt-4">
                 <h4 class="text-lg font-bold text-white mb-1 text-left">WhatsApp</h4>
-                <p class="text-[9px] font-mono text-slate-400 uppercase tracking-tighter group-hover:text-tech-success transition-colors font-bold text-left">Línea_Directa</p>
+                <p class="text-[9px] font-mono text-slate-400 uppercase tracking-tighter group-hover:text-tech-success transition-colors font-bold text-left">{{ t('contactWhatsapp') }}</p>
               </div>
             </a>
 
@@ -530,7 +504,7 @@ const scrollToSection = (id) => {
               <img src="https://cdn.simpleicons.org/gmail" class="w-6 h-6 opacity-80" alt="Email" />
               <div class="mt-4">
                 <h4 class="text-lg font-bold text-white mb-1 text-left">Email</h4>
-                <p class="text-[9px] font-mono text-slate-400 uppercase tracking-tighter group-hover:text-tech-info transition-colors font-bold text-left">Transmisión</p>
+                <p class="text-[9px] font-mono text-slate-400 uppercase tracking-tighter group-hover:text-tech-info transition-colors font-bold text-left">{{ t('contactEmail') }}</p>
               </div>
             </a>
           </div>
@@ -559,7 +533,7 @@ const scrollToSection = (id) => {
 
           <div class="px-6 md:px-10 py-8">
             <div class="flex flex-wrap items-center gap-3 mb-6">
-              <span v-if="activeProject.private" class="px-2 py-1 rounded bg-slate-50 border border-slate-100 text-slate-500 text-[9px] font-mono uppercase tracking-[0.25em]">Proyecto privado</span>
+              <span v-if="activeProject.private" class="px-2 py-1 rounded bg-slate-50 border border-slate-100 text-slate-500 text-[9px] font-mono uppercase tracking-[0.25em]">{{ t('projPrivateFull') }}</span>
             </div>
 
             <p class="text-slate-500 text-[13px] md:text-sm leading-relaxed mb-8">{{ activeProject.detail.summary }}</p>
@@ -574,7 +548,7 @@ const scrollToSection = (id) => {
             </div>
 
             <!-- Funcionalidades -->
-            <h5 class="text-[9px] font-mono text-slate-400 uppercase tracking-[0.3em] mb-5">Qué resuelve</h5>
+            <h5 class="text-[9px] font-mono text-slate-400 uppercase tracking-[0.3em] mb-5">{{ t('projSolves') }}</h5>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-10">
               <div v-for="item in activeProject.detail.highlights" :key="item.title" class="flex gap-3">
                 <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-tech-primary shrink-0"></span>
@@ -586,7 +560,7 @@ const scrollToSection = (id) => {
             </div>
 
             <!-- Stack -->
-            <h5 class="text-[9px] font-mono text-slate-400 uppercase tracking-[0.3em] mb-4">Stack</h5>
+            <h5 class="text-[9px] font-mono text-slate-400 uppercase tracking-[0.3em] mb-4">{{ t('projStack') }}</h5>
             <div class="flex flex-wrap gap-2 mb-10">
               <span v-for="tag in activeProject.detail.stack" :key="tag.name"
                     class="px-2 py-1 bg-slate-50 border border-slate-100 rounded text-[8px] md:text-[9px] font-mono text-slate-500 uppercase tracking-widest flex items-center gap-2">
@@ -596,7 +570,7 @@ const scrollToSection = (id) => {
             </div>
 
             <!-- Galería -->
-            <h5 class="text-[9px] font-mono text-slate-400 uppercase tracking-[0.3em] mb-4">Capturas ({{ activeProject.detail.gallery.length }})</h5>
+            <h5 class="text-[9px] font-mono text-slate-400 uppercase tracking-[0.3em] mb-4">{{ t('projShots') }} ({{ activeProject.detail.gallery.length }})</h5>
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
               <button v-for="(shot, index) in activeProject.detail.gallery" :key="shot.src" type="button"
                       @click="openLightbox(index)"

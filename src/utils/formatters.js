@@ -2,22 +2,30 @@
  * Collection of formatting utilities for the System Monitor.
  */
 
+const MONTHS = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic']
+// Equivalentes en inglés que difieren del español (el resto coincide por prefijo).
+const MONTHS_EN = { jan: 0, apr: 3, aug: 7, dec: 11 }
+
+const LABELS = {
+  es: { year: 'año', years: 'años', month: 'mes', months: 'meses', and: 'y' },
+  en: { year: 'year', years: 'years', month: 'month', months: 'months', and: 'and' }
+}
+
 /**
  * Calculates the duration between two date strings.
- * @param {string} start - Start date (e.g., 'nov. 2023')
- * @param {string} end - End date (e.g., 'abr. 2025' or 'actualidad')
- * @returns {string} Formatted duration (e.g., '1 año y 6 meses')
+ * @param {string} start - Start date (e.g., 'nov. 2023' or 'Nov 2023')
+ * @param {string} end - End date (e.g., 'abr. 2025', 'Apr 2025', 'actualidad' or 'present')
+ * @param {'es'|'en'} [lang='es'] - Language of the returned text.
+ * @returns {string} Formatted duration (e.g., '(1 año y 6 meses)' or '(1 year and 6 months)')
  */
-export function calculateDuration(start, end) {
-  const monthsMap = {
-    'ene': 0, 'feb': 1, 'mar': 2, 'abr': 3, 'may': 4, 'jun': 5,
-    'jul': 6, 'ago': 7, 'sept': 8, 'oct': 9, 'nov': 10, 'dic': 11
-  }
-
+export function calculateDuration(start, end, lang = 'es') {
   const parseDate = (str) => {
-    if (str.toLowerCase().includes('actualidad')) return new Date()
-    const [month, year] = str.split('. ')
-    return new Date(parseInt(year), monthsMap[month.toLowerCase()] || 0)
+    const text = str.toLowerCase()
+    if (text.includes('actualidad') || text.includes('present')) return new Date()
+    const [month, year] = text.replace('.', '').split(' ')
+    const key = month.slice(0, 3)
+    const index = MONTHS.indexOf(key)
+    return new Date(parseInt(year), index >= 0 ? index : (MONTHS_EN[key] ?? 0))
   }
 
   const startDate = parseDate(start)
@@ -28,12 +36,13 @@ export function calculateDuration(start, end) {
 
   const years = Math.floor(totalMonths / 12)
   const months = totalMonths % 12
+  const l = LABELS[lang] ?? LABELS.es
 
   let result = []
-  if (years > 0) result.push(`${years} ${years === 1 ? 'año' : 'años'}`)
-  if (months > 0) result.push(`${months} ${months === 1 ? 'mes' : 'meses'}`)
+  if (years > 0) result.push(`${years} ${years === 1 ? l.year : l.years}`)
+  if (months > 0) result.push(`${months} ${months === 1 ? l.month : l.months}`)
 
-  return result.length > 0 ? `(${result.join(' y ')})` : ''
+  return result.length > 0 ? `(${result.join(` ${l.and} `)})` : ''
 }
 
 /**

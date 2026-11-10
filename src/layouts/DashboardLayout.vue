@@ -9,13 +9,13 @@ const store = useSystemStore()
 const activeSection = ref('home')
 
 const navItems = [
-  { id: 'home', label: '01_INICIO', icon: '◈' },
-  { id: 'experience', label: '02_TRAYECTORIA', icon: '⚡' },
-  { id: 'projects', label: '03_PROYECTOS', icon: '📁' },
-  { id: 'skills', label: '04_CONOCIMIENTOS', icon: '⚙' },
-  { id: 'education', label: '05_ACADEMIA', icon: '⌬' },
-  { id: 'recommendations', label: '06_TESTIMONIOS', icon: '★' },
-  { id: 'contact', label: '07_CONTACTO', icon: '✉' }
+  { id: 'home', icon: '◈' },
+  { id: 'experience', icon: '⚡' },
+  { id: 'projects', icon: '📁' },
+  { id: 'skills', icon: '⚙' },
+  { id: 'education', icon: '⌬' },
+  { id: 'recommendations', icon: '★' },
+  { id: 'contact', icon: '✉' }
 ]
 
 const scrollTo = (id) => {
@@ -24,6 +24,7 @@ const scrollTo = (id) => {
 }
 
 onMounted(() => {
+  document.documentElement.lang = store.lang
   setInterval(() => store.tick(), 1000)
 })
 </script>
@@ -38,7 +39,7 @@ onMounted(() => {
                 @click="scrollTo(item.id)"
                 class="group relative flex items-center gap-4 transition-all duration-500">
           <span class="text-[10px] font-mono tracking-widest text-slate-500 group-hover:text-tech-primary transition-colors opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 whitespace-nowrap">
-            {{ item.label }}
+            {{ store.t('nav_' + item.id) }}
           </span>
           <div :class="[
             'w-10 h-10 rounded-full border flex items-center justify-center transition-all duration-500 backdrop-blur-md shrink-0 shadow-md',
@@ -63,7 +64,7 @@ onMounted(() => {
           {{ item.icon }}
         </div>
         <span class="text-[8px] font-mono tracking-tighter uppercase" :class="activeSection === item.id ? 'text-tech-primary font-bold' : 'text-slate-500'">
-          {{ item.id }}
+          {{ store.t('mobile_' + item.id) }}
         </span>
       </button>
     </nav>
@@ -75,20 +76,25 @@ onMounted(() => {
         <div class="h-4 w-[1px] bg-slate-300 hidden sm:block"></div>
         <div class="hidden sm:flex items-center gap-3 text-[10px] font-mono text-slate-500 tracking-widest uppercase">
           <span class="w-2 h-2 rounded-full bg-tech-success shadow-sm"></span>
-          SISTEMA_ACTIVO: {{ store.formattedUptime }}
+          {{ store.t('systemActive') }}: {{ store.formattedUptime }}
         </div>
       </div>
       <div class="flex items-center gap-4 md:gap-8">
         <!-- Role Switcher -->
         <div class="hidden lg:flex bg-slate-200/50 p-1 rounded-full border border-slate-200 shadow-inner">
-          <button @click="store.setRole('all')" :class="['px-4 py-1.5 rounded-full text-[9px] font-bold transition-all uppercase tracking-widest', store.activeRole === 'all' ? 'bg-white text-tech-primary shadow-sm' : 'text-slate-500 hover:text-tech-text']">Ver_Todo</button>
-          <button @click="store.setRole('dev')" :class="['px-4 py-1.5 rounded-full text-[9px] font-bold transition-all uppercase tracking-widest', store.activeRole === 'dev' ? 'bg-white text-tech-info shadow-sm' : 'text-slate-500 hover:text-tech-text']">Desarrollador</button>
-          <button @click="store.setRole('qa')" :class="['px-4 py-1.5 rounded-full text-[9px] font-bold transition-all uppercase tracking-widest', store.activeRole === 'qa' ? 'bg-white text-tech-success shadow-sm' : 'text-slate-500 hover:text-tech-text']">QA_Automation</button>
+          <button @click="store.setRole('all')" :class="['px-4 py-1.5 rounded-full text-[9px] font-bold transition-all uppercase tracking-widest', store.activeRole === 'all' ? 'bg-white text-tech-primary shadow-sm' : 'text-slate-500 hover:text-tech-text']">{{ store.t('roleAll') }}</button>
+          <button @click="store.setRole('dev')" :class="['px-4 py-1.5 rounded-full text-[9px] font-bold transition-all uppercase tracking-widest', store.activeRole === 'dev' ? 'bg-white text-tech-info shadow-sm' : 'text-slate-500 hover:text-tech-text']">{{ store.t('roleDev') }}</button>
+          <button @click="store.setRole('qa')" :class="['px-4 py-1.5 rounded-full text-[9px] font-bold transition-all uppercase tracking-widest', store.activeRole === 'qa' ? 'bg-white text-tech-success shadow-sm' : 'text-slate-500 hover:text-tech-text']">{{ store.t('roleQa') }}</button>
         </div>
 
-        <button @click="scrollTo('contact')" class="text-[9px] md:text-[10px] font-mono tracking-widest text-slate-600 hover:text-tech-primary transition-colors border-b border-slate-300 pb-1 uppercase font-bold">CONTACTAR</button>
+        <button @click="scrollTo('contact')" class="text-[9px] md:text-[10px] font-mono tracking-widest text-slate-600 hover:text-tech-primary transition-colors border-b border-slate-300 pb-1 uppercase font-bold">{{ store.t('contactBtn') }}</button>
+        <button @click="store.setLang(store.lang === 'es' ? 'en' : 'es')" :aria-label="store.t('switchLang')"
+                class="flex bg-slate-200/50 p-1 rounded-full border border-slate-200 shadow-inner text-[9px] font-bold tracking-widest">
+          <span v-for="l in ['es', 'en']" :key="l"
+                :class="['px-3 py-1 rounded-full uppercase transition-all', store.lang === l ? 'bg-white text-tech-primary shadow-sm' : 'text-slate-500']">{{ l }}</span>
+        </button>
         <div class="hidden md:block px-4 py-2 bg-slate-200/50 border border-slate-200 rounded-full text-[9px] font-mono tracking-widest text-slate-700 uppercase">
-          Versión_2.0
+          {{ store.t('version') }}
         </div>
       </div>
     </header>
@@ -100,7 +106,7 @@ onMounted(() => {
 
     <!-- Simple Footer -->
     <footer class="py-20 text-center border-t border-slate-100 relative z-10 bg-white">
-      <p class="text-[10px] font-mono text-slate-400 tracking-[0.4em] uppercase">Desarrollado con excelencia en QA & Backend</p>
+      <p class="text-[10px] font-mono text-slate-400 tracking-[0.4em] uppercase">{{ store.t('footer') }}</p>
     </footer>
   </div>
 </template>
